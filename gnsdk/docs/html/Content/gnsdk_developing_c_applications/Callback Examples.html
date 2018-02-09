@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Callback Examples</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Callback</span>
+        </div>
+        <h1>Callbacks </h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides callback functions to help you get updates on different transactions and handle them. For example, when creating any query, you can register a status callback, which is called by <span class="GNVariablesProductName">GNSDK</span> at each stage of the query (sending query metadata, receiving query metadata, and so on). You can also use the status callback to abort the query if needed.</p>
+        <h5>Example: Making Callbacks</h5>
+        <p>This example demonstrates setting a status callback for a MusicID query.</p>
+        <p>Code&#160;Snippet: <a href="../samples/code_snippets/callback.c">callback.c</a></p>
+        <p>Application Steps</p>
+        <ol>
+            <li value="1">Initialize <span class="GNVariablesProductName">GNSDK</span>.</li>
+            <li value="2">Create MusicID query.</li>
+            <li value="3">Register a callback.</li>
+            <li value="4">Set query input.</li>
+            <li value="5">Set query options.</li>
+            <li value="6">Perform query.</li>
+            <li value="7">Display query status updates using callback.</li>
+        </ol>
+        <h5>Example: Logging to a Callback</h5>
+        <p>This example shows setting up a logging callback that echoes the messages to the system log (Syslog). It shows how to configure the <span class="GNVariablesProductName">GNSDK</span> logging functionality with a custom callback that enables the application complete control over how logging messages are captured.</p>
+        <p>The most typical use case for <span class="GNVariablesProductName">GNSDK</span> logging is to configure a single log file to capture all logged messages and errors. You can control the detail level of the run time logs to include specific information (such as logging only errors or full debug information).</p>
+        <p>However, you can also direct the <span class="GNVariablesProductName">GNSDK</span> to allow a logging callback, enabling you to determine how best to capture the specific logged message(s). In this callback, the application can write to its own log files or pass the messages to an external logging framework, such as the Unix Syslog or the Windows Event Log.</p>
+        <p>You can configure the <span class="GNVariablesProductName">GNSDK</span> to have any number of logging destinations (0-n log files and 0-n log callbacks). You may decide to send important error messages to the Syslog while specifying a run-time-enabled file to capture more detailed information during development or bug tracking.</p>
+        <p>Code Snippet: <a href="../samples/code_snippets/logging_to_callback.c">logging_to_callback.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Open the Syslog.</li>
+            <li value="2">Initialize <span class="GNVariablesProductName">GNSDK</span>.</li>
+            <li value="3">Register callback with the GNSDK Manager.</li>
+            <li value="4">Perform the application function.</li>
+            <li value="5">Shut down <span class="GNVariablesProductName">GNSDK</span>.</li>
+            <li value="6">Close the Syslog.</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

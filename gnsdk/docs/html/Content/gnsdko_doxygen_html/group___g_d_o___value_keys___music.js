@@ -1,0 +1,26 @@
+var group___g_d_o___value_keys___music =
+[
+    [ "GNSDK_GDO_VALUE_ALBUM_COMPILATION", "group___g_d_o___value_keys___music.html#gace70c0a9d33ead25800b4988a4a0c301", null ],
+    [ "GNSDK_GDO_VALUE_ALBUM_DISC_IN_SET", "group___g_d_o___value_keys___music.html#gae045f3937c676262f99291ee4161bed6", null ],
+    [ "GNSDK_GDO_VALUE_ALBUM_LABEL", "group___g_d_o___value_keys___music.html#ga5b03c805559038d71f369b79ac89d791", null ],
+    [ "GNSDK_GDO_VALUE_ALBUM_TOTAL_IN_SET", "group___g_d_o___value_keys___music.html#ga85bf9d3534f05fcda62e93b6a86dd66f", null ],
+    [ "GNSDK_GDO_VALUE_ALBUM_TRACK_COUNT", "group___g_d_o___value_keys___music.html#ga956682d605f363b689804f1b0f19c650", null ],
+    [ "GNSDK_GDO_VALUE_CLASSICAL_DATA", "group___g_d_o___value_keys___music.html#ga48dc6ac8499f736e71ce1c14e2545d7d", null ],
+    [ "GNSDK_GDO_VALUE_COLLABORATOR_RESULT", "group___g_d_o___value_keys___music.html#ga4b90c1fc32f138ded93f370f9c459e9f", null ],
+    [ "GNSDK_GDO_VALUE_COMPOSITION_FORM", "group___g_d_o___value_keys___music.html#ga9a7b09ebcde642fd5b522ef88a81f691", null ],
+    [ "GNSDK_GDO_VALUE_DISCOVER_SEED", "group___g_d_o___value_keys___music.html#ga8e893e36dc6009f6abd7b244aa71b047", null ],
+    [ "GNSDK_GDO_VALUE_MATCH_INFO_TYPE", "group___g_d_o___value_keys___music.html#ga2c737c007f1a247e9f64fc1d609adfd6", null ],
+    [ "GNSDK_GDO_VALUE_MATCH_INFO_TYPE_EXACT", "group___g_d_o___value_keys___music.html#gad242c89d21c11fd8c006c150bb73875e", null ],
+    [ "GNSDK_GDO_VALUE_MATCH_INFO_TYPE_FP_NONEXIST", "group___g_d_o___value_keys___music.html#ga491f5cb46109fb184364d3187392b88e", null ],
+    [ "GNSDK_GDO_VALUE_MATCH_INFO_TYPE_NO_MATCH", "group___g_d_o___value_keys___music.html#ga8a286da596d39227506f77b5ce7b9109", null ],
+    [ "GNSDK_GDO_VALUE_MATCH_INFO_TYPE_UNDEFINED", "group___g_d_o___value_keys___music.html#ga7d5de86eb1b35d682d6d0b26ce045e02", null ],
+    [ "GNSDK_GDO_VALUE_MOOD_LEVEL1", "group___g_d_o___value_keys___music.html#ga120a2811df6ac32d82865beb982d76a5", null ],
+    [ "GNSDK_GDO_VALUE_MOOD_LEVEL2", "group___g_d_o___value_keys___music.html#ga7673a3739cce5b9a855ce87d0cabd524", null ],
+    [ "GNSDK_GDO_VALUE_TEMPO_LEVEL1", "group___g_d_o___value_keys___music.html#ga4775de276c455835862059ec5e07bdd8", null ],
+    [ "GNSDK_GDO_VALUE_TEMPO_LEVEL2", "group___g_d_o___value_keys___music.html#ga5b2e5931601dfa89a683081dac6b367f", null ],
+    [ "GNSDK_GDO_VALUE_TEMPO_LEVEL3", "group___g_d_o___value_keys___music.html#ga9ac1e3889de043d4396778be29dee2ad", null ],
+    [ "GNSDK_GDO_VALUE_TRACK_MATCHED_NUM", "group___g_d_o___value_keys___music.html#ga2e8c1355a6b560833b90d94e3ba263ce", null ],
+    [ "GNSDK_GDO_VALUE_TRACK_MATCHED_POSITION", "group___g_d_o___value_keys___music.html#ga507ef6f03aec79a37ef942d1fcc9cfd6", null ],
+    [ "GNSDK_GDO_VALUE_TRACK_NUMBER", "group___g_d_o___value_keys___music.html#ga88a262a385d0cff02bb3d8229ed9570a", null ],
+    [ "GNSDK_GDO_VALUE_VIDEO_MOOD", "group___g_d_o___value_keys___music.html#ga6967c36d68b3edfad5de26e53744f8fd", null ]
+];

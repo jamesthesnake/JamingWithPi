@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Authorizing a GNSDK Application</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Authorizing a GNSDK Application</span>
+        </div>
+        <h1><a name="_Toc334991736"></a>Authorizing a <span class="GNVariablesProductName">GNSDK</span> Application</h1>
+        <p>Gracenote manages access to metadata using a combination of product licensing and server-side metadata entitlements. </p>
+        <p>When developing a <span class="GNVariablesProductName">GNSDK</span> application, you must include a client ID and license file to authorize your application with Gracenote. In general, the License file enables your application to use the Gracenote products (and their corresponding <span class="GNVariablesProductName">GNSDK</span> modules) that you purchased.&#160;The client ID is used by Gracenote Media Services to enable access to the metadata your application is entitled to use.</p>
+        <h2><a name="_Toc334991737"></a>Client IDs</h2>
+        <p>Each <span class="GNVariablesProductName">GNSDK</span> customer receives a unique client ID string from Gracenote.&#160;This string uniquely identifies each application to Gracenote Media Services and lets Gracenote deliver the specific metadata the application requires.&#160;</p>
+        <p>A client ID string has the following format: 123456-789123456789012312. It consists of a six-digit client ID, and  a 17-digit client ID Tag, separated by a hyphen (-).</p>
+        <p>When creating a new User with gnsdk_manager_user_create_new(), you must pass in the client ID and client ID tag as separate parameters. For more information, <a href="#_Toc334991739" class="MCXref xref">See "Users"</a>.</p>
+        <h2><a name="_Toc334991738"></a>License Files</h2>
+        <p>Gracenote provides a license file along with your client ID.&#160; The license file notifies Gracenote to enable the <span class="GNVariablesProductName">GNSDK</span> products you purchased for your application. Below is an example license file, showing enabled and disabled Gracenote products for Customer A. These products generally map to corresponding <span class="GNVariablesProductName">GNSDK</span> modules.</p>
+        <p class="code"><code>-- BEGIN LICENSE v1.0 1D0D9110 --</code>
+            <br style="mc-tag-and-class: code;" /><code> licensee: Customer A</code>
+            <br style="mc-tag-and-class: code;" /><code> name:&#160; license_file_name</code>
+            <br style="mc-tag-and-class: code;" /><code> start_date: 2012-06-29</code>
+            <br style="mc-tag-and-class: code;" /><code> client_id: a_client_id</code>
+            <br style="mc-tag-and-class: code;" /><code> musicid_file: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> musicid_search: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> musicid_stream: disabled</code>
+            <br style="mc-tag-and-class: code;" /><code> musicid: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> submit: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> playlist: disabled</code>
+            <br style="mc-tag-and-class: code;" /><code> videoid: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> videoid_explore: enabled</code>
+            <br style="mc-tag-and-class: code;" /><code> -- SIGNATURE 1D0D9110 --</code>
+            <br style="mc-tag-and-class: code;" /><code> hashed_client_id_string</code>
+            <br style="mc-tag-and-class: code;" /><code> -- END LICENSE 1D0D9110 --</code>
+            <br />
+        </p>
+        <h2><a name="_Toc334991739"></a>Users</h2>
+        <p>To perform queries, an application must first register a new User and get its handle. A User represents an individual installation of a specific client ID string. This ensures that each application instance is receiving all required metadata entitlements. </p>
+        <p>Users are represented in <span class="GNVariablesProductName">GNSDK</span> by User handles.  You can create a User handle using either gnsdk_manager_user_create_new() or gnsdk_manager_user_create(). </p>
+        <p>When creating a new User with gnsdk_manager_user_create_new(), you must pass in the client ID and client ID tag as separate parameters. For more information about client IDs and client ID tags, <a href="#_Toc334991737" class="MCXref xref">See "Client IDs"</a>.</p>
+        <p>Each application installation should only request a new User once and store the serialized representation of the User for future use. For example:</p><pre>
+gnsdk_user_handle_t user_hdl = GNSDK_NULL; // User handle
+gnsdk_cstr_t        ser_hdl  = GNSDK_NULL; // Serialized user handle
+
+//** Get serialized user handle if one has been saved
+userHandleSaved = get_serialized_user_data(&amp;ser_hdl); // NOT a Gracenote API
+
+//** Call API to register and create new user
+if (userHandleSaved)
+{
+    // This API takes a serialized user handle ('ser_hdl') and creates a
+    // non-serialized user handle in 'user_hdl'
+    error = gnsdk_manager_user_create(ser_hdl, &amp;user_hdl);
+}
+else
+{
+    // This API creates a new, non-serialized user handle in 'user_hdl'
+    error = gnsdk_manager_user_create_new(clientid, clienttag, clientver, &amp;user_hdl);
+}
+
+//**
+//** Perform queries - this changes the user handle
+//** ...
+
+//*********************************************************************
+//
+// R E L E A S E  U S E R
+//
+// This API MAY serialize the user handle to 'ser_hdl':
+// If you called gnsdk_manager_user_create_new(), then
+// gnsdk_manager_user_release() will ALWAYS set 'ser_hdl' to a serialized
+// user handle. If you used gnsdk_manager_user_create(), then 'ser_hdl' will
+// ONLY contain data if the user handle has changed between 'create' and 'release'.
+//
+//*****************************************************************************
+error = gnsdk_manager_user_release(user_hdl, &amp;ser_hdl);
+
+//**
+//** Save serialized user handle before exiting
+//** It is recommended that a serialized user handle be saved only upon close as
+//** the user handle can change during the course of the app
+//**
+if (!error &amp;&amp; ser_hdl)
+{
+    save_serialized_user_data(ser_hdl); // NOT a Gracenote API
+}
+
+// Close GNSDK
+
+		</pre>
+        <h2><a name="_Toc334991741"></a>Managing User Handles</h2>
+        <p>In general, all User handles are thread-safe and can be simultaneously used by multiple queries.</p>
+        <p>Basic User management process:</p>
+        <ol>
+            <li value="1">First application run: create new User and get handle.</li>
+            <li value="2">Provide User handle to GNSDK APIs that require one.</li>
+            <li value="3">Release User handle when finished and store it as serialized data.</li>
+            <li value="4">Subsequent application runs: create User from stored serialized data.</li>
+        </ol>
+        <p>If an application registers a new User on every use instead of storing a serialized User, then the User quota maintained for the client ID is quickly exhausted. Once the quota is reached, attempting to create new Users will fail. If an application uses a single User registration across multiple installations of the application—in short, forcing all the installations to use the same User—the application risks exhausting Gracenote per-user query quota.</p>
+        <p>To maintain an accurate usage profile of your application, and to ensure that the services you are entitled to are not being used unintentionally, your application should register new Users only when needed, and then store that User for future queries.</p>
+        <h2><a name="Setting"></a>Online and Local Database Lookup Modes</h2>
+        <p>Your application must set an option that indicates whether lookups should be performed locally or online. The following table shows the possible options:</p>
+        <table style="width: 100%;">
+            <col style="width: 364px;">
+            </col>
+            <col style="width: 881px;">
+            </col>
+            <tbody>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>GNSDK_LOOKUP_MODE_ONLINE</td>
+                    <td>
+                        <p>This is the default mode. If a cache exists, the query checks it first for a match. If a no match is found in the cache, then the online Gracenote Service is queried. If a result is found there, it is stored in the local cache.  If no online provider exists, the query will fail. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GNSDK_LOOKUP_MODE_ONLINE_NOCACHE</td>
+                    <td>This mode forces the query to be done online only and will not perform a local cache lookup first. If no online provider exists, the query will fail. If a storage provider has been initialized, queries and lists are written to local storage, but are never read unless the lookup mode is changed.</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_LOOKUP_MODE_LOCAL</td>
+                    <td>This mode forces the lookup to be done against the local database only. Local lookups and local caches are used. If no local database exists, the query will fail.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>For example, the following call sets the user lookup option so that lookups are performed locally:</p><pre xml:space="preserve">
+gnsdk_manager_user_option_set(
+    user_handle,
+    GNSDK_USER_OPTION_LOOKUP_MODE,
+    GNSDK_LOOKUP_MODE_LOCAL
+);</pre>
+        <p class="tip">Your application can use GNSDK_USER_OPTION_CACHE_EXPIRATION option to set the length of time before a cache lookup times out. </p>
+        <h3>Overriding the Lookup Mode for a Specific Query</h3>
+        <p>Setting the GNSDK_USER_OPTION_LOOKUP_MODE option for a user handle applies to  <i>all queries using the  user handle</i>. You can override this for a specific query by setting the equivalent <i>query handle option</i>. </p>
+        <p>For example, you can override the setting for a music query by setting the GNSDK_MUSICID_OPTION_LOOKUP_MODE option. The query handle option uses the same option value keys as the user handle option.</p>
+        <h3>Using Both Local and Online Lookup Modes</h3>
+        <p>Your application can switch between local and online lookups. To do this, you need to explicitly switch modes when needed. For example, the following pseudocode shows how to do a local Album TOC lookup using MusicID APIs, followed by an online lookup for cover art using Link APIs:</p><pre xml:space="preserve">/* Local TOC lookup usning MusicID
+musicid_option_set(MODE_LOCAL)
+musicid_toc_set(toc)
+musicid_find_album(&amp;album_gdo)
+/* Online cover art lookup using Link
+link_option_set(MODE_ONLINE)
+link_set_gdo(album_gdo)
+link_retrieve_content(cover)</pre>
+        <p>&#160;</p>
+        <h2>Initializing an Application</h2>
+        <p>Before using a module, the application must initialize it. All applications must first initialize the GNSDK Manager module by calling gnsdk_manager_initialize(). In this call, the application must include the client ID and a Gracenote license file.&#160; Initializing GNSDK Manager returns a handle that is required to initialize other modules.</p>
+        <p>Depending on your application logic, you may need to retain the GNSDK Manager handle to initialize other modules from&#160; different locations in your application. One option is to globally manage the GNSDK manager handle so it is always available.&#160; Alternatively, you can call gnsdk_manager_initialize() multiple times when needed and avoid&#160; shutting down GNSDK Manager prematurely.</p>
+        <h5>Example: Using GNSDK Manager Handles.</h5>
+        <p>The following example shows how to initialize GNSDK Manager and maintain its handle for multiple initializations of other modules.</p>
+        <p>Code Snippet: <a href="../samples/code_snippets/initialization_multiple.c">initialization_multiple.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager with license data and get GNSDK Manager handle.</li>
+            <li value="2">Use GNSDK Manager handle to initialize MusicID.</li>
+            <li value="3">Use GNSDK Manager handle to initialize MusicID-File.</li>
+            <li value="4">Shut down MusicID and MusicID-File.</li>
+            <li value="5">Shut down GNSDK Manager.</li>
+        </ol>
+        <h2>Specifying the License File</h2>
+        <p>Each application provides the license file on the first (and likely only) call to gnsdk_manager_initialize().&#160; Your application has a choice of methods of providing the license file to the GNSDK Manager. These methods are controlled through the license_data and license_data_len parameters of the gnsdk_manager_initialize() API. The methods are:</p>
+        <ul>
+            <li value="1"><b>Memory buffer</b>—Set the license_data parameter to the memory buffer pointer, and the license_data_len to the size of the memory buffer.</li>
+            <li value="2"><b>Null-terminated string</b>—Set the license_data parameter to the string buffer pointer, and the license_data_len to GNSDK_MANAGER_LICENSEDATA_NULLTERMSTRING.</li>
+            <li value="3"><b>Filename</b>—Set the license_data parameter to a string buffer containing the relative filename of a file containing the license data, and the license_data_len to GNSDK_MANAGER_LICENSEDATA_FILENAME.</li>
+            <li value="4"><b>Stdin</b>—Set the license_data parameter to GNSDK_NULL, and the license_data_len to GNSDK_MANAGER_LICENSEDATA_STDIN.</li>
+        </ul>
+        <p class="note"><span class="note">Note:</span> When necessary, an existing license file can be updated with new license file by calling gnsdk_manager_initialize() again. The new file overwrites the existing license data.</p>
+        <h2><a name="_Toc334991743"></a>Shut Down Guidelines</h2>
+        <h3>Shutdown Every Initialization</h3>
+        <p>Calls to the initialize API on any <span class="GNVariablesProductName">GNSDK</span> module are counted. The first call to initialize the module does the actual work, and every subsequent call to initialize only increments an initialization count. So, calling initialize multiple times is safe and not resource-intensive.</p>
+        <p>However, for every initialize call, your application must call shutdown an equal number of times. Shutdown decrements the initialization count, and it is only when the count reaches zero that the actual shutdown occurs.</p>
+        <p>Therefore, each successful call to an  initialize function must be paired (eventually) with a call to a  shutdown function.</p>
+        <p class="note"><span class="note">Note:</span> Do not call a shutdown function if the corresponding initialize function returns an error.</p>
+        <h3>Shutdown GNSDK Manager Last</h3>
+        <p>As a best practice, your application should shut down other modules before shutting down GNSDK Manager. You do not need to release the GNSDK Manager handle. The resources for the handle are freed when the GNSDK Manager is shut down.</p>
+        <h5>Example: Initializing and Shutting Down</h5>
+        <p>Code Snippet: <a href="../samples/code_snippets/initialization.c">initialization.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager.</li>
+            <li value="2">Initialize MusicID (for example).</li>
+            <li value="3">Register User.</li>
+            <li value="4">Perform queries.</li>
+            <li value="5">Release User.</li>
+            <li value="6">Shutdown MusicID.</li>
+            <li value="7">Shutdown GNSDK Manager.</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

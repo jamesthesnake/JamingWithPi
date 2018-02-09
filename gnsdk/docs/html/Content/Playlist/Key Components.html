@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Playlist Features|Working with Playlists">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Key Components</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Playlist Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Working with Playlists.html">Working with Playlists</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Key Components</span>
+        </div>
+        <h1>Key Components</h1>
+        <p>Playlist operates on several key components. The <span class="GNVariablesProductName">GNSDK</span> Playlist module provides functions to implement and manage the following key components within your application.</p>
+        <h3 class="Heading3">Media metadata: Metadata of the media items (or files)</h3>
+        <p>The media may be on MP3s on a device, or a virtual collection hosted on a server. Each media item must have a unique identifier, which is application-defined.</p>
+        <p>Playlist requires recognition results from <span class="GNVariablesProductName">GNSDK</span> for operation, and consequently must be implemented with one or both of <span class="GNVariablesProductName">GNSDK</span>'s music identification modules, MusicID and MusicID-File.</p>
+        <h3 class="Heading3">Attributes: Characteristics of a media item, such as Mood or Tempo</h3>
+        <p>Attributes are Gracenote-delivered string data that an application can display; for example, the Mood attribute Soulful Blues.</p>
+        <p>When doing recognition queries, if the results will be used with Playlist, set the ‘enable playlist’ query option to ensure proper data is retrieved for the result (GNSDK_MUSICID_OPTION_ENABLE_PLAYLIST or GNSDK_MUSICIDFILE_OPTION_ENABLE_PLAYLIST).</p>
+        <h3><a name="Unique"></a>Unique Identifiers</h3>
+        <p>When adding media to a collection summary, an application provides a unique identifier and a GDO, which contains the metadata for the identifier. The identifier is a value that allows the application to identify the physical media being referenced. The identifier is not interpreted by Playlist; it is only returned to the application in Playlist results. An identifier is generally application-dependent. For example, a desktop application typically uses a full path to a file name for an identifier, while an online application typically uses a database key. The media GDO should contain relevant metadata for the media referenced by the identifier. In most cases the GDO comes from a recognition event for the respective media (such as from MusicID). Playlist will take whatever metadata is relevant for playlist generation from the given GDO. For best results, Gracenote recommends giving Album Type GDOs that have matched tracks to this function; Track Type GDOs also work well. Other GDOs are supported, but most other types lack information for good Playlist generation.</p>
+        <h3 class="Heading3">Collection Summary</h3>
+        <p>A collection summary contains the distilled information <span class="GNVariablesProductName">GNSDK</span> Playlist uses to generate playlists for a set of media.</p>
+        <p>Collection summaries must be created and populated before Playlist can use them for playlist generation. Populating collection summaries involves passing a GDO from another <span class="GNVariablesProductName">GNSDK</span> identification event (for example, from MusicID)  along with a unique identifier to Playlist. Collection Summaries can be stored so they do not need to be reconstructed before every use.</p>
+        <h3 class="Heading3">Storage</h3>
+        <p>The application can store and manage collection summaries in local storage.</p>
+        <h3 class="Heading3">Seed</h3>
+        <p>A seed is the GDO of a media item in the collection summary used as input criteria for playlist generation. A seed is used to generate More Like This results, or in custom PDL statements. For example, the seed could be the GDO of a particular track that you'd like to use to generate More Like This results.</p>
+        <h3 class="Heading3">Playlist generation</h3>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides two Playlist generation functions: a general function for generating any playlist, gnsdk_playlist_generate_playlist(), and a specific function for generating a playlist that uses the Gracenote More Like This algorithm, gnsdk_playlist_generate_morelikethis().</p>
+        <p class="note"><span class="note">Note:</span> Gracenote recommends streamlining your Playlist implementation by using the provided More Like This™ function, gnsdk_playlist_generate_morelikethis(), which uses the More Like This algorithm to generate optimal playlist results and eliminates the need to create and validate PDL statements.</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

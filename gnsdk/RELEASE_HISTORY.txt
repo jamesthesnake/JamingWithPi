@@ -1,0 +1,52 @@
+#
+# Copyright (c) 2000-2013 Gracenote, Inc.
+#
+# This software may not be used in any way or distributed without
+# permission. All rights reserved.
+#
+# Some code herein may be covered by US and international patents.
+#
+
+GRACENOTE SDK RELEASE 3.2.0
+Packaged 2013/01/08
+
+
+CONTENTS:
+
+RELEASE_HISTORY.txt:    This file
+README_Samples.txt:     Instructions for building samples
+README_MSWindows.txt:   Instructions for building samples on Microsoft Windows
+docs/:                  Gracenote SDK API Reference Guide (in HTML)
+include/:               Gracenote SDK header files
+lib/:                   Gracenote SDK shared libraries
+lib_static/:            Gracenote SDK static libraries
+samples/:               Buildable sample code tutorials for Gracenote SDK usage
+builds/:				Contains the make files to build the samples for each of the supported platforms
+
+
+REQUIREMENTS:
+- GNU Make 3.81+ required to build sample applications
+- Microsoft Windows platforms please see README_windows.txt
+
+
+PLATFORMS:
+lib/linux_x86-32:           32-bit Linux x86 (requires: glibc 2.3.2+)
+lib/linux_x86-64:           64-bit Linux x86 (requires: glibc 2.3.2+)
+lib/mac_x86-32:             32-bit Mac OS X x86 (10.5 and above)
+lib/mac_x86-64:             64-bit Mac OS X x86 (10.5 and above)
+lib/win_x86-32:             32-bit MS Windows x86 (Windows XP and above)
+lib/win_x86-64:             64-bit MS Windows x86 (Windows XP and above)
+lib/android_arm-32:         32-bit Android ARM
+lib_static/ios_armv7-32:    32-bit Mac iOS (ARMv7)
+lib_static/ios_x86-32:      32-bit Mac iOS Simulator(x86)
+
+RELEASE NOTES:
+See Release Notes for more details.
+
+3.2.0: 2013/01/08
+Inaugural release of GNSDK to Open Developers.
+
+Please send Gracenote SDK feedback to:
+	gnsdk_feedback@gracenote.com
+
+

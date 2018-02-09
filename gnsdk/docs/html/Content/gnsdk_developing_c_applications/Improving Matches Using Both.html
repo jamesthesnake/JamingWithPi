@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Advanced Topics">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Improving Matches Using Both CD TOC and Fingerprints</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Advanced Topics.html">Advanced Topics</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Improving Matches Using Both CD TOC and Fingerprints</span>
+        </div>
+        <h1><a name="_Toc334991786"></a>Improving Matches Using Both CD TOC and Fingerprints</h1>
+        <p>To help improve the accuracy of the results returned from Gracenote Service, you can use both a TOC and a fingerprint in a query. The use of a fingerprint for additional identification criteria can increase the number of single- and multi-exact matches and decreasing the number of fuzzy match results. This query method is especially useful for Albums that contain few (four or less) Tracks, such as CD singles. With this method:</p>
+        <ul>
+            <li value="1">You do not need to set the TOC and fingerprint functions in a specific order on the query handle. Setting the TOC first and the fingerprint second, or vice versa, will work.</li>
+        </ul>
+        <ul>
+            <li value="1">The fingerprint can be of either metadata type: CMX or GNFPX. </li>
+        </ul>
+        <ul>
+            <li value="1">You can use existing fingerprint data, or generate fingerprint data. See the examples below.</li>
+        </ul>
+        <ul>
+            <li value="1">When the fingerprint metadata does not aid the match, Gracenote Service disregards it, and returns a result (or results) that match only the input TOC.</li>
+        </ul>
+        <ul>
+            <li value="1">Using this query method generally results in a longer query processing time to identify the additional fingerprint; on average, about 15 seconds per Track.</li>
+        </ul>
+        <ul>
+            <li value="1">You can alternately perform this query method using gnsdk_musicid_query_add_toc_offset().</li>
+        </ul>
+        <p>If experiencing issues when performing cumulative queries, check that the logs are recording both a TOC and a fingerprint as inputs for the specific query.</p>
+        <h2><a name="_Toc334991787"></a>Using a TOC and an Existing Fingerprint</h2>
+        <p>Use a TOC with an existing fingerprint that is accessed using gnsdk_musicid_query_set_fp_data(). In this case, the fingerprint does not have to be the first Track of the Album. A calling sequence example is:</p>
+        <ol>
+            <li value="1">gnsdk_musicid_query_set_toc_string()</li>
+            <li value="2">gnsdk_musicid_query_set_fp_data()</li>
+            <li value="3">gnsdk_musicid_query_find_albums()</li>
+        </ol>
+        <h2><a name="_Toc334991788"></a>Using a TOC and a Generated Fingerprint</h2>
+        <p>Use a TOC with fingerprint that is generated using the gnsdk_musicid_query_fingerprint_* functions. Calling gnsdk_musicid_query_fingerprint_end() is optional, depending on whether the pb_complete parameter of gnsdk_musicid_query_fingerprint_write() receives enough audio data. Refer to these functions' Remarks for more information. A calling sequence example is:</p>
+        <ol>
+            <li value="1">gnsdk_musicid_query_set_toc_string()</li>
+            <li value="2">gnsdk_musicid_query_fingerprint_begin()</li>
+            <li value="3">gnsdk_musicid_query_fingerprint_write()</li>
+            <li value="4">(Optional)gnsdk_musicid_query_fingerprint_end()</li>
+            <li value="5">gnsdk_musicid_query_find_albums()</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

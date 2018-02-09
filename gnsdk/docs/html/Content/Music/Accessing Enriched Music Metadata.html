@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Accessing Metadata">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Accessing Enriched Music Metadata with the Link Module</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Accessing Metadata.html">Accessing Metadata</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Accessing Enriched Music Metadata with the Link Module</span>
+        </div>
+        <h1>Accessing Enriched Music Metadata with the Link Module</h1>
+        <p>All Gracenote customers can access core metadata from Gracenote Services for the products they license. Optionally, customers can access additional metadata, known as enriched metadata by purchasing additional metadata entitlements. Applications generally access enriched metadata using the Link module APIs.</p>
+        <p>The general process to access linked music metadata is:</p>
+        <ol>
+            <li value="1">Pass in a source GDO.</li>
+            <li value="2">Pass in any necessary options (such as a track ordinal number, or an image size).</li>
+            <li value="3">Access the desired content, using the gnsdk_link_query_content_access()&#160; API.</li>
+            <li value="4">When an application has finished using the content, free the content through the gnsdk_link_query_content_free() API.</li>
+        </ol>
+        <p>The following table lists the specific function and option used to access Link metadata in a particular GNSDK module. </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <p>GNSDK module</p>
+                    </th>
+                    <th>
+                        <p>Link Metadata accessed for</p>
+                    </th>
+                    <th>
+                        <p>Function</p>
+                    </th>
+                    <th>
+                        <p>Option</p>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    <p>MusicID</p>
+                </td>
+                <td>
+                    <p>Albums and Tracks</p>
+                </td>
+                <td>
+                    <p>gnsdk_musicid_query_option_set() </p>
+                </td>
+                <td>
+                    <p>GNSDK_MUSICID_OPTION_ENABLE_LINK_DATA</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>MusicID-File </p>
+                </td>
+                <td>
+                    <p>Albums and Tracks</p>
+                </td>
+                <td>
+                    <p>gnsdk_musicidfile_query_option_set() </p>
+                </td>
+                <td>
+                    <p>GNSDK_MUSICIDFILE_OPTION_ENABLE</p>
+                </td>
+            </tr>
+        </table>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

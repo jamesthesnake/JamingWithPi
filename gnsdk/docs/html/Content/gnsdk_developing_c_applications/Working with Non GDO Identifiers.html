@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Advanced Topics">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Working with Non GDO Identifiers</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Advanced Topics.html">Advanced Topics</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Working with Non GDO Identifiers</span>
+        </div>
+        <h1>Working with Non-GDO Identifiers</h1>
+        <p>In addition to GDOs, Gracenote supports other media element identifiers, as shown in the following table. All of these represent TUI/Tag pairs. </p>
+        <table style="width: 100%;">
+            <col style="width: 127px;" />
+            <col style="width: 315px;" />
+            <col style="width: 523px;" />
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Equivalent to...</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TUI/Tag	</td>
+                    <td>N/A</td>
+                    <td>
+                        <p>A TUI (Title Unique Identifier) is the core identifier for Gracenote. This identifier has a direct relationship to specific metadata within Gracenote. A TUI Tag is a special hash that must accompany the TUI whenever the TUI is used. The TUI Tag ensures the TUI was received from Gracenote and was not created by a non-Gracenote program.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GNID</td>
+                    <td>TUI-Tag</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>GNUID	</td>
+                    <td>
+                        <p>Shortened representation </p>
+                        <p>of a TUI/Tag pair</p>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>TAGID	and ProductID</td>
+                    <td>
+                        <p>DATA&lt;TUI&gt;FOO&lt;TAG&gt;DATA, </p>
+                        <p>where DATA is random data</p>
+                    </td>
+                    <td>
+                        <p>TagID and ProductID are the same. TagID was the original name for this identifier. These IDs are created from TUI and TUI Tag pairs. They are commonly included as tag metadata within MP3 files so the files can be quickly identified by Gracenote. These IDs are static.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Examples of Non-GDO Identifiers</h2>
+        <p>The following table shows examples of non-GDO identifiers.</p>
+        <table style="width: 100%;">
+            <col style="width: 127px;" />
+            <col style="width: 433px;" />
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TUI/Tag	</td>
+                    <td>12345567/ABCDEF1234567890ABCDEF1234567890</td>
+                </tr>
+                <tr>
+                    <td>GNID</td>
+                    <td>12345567-ABCDEF1234567890ABCDEF1234567890</td>
+                </tr>
+                <tr>
+                    <td>GNUID	</td>
+                    <td>ABCD1234567890</td>
+                </tr>
+                <tr>
+                    <td>TAGID	and ProductID</td>
+                    <td>
+                        <p>DATA12345567FOOABCDEF1234567890ABCDEF1234567890DATA</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><span class="GNVariablesProductName">GNSDK</span> Identifiers Comparison Matrix</h2>
+        <p>The following table lists the strengths and weaknesses of the different Gracenote identifiers.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>Serialized GDO </p>
+                    </td>
+                    <td>
+                        <p>Good for getting back to the original metadata.</p>
+                        <p>Good for joining responses and requests between different Gracenote products</p>
+                        <p>Does not require knowledge of the object type</p>
+                    </td>
+                    <td>
+                        <p>Cannot be used for comparison to other serialized GDO values</p>
+                        <p>Not useful for integrating <span class="GNVariablesProductName">GNSDK</span> to other metadata sources, as only</p>
+                        <p><span class="GNVariablesProductName">GNSDK</span> supports GDOs</p>
+                        <p>Relatively large and requires much storage space</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>TUI /TUI Tag Pair</p>
+                    </td>
+                    <td>
+                        <p>Good for comparison</p>
+                        <p>Good for integrating <span class="GNVariablesProductName">GNSDK</span> with other Gracenote metadata sources</p>
+                    </td>
+                    <td>
+                        <p>Cannot be used for getting back to the original metadata, due to the lack of a Tag ID to perform the query</p>
+                        <p>Cannot be efficiently used for joining different Gracenote products, as it does not contain enough metadata.</p>
+                        <p>Requires knowledge of the object type</p>
+                        <p>Requires an accompanying tag, as it is not a single input</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>TagID (ProductID)</p>
+                    </td>
+                    <td>
+                        <p>Good for comparison</p>
+                        <p>Good for getting back to original metadata.</p>
+                        <p>Concise and does not require large amounts of storage space</p>
+                        <p>Single input and does not require an accompanying tag</p>
+                    </td>
+                    <td>
+                        <p>Cannot be used among different Gracenote products as a Product ID/Tag ID</p>
+                        <p>contains only enough information for certain SDKs</p>
+                        <p>Cannot be efficiently used for integrating the <span class="GNVariablesProductName">GNSDK</span> to other metadata sources, as Product IDs/Tag IDs are not generally supported (however, they can be deconstructed to a TUI )</p>
+                        <p>Requires knowledge of the object type</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3">&#160;</h3>
+        <h2>Converting Non-GDO Identifiers to GDOs</h2>
+        <p>This section shows examples that create GDO identifiers from Non-GDO identifiers.</p>
+        <h5>Example: Accessing Locally-Stored Album using TUI</h5>
+        <p>Sample Application: <a href="../samples/musicid_lookup_album_local_online/main.c" target="_blank">musicid_lookup_album_local_online/main.c</a></p>
+        <h5>Example: Creating a GDO from an Album TUI</h5><pre xml:space="preserve">gnsdk_gdo_handle_t query_gdo;<br />gnsdk_cstr_t tui = "12345678";<br />gnsdk_cstr_t tui_tag = "ABCDEF1234567890ABCDEF1234567890";<br />error = gnsdk_manager_gdo_create_from_id(tui, tui_tag, GNSDK_ID_SOURCE_ALBUM, &amp;query_gdo);<br />if (!error)<br />error = gnsdk_musicid_query_set_gdo(query_gdo);</pre>
+        <h5>Example: Creating a GDO from a Track TagID</h5><pre xml:space="preserve">gnsdk_gdo_handle_t query_gdo;<br />gnsdk_cstr_t tagid = "3CD3N43R15145217U37894058D7FCB938ADFA97874409F9531B2P3";<br />error = gnsdk_manager_gdo_create_from_id(tagid, GNSDK_NULL, GNSDK_ID_SOURCE_TRACK, &amp;query_gdo);<br />if (!error)<br />error = gnsdk_musicid_query_set_gdo(query_gdo);</pre>
+        <h5>Example: Creating a GDO from a CDDBID</h5><pre xml:space="preserve">gnsdk_gdo_handle_t query_gdo;<br />gnsdk_cstr_t cddbid = "4+029C475EFCF8D469C78A644DEBFABF91+5795407";<br />error = gnsdk_manager_gdo_create_from_id(cddbid, GNSDK_NULL, GNSDK_ID_SOURCE_CDDBID, &amp;query_gdo);<br />if (!error)<br />error = gnsdk_musicid_query_set_gdo(query_gdo);</pre>
+        <h5>Example: Creating a GDO from Raw CDDBID</h5>
+        <p>A Raw CDDBID is a decomposition of the CDDBID above.</p><pre xml:space="preserve">gnsdk_gdo_handle_t query_gdo;<br />gnsdk_cstr_t mui = "5795407";<br />gnsdk_cstr_t mediaid = "029C475EFCF8D469C78A644DEBFABF91";<br />error = gnsdk_manager_gdo_create_from_id(mui, mediaid, GNSDK_ID_SOURCE_CDDBID, &amp;query_gdo);<br />if (!error)<br />error = gnsdk_musicid_query_set_gdo(query_gdo);</pre>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

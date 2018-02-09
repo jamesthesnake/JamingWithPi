@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Working with Music Modules">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Music ID</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Working with Music Modules.html">Working with Music Modules</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">About Music ID</span>
+        </div>
+        <h1>About MusicID</h1>
+        <p>MusicID allows application developers to deliver a compelling digital entertainment experience by giving users tools to manage and enjoy music collections on media devices, including desktop and mobile devices. MusicID is the most comprehensive identification solution in the industry with the ability to recognize, categorize and organize any music source, be it CDs, digital files, or audio streams. MusicID also seamlessly integrates with Gracenote's suite of products and provides the foundation for advanced services such as enriched content and linking to commerce.</p>
+        <p>Media recognition using MusicID makes it possible for applications to access a variety of rich data available from Gracenote. After media has been recognized, applications can request and utilize:<br /></p>
+        <ul>
+            <li value="1">Album, track, and artist names</li>
+            <li value="2">Genre, origin, era and type descriptors</li>
+        </ul>
+        <p><span class="GNVariablesProductName">GNSDK</span> accepts the following types of inputs for music recognition:</p>
+        <ul>
+            <li value="1">CD TOCs</li>
+            <li value="2">File fingerprints</li>
+            <li value="3">Stream fingerprints</li>
+            <li value="4">Media element identifiers</li>
+            <li value="5">Audio file and folder information (for advanced music recognition)</li>
+        </ul>
+        <h2>MusicID-CD</h2>
+        <p>MusicID-CD is the component of <span class="GNVariablesProductName">GNSDK</span> that handles recognition of audio CDs and delivery of information including artist, title, and track names. The application provides <span class="GNVariablesProductName">GNSDK</span> with the TOC from an audio CD and MusicID-CD will identify the CD and provide album and track information.</p>
+        <h3>TOC Identification</h3>
+        <p>The only information that is guaranteed to be on every standard audio CD is a Table of Contents (TOC). This is a "header" at the beginning of the disc giving the precise starting location of each track on the CD, so that CD players can locate the tracks and compute the track length information for their display panels. This information is given in frames, where each frame is 1/75 of a second. Because this number is so precise, the likelihood that two unrelated CDs would have the same TOC is extremely low – allowing <span class="GNVariablesProductName">GNSDK</span> to use the TOC as a relatively unique identifier.</p>
+        <p>The following figure shows a typical TOC for a CD containing 13 tracks. The first number, 150, indicates the starting location of the first track, in frames, from the beginning of the disc (150 frames = 2 seconds). Each of the remaining 13 numbers is the length, in frames, of the corresponding track on the CD. The last number is the offset of the "lead out", which marks the end of the CD program area.<br /></p>
+        <table>
+            <tr>
+                <td>
+                    <p>150 26670 52757 74145 95335 117690 144300 163992 188662 209375 231320 253150 281555 337792</p>
+                </td>
+            </tr>
+        </table>
+        <p>The Gracenote MusicID module provides functions for sending a TOC to the Gracenote Media Database for identification, and receiving data back from the service in a form the client application can easily display for the end-user. The client application is responsible for extracting TOCs from CDs loaded in the end-user's CD-ROM drive.</p>
+        <h3>Multiple TOCs and Fuzzy Matching</h3>
+        <p>Gracenote MusicID utilizes several methods to perform TOC matches. This combination of matching methods allows client applications to accurately recognize media in a variety of situations.</p>
+        <ul>
+            <li value="1">Exact Match – when there is only one Product match for a queried CD TOC</li>
+            <li value="2">Multi-Exact Match – when there are multiple Product matches for a queried CD TOC</li>
+            <li value="3">Fuzzy Match – allows identification of media that has slight known and acceptable variations from well-recognized media.</li>
+        </ul>
+        <h2>MusicID-Stream</h2>
+        <p>MusicID-Stream uses similar waveform fingerprinting technology to that in MusicID-File, but can identify music using short, recorded samples from anywhere within a song. Fingerprints can be generated from a variety of audio sources, including recorded and degraded sources such as radios and televisions. This enables music identification using arbitrary audio sources – including sampling music via mobile devices.</p>
+        <h3>Waveform Recognition</h3>
+        <p>A fingerprint is generated from a short audio sample of about six seconds. The fingerprint is sent to Gracenote Services for identification. Accessing fingerprints requires an Internet connection, which must be provided by the application.</p>
+        <h2>Music-ID Text</h2>
+        <p>Provides text-based recognition for Gracenote albums. </p>
+        <h3>Album Lookup</h3>
+        <p>Text-based Album lookup will query for audio albums matching the given input text. Input fields supported are: album and track artist name, album and track title, and composer.<br /></p>
+        <h3>Multiple Results and Partial Objects</h3>
+        <p>Partial objects allow for disambiguation when more than one album matches the input criteria. This commonly occurs when 1) ambiguous text input terms are used and 2) when queried TOCs match to multiple albums in the Gracenote database – which occurs frequently when discs have a small number of tracks. When this happens, partial objects (partials) are returned to allow the application or user to select the desired album.<br /></p>
+        <p>For example, if an album title lookup for "Rent" returns many products with "Rent" in the title, partial objects such as artist or year can be returned and referenced by the application or user to select the correct album. The ability to retrieve partials for identical results allows an application to minimize the amount of metadata returned until the correct result is selected. Once the correct album is determined, a full data set can be queried and returned for use by the application.</p>
+        <p>&#160;</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

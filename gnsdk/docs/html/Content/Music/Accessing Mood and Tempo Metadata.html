@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Accessing Metadata">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Accessing Mood and Tempo Metadata</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Accessing Metadata.html">Accessing Metadata</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Accessing Mood and Tempo Metadata</span>
+        </div>
+        <h1>Accessing Mood and Tempo Metadata</h1>
+        <p>In <span class="GNVariablesProductName">GNSDK</span>, access sonic attribute metadata from Gracenote Service by setting the GNSDK_MUSICID_OPTION_ENABLE_SONIC_DATA option to True when performing MusicID Album queries. Setting this option causes the mood and tempo metadata contained in a GDO to be automatically rendered as XML output:</p>
+        <p>An application must be entitled to implement sonic attribute metadata. Contact your Gracenote Professional Service representative for more information.</p>
+        <h2>Mood</h2>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides up to two levels of granularity for mood metadata: Level 1 and Level 2.</p>
+        <p>Use the GNSDK_GDO_VALUE_MOOD_* value keys to access available mood information from an audio track GDO , as shown below in the accessor code sample:</p>
+        <ul class="ul_2">
+            <li class="li_1" value="1">GNSDK_GDO_VALUE_MOOD_LEVEL1: Value key to access the Level 1 mood classification, such as Blue.</li>
+        </ul>
+        <ul class="ul_2">
+            <li class="li_1" value="1">GNSDK_GDO_VALUE_MOOD_LEVEL2: Value key to access the Level 2 mood classification, such as Gritty/Earthy/Soulful.</li>
+        </ul>
+        <p>For example:</p>
+        <p xml:space="preserve" class="codeStart">gnsdk_manager_gdo_value_get(track_gdo, GNSDK_GDO_VALUE_MOOD_LEVEL1, 1, &amp;mood_meta);</p>
+        <p xml:space="preserve" class="codeMid">gnsdk_manager_gdo_value_get(track_gdo, GNSDK_GDO_VALUE_MOOD_LEVEL2, 1, &amp;mood); </p>
+        <p xml:space="preserve" class="codeEnd">printf("TRACK %s MOOD:\t\t\t%s (%s)\n", trknum_str, mood_meta, mood);</p>
+        <h2>Tempo</h2>
+        <p class="note"><span class="note">Note:</span>&#160;Tempo metadata is available online-only.</p>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides up to three levels of granularity for tempo metadata; in order of increasing granularity, they are meta, micro, and sub.</p>
+        <p>Use the following GNSDK_GDO_VALUE_TEMPO_* value keys to access available tempo information from an audio track GDO , as shown below in the accessor code sample:</p>
+        <ul class="ul_2">
+            <li class="li_1" value="1">GNSDK_GDO_VALUE_TEMPO_LEVEL1: Value key to access the Level 1 tempo classification, such as Fast Tempo.</li>
+        </ul>
+        <ul class="ul_2">
+            <li class="li_1" value="1">GNSDK_GDO_VALUE_TEMPO_LEVEL2: Value key to access the Level 2 tempo classification, such as Very Fast.</li>
+        </ul>
+        <ul class="ul_2">
+            <li class="li_1" value="1">GNSDK_GDO_VALUE_TEMPO_LEVEL3: Value key to access the Level 3 tempo classification, which may be displayed as a numeric tempo range, such as 240-249, or a descriptive phrase.</li>
+        </ul>
+        <p>For example:</p>
+        <p class="codeStart">gnsdk_manager_gdo_value_get(track_gdo, GNSDK_GDO_VALUE_TEMPO_LEVEL1, 1, &amp;tempo_meta);</p>
+        <p class="codeMid">gnsdk_manager_gdo_value_get(track_gdo, GNSDK_GDO_VALUE_TEMPO_LEVEL2, 1, &amp;tempo); </p>
+        <p class="codeMid">gnsdk_manager_gdo_value_get(track_gdo, GNSDK_GDO_VALUE_TEMPO_LEVEL3, 1, &amp;tempo_micro);</p>
+        <p class="codeEnd"> printf("TRACK %s TEMPO:\t\t\t%s (%s/%s/%s)\n", trknum_str, value, tempo_meta, tempo, tempo_micro);</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Caching Examples</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Caching</span>
+        </div>
+        <h1>GNSDK Storage and Caching</h1>
+        <p>The <span class="GNVariablesProductName">GNSDK</span> SQLite module provides a local storage solution using the SQLite database engine. This module is used to manage a local cache of content and Gracenote Service queries. Note that this is for GNSDK use only - your application cannot use this database for its own storage.</p>
+        <p><b>NOTE</b>: For information on using SQLite, see <a href="http://www.sqlite.org/" target="_blank">http://www.sqlite.org</a></p>
+        <p>In the future, other database modules will be made available, but currently, the only option is SQLite. Besides APIs specific to SQLite, there is a set of general storage APIs that apply, now and in the future, to whatever database module is implemented. These general APIs cover setting cache location and various cache maintenance operations (cleanup, validate, compact, flush, etc.). See the API Reference for a complete list.</p>
+        <p style="font-style: normal;">Specifically, API calls are provided to manage 3 <i>stores</i> or <i>caches</i> (as indicated by the following defines):</p>
+        <ol>
+            <li value="1">GNSDK_MANAGER_STORAGE_CONTENTCACHE—Stores cover art and related information.</li>
+            <li value="2">GNSDK_MANAGER_STORAGE_QUERYCACHE—Stores media identification requests.</li>
+            <li value="3">GNSDK_MANAGER_STORAGE_LISTSCACHE—Stores Gracenote locale lists.</li>
+        </ol>
+        <p>To begin, your application needs to make the following call to initialize SQLite (after initializing GNSDK Manager and getting an SDK handle). </p><pre>gnsdk_storage_sqlite_initialize(sdkmgr_handle);</pre>
+        <p class="note"><b>Important</b>: It is possible to initialize this library at any time before or after other libraries have been operating. However, to ensure that all queries are properly cached, it should be initialized immediately after the GNSDK Manager and before any other libraries.</p>
+        <p>As with all GNSDK "initialize" calls, there should be a corresponding "shutdown" call before your application exits:</p><pre>gnsdk_storage_sqlite_shutdown();</pre>
+        <p>Following initialization, your code <strong>must</strong> make the following API call to establish a valid storage folder path  for these caches. The path must be writeable. The following sample call sets this folder to the current directory ('.').</p><pre>gnsdk_storage_sqlite_option_set(GNSDK_STORAGE_SQLITE_OPTION_STORAGE_FOLDER, ".");</pre>
+        <p class="note">Folder paths can be either relative or absolute. The SDK is path convention agnostic in that, given either direction for slashes (e.g., "\" or "/"), it will correct to the native OS's standard.</p>
+        <p>In addition to setting the location for all 3 caches, your application has the option to set a location for each cache
+		with the gnsdk_manager_storage_location_set() API. Note that this is a general storage API call and not specific to SQLite.</p><pre xml:space="preserve">gnsdk_manager_storage_location_set(GNSDK_MANAGER_STORAGE_QUERYCACHE, "./querycache");</pre>
+        <p>You might want to set your cache stores to different locations to improve performance and/or tailor
+			your application to specific hardware. For example you might want your locale list store in flash memory and your image store on disk.
+		</p>
+        <p class="note"><strong>Important:</strong> Neither gnsdk_storage_sqlite_option_set() nor gnsdk_manager_storage_location_set() returns an error if the passed location does not exist or is not writeable. In this case,
+		no caching is done. Your application can create this folder at a later time to turn on caching.</p>
+        <p>Other SQLite API calls cover setting cache file and memory size, journaling, and synchronous operations. See the API Reference for a complete list.</p>
+        <h5>Example: Caching of Queries and Content using SQLite</h5>
+        <p>Code Snippet: <a href="../samples/code_snippets/cache.c">cache.c</a></p>
+        <p>Prequisite: Create a writeable "./querycache" folder where you are running the sample.</p>
+        <p>Application Steps: </p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager.</li>
+            <li value="2">Initialize SQLite.</li>
+            <li value="3">Set a valid storage folder path for all 3 stores with gnsdk_sqlite_option_set(). (See code sample above.)</li>
+            <li value="4">Set a folder path for QUERYCACHE (see code sample above) with gnsdk_manager_storage_location_set().</li>
+            <li value="5">Initialize MusicID.</li>
+            <li value="6">Get User handle.</li>
+            <li value="7">Perform MusicID query (this will be cached in "./querycache").</li>
+            <li value="8">Shutdown SQLite cache.</li>
+            <li value="9">Shutdown other <span class="GNVariablesProductName">GNSDK</span> modules.</li>
+        </ol>
+        <p>After the program runs, you should see a "gn_cachq.gdb" file in "./querycache".</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

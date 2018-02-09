@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Gracenote Data Objects GDOs</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Gracenote Data Objects GDOs</span>
+        </div>
+        <h1>Gracenote Data Objects (GDOs)</h1>
+        <p>The primary goal of any <span class="GNVariablesProductName">GNSDK</span> application is to recognize media elements and access their metadata. When an application performs a query, Gracenote returns metadata about the target query element, such as the title and genre of an album element. In addition, information about the query operation is returned, such as its timestamp, the start and end range of the query results, and the number of additional results available from Gracenote.</p>
+        <p><span class="GNVariablesProductName">GNSDK</span> stores the information returned by a query within containers known as Gracenote Data Objects (GDOs). The contents of a GDO depends on:</p>
+        <ul>
+            <li value="1">The kind of query and the search criteria, such as a CD TOC lookup, a fingerprint lookup, text lookup, and so on</li>
+            <li value="2">The query target element </li>
+            <li value="3">Information about the target element available from Gracenote</li>
+        </ul>
+        <p>A GDO can contain: </p>
+        <ul>
+            <li value="1">String values and/or</li>
+            <li value="2">Other GDOs</li>
+        </ul>
+        <p>GDOs have two purposes:</p>
+        <ol>
+            <li value="1">Act as a container for accessing and navigating metadata returned from Gracenote </li>
+            <li value="2">Act as an input for retrieving data from Gracenote </li>
+        </ol>
+        <p>
+            <br />GDOs facilitate a key feature of <span class="GNVariablesProductName">GNSDK</span> – interoperability between all of the Gracenote products and services. Results from one Gracenote query can be used as an input for another. For example, a MusicID result can immediately be used as an input for the Link module without the need for any application intervention. This interoperability is possible for nearly all combinations of Gracenote Services.</p>
+        <h2>GDO Types</h2>
+        <p>Every GDO has a type. For example, when an application performs a query to identify an Album, Gracenote returns a GDO of type Album.&#160; Therefore, for most applications, you can <i>infer</i> a GDO’s type based on the target element of the query and knowing the underlying data model for the element. </p>
+        <p>If needed, your application can get the type of a GDO using gnsdk_manager_gdo_get_type(). For example, your application might request a GDO’s type to confirm it matches the intended type. </p>
+        <p>Another use case is analyzing the results of a general text lookup. This kind of query can return multiple GDOs of <i>different</i> types. The application needs to process the results to determine which GDO is the best response to the query.</p>
+        <h2>Child GDOs and Values</h2>
+        <p>GDO responses can contain other GDOs or references to them. These related "sub-GDOs" are called <i>child GDOs</i>. </p>
+        <p>You can think of any GDO response as a"parent GDO" if it contains or references other GDOs. The contained GDOs are its children.</p>
+        <p>A child GDO is just like any other GDO once it is retrieved.  It is not dependent on its parent GDO and has the same behaviors and features of other GDOs. The fact that it was once a child of another GDO does not matter.</p>
+        <p>For example, a "parent" Album GDO response can contain child GDOs of type Track, or Artist, other Albums, and so on. A child GDO response can contain its own child GDOs, such as Tracks, Artists, or Contributors, and so on. </p>
+        <p>A GDO’s child objects are enumerated with an ordinal index, starting from 1 (not 0) for the first child object. Queries for child objects take this index as input.</p>
+        <h2>Child Keys and Value Keys</h2>
+        <p>To extract metadata from a GDO, or get a child GDO, your application must use defined keys. There are two kinds of keys: Value and Child.</p>
+        <ul>
+            <li value="1">Value Key—Used to extract a specific piece of metadata from a GDO, for example GNSDK_GDO_VALUE_ALBUM_LABEL.</li>
+            <li value="2">Child Key—Used to get a child GDO, for example, GNSDK_GDO_CHILD_TRACK.</li>
+        </ul>
+        <p>
+            <img src="../Resources/Images/gdo_get_metadata_flow_518x223.jpg" style="width: 518;height: 223;" class="img_1" />
+        </p>
+        <h2>Full and Partial Results</h2>
+        <p>A GDO response contains either <i>partial</i> or <i>full</i> results. A partial (or non-full) result contains a subset of information about the match, but enough to perform additional processing. One common use of partial results is to present the information to an end user to make a selection and then perform a secondary query for full results.</p>
+        <p>To test if a GDO is a full or partial result, use the GNSDK_GDO_VALUE_FULL_RESULT value key. A return value of zero indicates a partial result. A non-zero return value indicates a full result.</p>
+        <p class="info" data-mc-conditions="Default.gnsdko">For a list of values returned in a partial result, <a href="../data_model/Data_Model_gnsdko.html" class="MCXref xref">See "GNSDK Data Model for GNSDK"</a>.</p>
+        <h3>Online and Local Database Queries</h3>
+        <p>Applications that have an online connection can query Gracenote for information.&#160; Applications without an online connection, such as embedded applications used for stereo head units in cars, can instead query a Gracenote local database.</p>
+        <p>In general, local database queries return full GDO results, even when the response contains multiple matches. Most online queries return partial GDO results containing just enough information to identify the matches. Using this information, the application can perform additional queries to obtain more information. In general, your application should <i>always</i> test GDO results to determine they are full or partial.</p>
+        <h2><a name="Matches"></a>Matches that Require Decisions</h2>
+        <p>When an application performs an identification query, Gracenote returns one of the following:</p>
+        <ul>
+            <li value="1">no GDO&#160;match</li>
+            <li value="2">single GDO match</li>
+            <li value="3">multiple GDO matches</li>
+        </ul>
+        <p>In all cases, Gracenote returns high-confidence results based on the identification criteria. </p>
+        <p>However, even high-confidence results may require additional decisions from an application or end user. For example, <i>all</i> multiple GDO&#160;match responses require the application (or end user) make a decision about which GDO to use and process to retrieve its metadata. Therefore, each multiple match GDOs response is flagged as <i>"needs decision"</i> by GNSDK.</p>
+        <p>A single GDO response can also need a decision. In this case, the match result is a good candidate, but by Gracenote's determination, may not be perfect. If a single response does not need a decision, Gracenote has determined that the response is as accurate as possible based on the criteria used for the identification query.</p>
+        <p>Responses that require a decision are:</p>
+        <ul>
+            <li value="1">any response containing multiple GDO matches</li>
+            <li value="2">any single match response that Gracenote determines needs a decision from the application or end user, based on the quality of the match and/or the mechanism used to identify the match (such as text, TOC, fingerprints, and so on), </li>
+        </ul>
+        <p> To test if a GDO needs a decision, use the GDO value key GNSDK_GDO_VALUE_RESPONSE_NEEDS_DECISION. This key returns a boolean TRUE value  if a decision is needed. </p>
+        <p>To resolve a decision, an application typically presents the end user with the matches and lets the user select the correct match or reject them all.  Alternatively, the application may automatically select the first match or reject them all .  </p>
+        <p class="note">In all cases, match results can be partial or full, so after selecting a match, the application should test it using GNSDK_GDO_VALUE_FULL_RESULT. </p>
+        <h3>About the Text Match Score</h3>
+        <p>GNSDK provides a score for text matches based on comparing the input text to the corresponding field in the match text. In this case, the text score does not indicate the <i>quality</i> of the text match. </p>
+        <p>For example, the result text could be substantially different from the input text because the input text contained a lot of incorrect information. Such a response indicates that the results have an amount of ambiguity in them that the application must resolve.</p>
+        <p>&#160;</p>
+        <h2>GDO Workflows</h2>
+        <p>A Gracenote identification query can return no GDO match, a single GDO match, or a multiple GDO&#160;match. The workflow for managing single and multiple GDO matches is similar, but not identical. The following sections describe these two workflows.</p>
+        <h3>GDO Workflow for a Single GDO Match</h3>
+        <p>The simplest example of a GDO workflow is when an identification query returns a single match. For example, suppose there is a query to look up a track by name and find its containing album. If that Track only exists on one album, <span class="GNVariablesProductName">GNSDK</span> identifies the single album and returns a response GDO that contains the core metadata for the identified album. The application can then access the metadata using value keys.</p>
+        <p>As described in <a href="#Matches" class="MCXref xref">See "Matches that Require Decisions"</a>, some singe GDO responses may require a decision by the application or end user. To address this possibility, the GDO workflow should include a test query using the  GNSDK_GDO_VALUE_RESPONSE_NEEDS_DECISION value key to determine if Gracenote has pre-determined that the GDO response needs a decision. </p>
+        <p>The application should also test the GDO to determine if it contains partial or full results. Use the GNSDK_GDO_VALUE_FULL_RESULT value key for this test. If the response is partial, the application can either use the partial information or perform an additional query to get the full results. In some cases, the information returned in a partial response may be sufficient for the purpose of the query. If so, the application can simply get the values from the partial response. </p>
+        <p class="info" data-mc-conditions="Default.gnsdko">For a list of values returned in a partial result, <a href="../data_model/Data_Model_gnsdko.html" class="MCXref xref">See "GNSDK Data Model for GNSDK"</a>.</p>
+        <p>The following diagram shows the basic workflow, followed by the application steps in detail. </p>
+        <p>
+            <img src="../Resources/Images/gnsdk_gdo_flow_online_single.png" />
+        </p>
+        <h4>GDO&#160;Workflow steps for Album title text lookup - Single GDO Response</h4>
+        <ol>
+            <li value="1">Call gnsdk_musicid_query_create() to create a query handle.</li>
+            <li value="2">Call gnsdk_musicid_query_set_text() with input text and input field GNSDK_MUSICID_FIELD_ALBUM to set the text query for an album title.</li>
+            <li value="3">Call gnsdk_musicid_query_find_albums() to perform the query.</li>
+            <li value="4">Test if Parent GDO response has multiple Child GDOs using gnsdk_manager_gdo_value_get() with GNSDK_GDO_VALUE_RESPONSE_RESULT_COUNT. For this example, assume a single GDO response was returned.</li>
+            <li value="5">Test if a decision is needed for the Parent GDO using gnsdk_manager_gdo_value_get() with value key GNSDK_GDO_VALUE_RESPONSE_NEEDS_DECISION. </li>
+            <li value="6">If decision is not needed, use the Child GDO. If a decision is needed, choose to use the GDO or reject it.</li>
+            <li value="7">If using the GDO, call gnsdk_manager_gdo_child_get() with Child Key GNSDK_GDO_CHILD_ALBUM and its ORD value of 1. </li>
+            <li value="8">Test if the Child GDO Response contains a full result using gnsdk_manager_gdo_value_get() with Value Key GNSDK_GDO_VALUE_FULL_RESULT.</li>
+            <li value="9">If the GDO contains a full result, jump to the last step. If the GDO contains partial results, decide if it contains the metadata needed for the query.</li>
+            <li value="10">If partial result is sufficient, jump to the last step. If full results are needed, query the <i>Child GDO</i> to get the full results:<ol style="list-style-type: lower-alpha;"><li value="1">Set the handle to the <i>selected Child GDO</i> using gnsdk_musicid_query_set_gdo().</li><li value="2">Re-query using gnsdk_musicid_query_find_albums().</li></ol></li>
+            <li value="11">Get metadata from Child GDO using gnsdk_manager_gdo_value_get() and value keys.</li>
+        </ol>
+        <p>&#160;</p>
+        <h3>GDO Workflow for Multiple GDO&#160;Matches</h3>
+        <p>Gracenote identification queries often return multiple matches. For example, suppose that a Track exists on multiple Albums, such as the original Album, a compilation Album, and a greatest hits Album. In this case, the query returns a Response GDO that contains multiple child Album GDOs. Each  GDO represents a possible Album match for the query. When this happens, the end-user needs to select which Album they want. Each Response GDO returns enough metadata for this purpose. Based on the user’s selection, the application can then send another query to Gracenote to return the GDO for the chosen Album.</p>
+        <p>The diagram below shows the general application GDO workflow for multiple GDO responses. As described in <a href="#Matches" class="MCXref xref">See "Matches that Require Decisions"</a>, <i>all</i> multiple GDO match responses require a decision by the application or end user. Therefore, it is optional to test if a multiple GDO match needs a decision. </p>
+        <p>In general, after choosing a Child GDO from the multiple matches, the application should test it to determine if it contains partial or full results. Use the GNSDK_GDO_VALUE_FULL_RESULT value key for this test. If the response is partial, the application can either use the partial information or perform an additional query to get the full results. In some cases, the information returned in a partial response may be sufficient for the purpose of the query. If so, the application can simply get the values from the partial response. </p>
+        <p class="info" data-mc-conditions="Default.gnsdko">For a list of values returned in a partial result, <a href="../data_model/Data_Model_gnsdko.html" class="MCXref xref">See "GNSDK Data Model for GNSDK"</a>.</p>
+        <p>The following diagram shows the basic workflow, followed by the application steps in detail. </p>
+        <p>
+            <img src="../Resources/Images/gnsdk_gdo_flow_online_multiple.png" />
+        </p>
+        <h4>GDO&#160;Workflow steps for Album title text lookup - Multiple GDO Response</h4>
+        <ol>
+            <li value="1">Call gnsdk_musicid_query_create() to create a query handle.</li>
+            <li value="2">Call gnsdk_musicid_query_set_text() with input text and input field GNSDK_MUSICID_FIELD_ALBUM to set the text query for an album title.</li>
+            <li value="3">Call gnsdk_musicid_query_find_albums() to perform the query.</li>
+            <li value="4">Test if Parent GDO response has multiple Child GDOs using gnsdk_manager_gdo_value_get() with GNSDK_GDO_VALUE_RESPONSE_RESULT_COUNT. For this example, assume a multiple GDO response was returned.</li>
+            <li value="5"><i>Optional</i>. Test if a decision is needed for the Parent GDO using gnsdk_manager_gdo_value_get() with Value Key: GNSDK_GDO_VALUE_RESPONSE_NEEDS_DECISION. For multiple response GDOs, this always returns TRUE.</li>
+            <li value="6">Choose a specific Child GDO using gnsdk_manager_gdo_child_get() with Child Key GNSDK_GDO_CHILD_ALBUM and its ORD value (1-based).</li>
+            <li value="7">Test if the Child GDO Response contains a full result using gnsdk_manager_gdo_value_get() with Value Key GNSDK_GDO_VALUE_FULL_RESULT.</li>
+            <li value="8">If the GDO contains a full result, jump to the last step. If the GDO contains partial results, decide if it contains the metadata needed for the query.</li>
+            <li value="9">If partial result is sufficient, jump to the last step. If full results are needed, query the Child GDO to get the full results:<ol style="list-style-type: lower-alpha;"><li value="1">Set the handle to the <i>selected Child GDO</i> using gnsdk_musicid_query_set_gdo().</li><li value="2">Re-query using gnsdk_musicid_query_find_albums().</li></ol></li>
+            <li value="10">Get metadata from Child GDO using gnsdk_manager_gdo_value_get() and value keys.</li>
+        </ol>
+        <p>&#160;</p>
+        <h2>Serializing a GDO</h2>
+        <p>You can serialize a GDO to save it for later use in an application.&#160; Serializing a GDO retains only key information needed for common GDO functions. Other information is discarded. </p>
+        <p>To restore the discarded information, your application must request the GDO again. An application can reconstitute (de-serialize) a serialized GDO and use it for subsequent processing.</p>
+        <p class="info" data-mc-conditions="Default.gnsdko">For a list of values returned in a partial result, <a href="../data_model/Data_Model_gnsdko.html" class="MCXref xref">See "GNSDK Data Model for GNSDK"</a>.</p>
+        <p class="note"> Response GDOs are not serialized. The serialization API (gnsdk_manager_gdo_serialize()) does not return an error in this case, but
+		no serialized output is generated.</p>
+        <p class="warning"><b>Important</b>: A serialized GDO is not a static identifier. You cannot use it as a comparison identifier for any purposes, including straight comparisons, caching, indexing, and so on.</p>
+        <h2>Rendering a GDO as XML</h2>
+        <p><span class="GNVariablesProductName">GNSDK</span> supports rendering GDOs as XML.&#160; This is an advanced feature, but may be useful to track user choices, retain query history, or provide data to other applications. <a href="Rendering a GDO as XML.html" class="MCXref xref">See "Rendering a GDO as XML"</a></p>
+        <h2>GDO Navigation Examples</h2>
+        <p>Gracenote Data Objects (GDOs) are the primary identifiers used to access Gracenote metadata.</p>
+        <h5>Example: Looking Up an Album by a TOC</h5>
+        <p>Sample Application: <a href="../samples/musicid_lookup_album_toc/main.c" target="_blank">musicid_lookup_album_toc/main.c</a></p>
+        <h5>Example: Accessing Album and Track GDOs</h5>
+        <p>Code Snippet: <a href="../samples/code_snippets/gdo_get_metadata.c" target="_blank">gdo_get_metadata.c</a></p>
+        <p>Description: This snippet shows how to get and display metadata from one album, including the title of each album track.</p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize SDK, MusicID library, User handle, and load locale</li>
+            <li value="2">Perform a MusicID query and get an album response GDO</li>
+            <li value="3">Get album child GDO from album response GDO</li>
+            <li value="4">Get album title GDO from album child GDO</li>
+            <li value="5">Get and display album title metadata</li>
+            <li value="6">Get and display album metadata in album child GDO</li>
+            <li value="7">Get track child GDOs from album child GDO</li>
+            <li value="8">Get track title GDO from track child GDOs</li>
+            <li value="9">Get and display track title metadata</li>
+            <li value="10">Release resources and shutdown SDK</li>
+        </ol>
+        <h5>Example: Accessing Album and Track Metadata Using Album GDO</h5>
+        <p>This example uses an Album GDO to access Album metadata: artist, credits, title, year, and genre, as well as basic Track metadata: artist, credits, title, track number, and genre.</p>
+        <p>Sample Application: <a href="../samples/musicid_gdo_navigation/main.c" target="_blank">musicid_gdo_navigation/main.c</a></p>
+        <p>&#160;</p>
+        <h5>Example: Serializing an Album GDO</h5>
+        <p>An application can serialize a GDO to minimize its size. The process serializes key pieces of metadata needed to access additional information or related GDOs. Other information is discarded but can be restored by requesting the metadata again.</p>
+        <p>Serialized GDOs are not static. They include a timestamp, which indicates that the exact identifier value varies even though the metadata it refers to remains the same. Because of this, the GDO cannot be used as a comparison identifier for any purposes, including straight comparison, caching, indexing, and so on.</p>
+        <p>Sample Application: <a href="../samples/code_snippets/gdo_serialize.c" target="_blank">gdo_serialize.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize SDK, MusicID library, User handle, and load locale</li>
+            <li value="2">Deserialize input album GDO</li>
+            <li value="3">Perform a MusicID query and get an album response GDO</li>
+            <li value="4">Get album child GDO from album response GDO</li>
+            <li value="5">Serialize album GDO</li>
+            <li value="6">Display serialized album GDO string</li>
+            <li value="7">Release resources and shutdown SDK</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

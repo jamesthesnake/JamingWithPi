@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using the Sample Applications</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Using the Sample Applications</span>
+        </div>
+        <h1 class="Heading1">Using the Sample Applications and Databases</h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides working, command-line C-based sample applications that demonstrate common queries and application scenarios. </p>
+        <p data-mc-conditions=""> The package also provides sample databases you can use when developing your applications. </p>
+        <p>Gracenote recommends stepping through the sample applications with a debugger to observe module usage and API calls. </p>
+        <p class="warning">The sample applications are designed for simplicity and clarity, and not for use in real-world applications.</p>
+        <h2>Code Snippets, Sample Applications, and Reference Applications</h2>
+        <p>Below is a list of code snippets, sample applications, and reference applications for <span class="GNVariablesProductName">GNSDK</span>. Sample and reference applications are included in the release package in the /samples and /reference_applications folders. Code snippets are part of the documentation and are not included. </p>
+        <ul>
+            <li value="1"><i>Code snippets</i> <![CDATA[ ]]>demonstrate specific tasks to reinforce documented processes. </li>
+            <li value="2"><i>Sample applications</i> demonstrate common queries to identify media elements and access metadata. </li>
+            <li value="3"><i>Reference applications</i> are more extensive and demonstrate specialized or more comprehensive use cases. </li>
+        </ul>
+        <h3>Code Snippets</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Description </th>
+                    <th>Link/Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Look up Album cover art</td>
+                    <td><a href="../samples/code_snippets/album_content_lookup.c" target="_blank">samples/code_snippets/album_content_lookup.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set up caching</td>
+                    <td><a href="../samples/code_snippets/cache.c" target="_blank">samples/code_snippets/cache.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set up callbacks</td>
+                    <td><a href="../samples/code_snippets/callback.c" target="_blank">samples/code_snippets/callback.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Navigate an Album's GDO and get its metadata</td>
+                    <td><a href="../samples/code_snippets/gdo_get_metadata.c" target="_blank">samples/code_snippets/gdo_get_metadata.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Serialize GDOs</td>
+                    <td><a href="../samples/code_snippets/gdo_serialize.c" target="_blank">samples/code_snippets/gdo_serialize.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Render GDOs as XML</td>
+                    <td><a href="../samples/code_snippets/gdo_xml_render.c" target="_blank">samples/code_snippets/gdo_xml_render.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Initialization</td>
+                    <td><a href="../samples/code_snippets/initialization.c" target="_blank">samples/code_snippets/initialization.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="../samples/code_snippets/initialization_multiple.c" target="_blank">samples/code_snippets/initialization_multiple.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Use Lists</td>
+                    <td><a href="../samples/code_snippets/list.c" target="_blank">samples/code_snippets/list.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Use Locales</td>
+                    <td><a href="../samples/code_snippets/locale_mgmt_1.c" target="_blank">samples/code_snippets/locale_mgmt_1.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="../samples/code_snippets/locale_mgmt_2.c" target="_blank">samples/code_snippets/locale_mgmt_2.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Set up logging</td>
+                    <td><a href="../samples/code_snippets/logging.c" target="_blank">samples/code_snippets/logging.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="../samples/code_snippets/logging_to_callback.c" target="_blank">samples/code_snippets/logging_to_callback.c</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sample Applications</h3>
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Modules Used</th>
+                    <th>Description</th>
+                    <th>Link/Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Link</td>
+                    <td> Retrieves an Album cover art image using Link starting with a serialized GDO as source.
+</td>
+                    <td><a href="../samples/link_coverart/main.c" target="_blank">samples/link_coverart/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">MusicID</td>
+                    <td>Uses MusicID to look up Album GDO content,	including Album	artist,	credits, title,	year, and genre. 
+ It demonstrates	how	to navigate	the	album GDO that returns basic track information,	including artist, credits, title, track	number,	and	genre.</td>
+                    <td><a href="../samples/musicid_gdo_navigation/main.c" target="_blank">samples/musicid_gdo_navigation/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Looks up an Album using a TUI in the local database, if not found then performs an online lookup.</td>
+                    <td><a href="../samples/musicid_lookup_album_local_online/main.c" target="_blank">samples/musicid_lookup_album_local_online/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Looks up an Album based on its TOC using either a local database or online.</td>
+                    <td><a href="../samples/musicid_lookup_album_toc/main.c" target="_blank">samples/musicid_lookup_album_toc/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">MusicID-File</td>
+                    <td>Uses AlbumID for advanced audio recognition. The audio file’s folder location and its similarity to other audio files are used to achieve more accurate identification.</td>
+                    <td><a href="../samples/musicid_file_albumid/main.c" target="_blank">samples/musicid_file_albumid/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Uses LibraryID to perform additional scanning and processing of all the files in an entire collection. This enables LibraryID to find groupings that are not captured by AlbumID processing</td>
+                    <td><a href="../samples/musicid_file_libraryid/main.c" target="_blank">samples/musicid_file_libraryid/main.c</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Uses TrackID, the simplest MusicID-File processing method to process each audio file independently, without regard for any other audio files in a collection.</td>
+                    <td><a href="../samples/musicid_file_trackid/main.c" target="_blank">samples/musicid_file_trackid/main.c</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Reference Applications</h3>
+        <table>
+            <col />
+            <col />
+            <col style="width: 147px;" />
+            <thead>
+                <tr>
+                    <th>Modules Used</th>
+                    <th>Description</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Playlist</td>
+                    <td>Demonstrates the MoreLikeThis use-case using Playlist and MoodGrid.</td>
+                    <td>reference_apps/MoodGrid_MoreLikeThis</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><![CDATA[	]]></p>
+        <p><![CDATA[  ]]></p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="Building a Sample Application.html">Building a Sample Application</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/GNSDK MusicID Sample Application.html">GNSDK MusicID Sample Application</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/GNSDK MusicID Sample Application.html">GNSDK MusicID Sample Application</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/Prerequisites.html">Prerequisites</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/Initialization.html">Initialization</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/MusicID Queries.html">MusicID Queries</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/Releasing Resources and Shutting.html">Releasing Resources and Shutting Down</a>
+            </p>
+            <p class="MiniTOC2_0"><a class="MiniTOC2" href="MusicID Sample Application Walkthrough/Logging.html">Logging</a>
+            </p>
+        </div>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

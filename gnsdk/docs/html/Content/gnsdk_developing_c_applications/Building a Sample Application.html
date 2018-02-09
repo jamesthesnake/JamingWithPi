@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Using the Sample Applications">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Building a Sample Application</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Using the Sample Applications.html">Using the Sample Applications</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Building a Sample Application</span>
+        </div>
+        <h1><a name="-649412420"></a>Building a Sample Application</h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides sample applications for many common use cases. You can find the sample applications  in the samples/&lt;module&gt; folders of your <span class="GNVariablesProductName">GNSDK</span> package, where &lt;module&gt; corresponds to <span class="GNVariablesProductName">GNSDK</span> modules and features, like musicid_lookup_album_toc, musicid_file_albumid, and so on. </p>
+        <p>Each sample application folder contains the following files: </p>
+        <ul>
+            <li value="1">main.c: C source for the sample application</li>
+            <li value="2">makefile: GNU Make makefile for building the sample application</li>
+        </ul>
+        <p>Some modules may contain a /data subfolder if metadata exists for the sample application.</p>
+        <p>The <span class="GNVariablesProductName">GNSDK</span> package also contains following makefiles: </p>
+        <ul>
+            <li value="1">GNSDK Sample Makefile, makefile, an introductory makefile that includes makefile_platforms.inc. Type make to view its contents.</li>
+            <li value="2">GNSDK Build file, makefile_platforms.inc</li>
+            <li value="3">Common GCSL module Sample Makefile, makefile_sample.inc</li>
+        </ul>
+        <p>Each sample application makefile includes makefile_platforms.inc and makefile_sample.inc.</p>
+        <p>You can build sample applications on any of the <span class="GNVariablesProductName">GNSDK</span> supported platforms. See "System Requirements"</p>
+        <h2>Build Environment Requirements</h2>
+        <p>Building the sample applications requires the following environment:</p>
+        <ul>
+            <li value="1">GNU Make 3.81 or above </li>
+            <li value="2">A command-line environment supported by the target platform</li>
+        </ul>
+        <h2><a name="Build"></a>Build Steps</h2>
+        <p>To build and run a sample application: </p>
+        <ol>
+            <li value="1">Open a shell and navigate to the sample application folder.</li>
+            <li value="2">Type make. This creates a<b> sample.exe</b> file (and generally other output files) in the same folder. Object files from the compiler are stored in an output folder.</li>
+            <li value="3">Type the platform-specific command to run the sample.exe and include the ClientID, ClientID Tag, and License file information as command-line arguments as described below. </li>
+        </ol>
+        <h3>Supported make commands</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>make</td>
+                    <td>Builds a debug version</td>
+                </tr>
+                <tr>
+                    <td>make release</td>
+                    <td> Builds a release (non-debug) version</td>
+                </tr>
+                <tr>
+                    <td>make release CFLAGS=-DUSE_LOCAL</td>
+                    <td>Enables local database lookups</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Including Client and License Information to Run a Sample</h2>
+        <p>Running the sample application generally requires the client ID, client ID tag, and license file provided with the SDK. Gracenote SDKs and sample applications cannot successfully execute without these values. You must supply them as command-line arguments to the sample application, in the following format:</p><pre xml:space="preserve">./sample.exe &lt;clientid&gt; &lt;clientid_tag&gt; &lt;license_file&gt;</pre>
+        <p>For example,</p><pre xml:space="preserve">./sample.exe 12345678 ABCDEF0123456789ABCDEF012345679 "C:/gn_license.txt </pre>
+        <h2>Directing Output and Log Files</h2>
+        <p>Each sample application output varies, but in general, you should see the application performing online querying and displaying scrolling output. Redirect the output to a file to capture it for viewing. The application also creates a sample.log file, which logs any errors that may have occurred. </p>
+        <h2>Platform-Specific Build Instructions</h2>
+        <p>This section contains important build notes for specific platforms.</p>
+        <h3>Windows</h3>
+        <p>Building on a Windows platform requires the following:</p>
+        <ul>
+            <li value="1">Cygwin: For more information, see the file README_windows.txt, included in the package.</li>
+            <li value="2">Visual Studio 2005 or Visual Studio 2008</li>
+        </ul>
+        <p>To build the sample application on a Windows platform:</p>
+        <ol>
+            <li value="1">Edit the cygwin.bat file to configure the correct variables for the installed Visual Studio version. (The default location for this file is generally C:\cygwin, but this is dependent on your specific configuration.) See examples below.</li>
+            <li value="2">Follow the general instructions: <a href="#Build" class="MCXref xref">See "Build Steps"</a>.</li>
+            <li value="3"> Be sure to navigate to the sample folder using the proper Cygwin path prefix of /cygdrive/c &lt;or correct drive&gt;/&lt;path to sample&gt;. For more information on using Cygwin, see the <a href="http://cygwin.com/cygwin-ug-net.html">Cygwin's User's Guide</a>.</li>
+        </ol>
+        <p>This example shows the original code delivered by Cygwin in the cygwin.bat file:</p>
+        <p>@echo off</p>
+        <p>C:</p>
+        <p>chdir C:\cygwin\bin</p>
+        <p>bash --login -i</p>
+        <p>This example shows how the code must be edited to call the correct variables for the installed Visual Studio version. Note that this code specifically calls Visual Studio 2008 and configures the variables before initializing Cygwin:</p>
+        <p>@echo off</p>
+        <p>:: Change this call based on the version of Visual Studio being used</p>
+        <p>:: If using Visual Studio 2008, call "%VS90COMNTOOLS%\.."</p>
+        <p>:: If using Visual Studio 2005, call "%VS80COMNTOOLS%\.."</p>
+        <p>call "%VS90COMNTOOLS%\..\..\VC\vcvarsall.bat" x86</p>
+        <p>C:</p>
+        <p>chdir C:\cygwin\bin</p>
+        <p>bash --login</p>
+        <h3>Windows CE</h3>
+        <p>Because Windows CE does not have a relative path concept, the samples provided with <span class="GNVariablesProductName">GNSDK</span> will not run without modifications. The following modifications are necessary:</p>
+        <ul>
+            <li value="1">You must use an absolute path for the log files.</li>
+            <li value="2">
+                <p>You must set a path name for the database after SQLite is initialized, for example:</p><pre>gnsdk_storage_sqlite_option_set(GNSDK_STORAGE_SQLITE_OPTION_STORAGE_FOLDER, "/storage card/samples");</pre>
+            </li>
+            <li value="3">
+                <p>You must set a path name for the database after Playlist is initialized, for example:</p><pre>gnsdk_playlist_storage_location_set( "/storage card/samples");</pre>
+            </li>
+        </ul>
+        <p>You also might need to hard-code the full path name for license.txt:</p><pre>error = gnsdk_manager_initialize(
+    &amp;sdkmgr_handle,
+    "/storage card/license.txt",
+    GNSDK_MANAGER_LICENSEDATA_FILENAME
+    );</pre>
+        <p>The recommended way to run the samples is to create  a .bat file with a line similar to this: </p><pre xml:space="preserve">/storage card/samples/playlist/sample.exe 12345678 ABCDEF0123456789ABCDEF012345679 "\Storage card\samples\license.txt"</pre>
+        <p>To run the samples:</p>
+        <ol>
+            <li value="1">Launch a command prompt.</li>
+            <li value="2">Change directories (cd) to the running directory.</li>
+            <li value="3">Invoke the .bat file to run the sample.
+    </li>
+        </ol>
+        <p>Optionally, you can redirect the output: ./sample.bat &gt;sample.out
+    </p>
+        <p class="note"><span class="note">note:</span> Redirecting the output will not capture the leak statistics.</p>
+        <h3>Linux ARM</h3>
+        <p>To build samples when using the Linux ARM-32 binaries:</p>
+        <ol>
+            <li value="1">Open a shell and navigate to the sample application folder:.../gnsdk_&lt;version&gt;_&lt;date&gt;/_sample/&lt;module&gt;.</li>
+            <li value="2">Type make clean ARCH=arm.</li>
+            <li value="3">Type make ARCH=arm to build the executable file.</li>
+            <li value="4">Navigate to the.../gnsdk_&lt;version&gt;_&lt;date&gt;/_sample/linux_arm-32 folder to access the gnsdk_&lt;module&gt;_sample.exe and run the sample.</li>
+        </ol>
+        <h3>Linux and Solaris</h3>
+        <p>Follow the general instructions in <a href="#Build" class="MCXref xref">See "Build Steps"</a>.</p>
+        <h3>MacOS</h3>
+        <p>Follow the general instructions in <a href="#Build" class="MCXref xref">See "Build Steps"</a>.</p>
+        <p>To build samples when using Mac OS X x86_64 binaries, use the command: </p>
+        <p>make ARCH=x86_64</p>
+        <p>&#160;</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Using the Sample Applications|MusicID Sample Application Walkthrough">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>GNSDK MusicID Sample Application</title>
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Using the Sample Applications.html">Using the Sample Applications</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">GNSDK MusicID Sample Application</span>
+        </div>
+        <h1>GNSDK MusicID sample application</h1>
+        <p>This topic steps through the <span class="GNVariablesProductName">GNSDK</span> sample application called musicid_gdo_navigation. </p>
+        <p>Sample Application: <a href="../../samples/musicid_gdo_navigation/main.c" target="_blank">musicid_gdo_navigation/main.c</a></p>
+        <p>This application uses MusicID to look up Album content, navigate the hierarchy of data returned, and extract and display metadata results. As shown in the following image, most of the sample applications follow a similar pattern—authenticate/initialize, query Gracenote Service, parse and display results, and shut down.</p>
+        <p>This sample application:</p>
+        <ul>
+            <li value="1">Initializes the GNSDK Manager, the MusicID library and local storage, enables logging, sets localization options, and registers the application user with the Gracenote Service.</li>
+            <li value="2">Performs album lookup queries using internal Gracenote identifiers.</li>
+            <li value="3">Parses returned Gracenote Data Objects (GDOs) and displays the results.</li>
+            <li value="4">Releases resources and shuts down the <span class="GNVariablesProductName">GNSDK</span> when done.</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/02000001_566x168.jpg" style="width: 566;height: 168;" />
+        </p>
+        <p class="info"> In this topic, error handling is minimized and function calls are sometimes shown without some of their parameters. Refer to the sample application code to see how to implement error handling, and see the actual function call syntax.</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

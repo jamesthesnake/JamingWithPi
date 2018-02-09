@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Best Practices for Image Dimensions</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Best Practices for Image Dimensions</span>
+        </div>
+        <h1 class="Heading1">Best Practices for Images</h1>
+        <p>Gracenote images – in the form of cover art, artist images and more – are integral features in many online music services, as well as home, automotive and mobile entertainment devices. Gracenote maintains a comprehensive database of images in dimensions to accommodate all popular applications, including a growing catalog of high-resolution (HD) images. </p>
+        <p>Gracenote carefully curates images to ensure application and device developers are provided with consistently formatted, high quality images – helping streamline integration and optimize the end-user experience. This topic describes concepts and guidelines for Gracenote  images including changes to and support for existing image specifications.</p>
+        <h2 class="Heading2">Image Formats and Dimensions</h2>
+        <p>Gracenote provides images in several dimensions to support a variety of applications. Applications or devices must specify image size when requesting an image from Gracenote. All Gracenote images are provided in the JPEG (.jpg) image format.</p>
+        <h3 class="Heading3">Standard Image Dimensions</h3>
+        <p>In general, Gracenote provides images to fit within the following square dimensions.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <p>Image Dimension Name</p>
+                    </th>
+                    <th>
+                        <p>Pixel Dimensions</p>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    <p>75</p>
+                </td>
+                <td>
+                    <p>75 x 75</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>170</p>
+                </td>
+                <td>
+                    <p>170 x 170</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>300</p>
+                </td>
+                <td>
+                    <p>300 x 300</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>450*</p>
+                </td>
+                <td>
+                    <p>450 x 450</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>720*</p>
+                </td>
+                <td>
+                    <p>720 x 720</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>1080*</p>
+                </td>
+                <td>
+                    <p>1080 x 1080</p>
+                </td>
+            </tr>
+        </table>
+        <p>*Images with dimensions 450 x 450 and higher are available online only, or by special request. </p>
+        <p class="info">Source images are not always square, and may be proportionally resized to fit within the specified square dimensions. Images will always retain their original aspect ratio.</p>
+        <h2>Album Cover Art</h2>
+        <p>While album cover art is often represented by a square, it is more accurately a bit wider than it is tall. The dimensions of these cover images vary from album to album. Some CD packages, such as a box set, might even be a radically different shape.</p>
+        <h3><a name="Using"></a>Using a Default Image When Cover Art Is Missing</h3>
+        <p>Occasionally, an Album result might have missing cover art. If the cover art is missing, Gracenote recommends trying to retrieve the artist image, and if that is not available, trying to retrieve the genre image. If none of these images are available, your application can use a default image as a substitute. Gracenote distributes an clef symbol image to serve as a default replacement. The images are in jpeg format and located in the /images folder of the package. The image names are:</p>
+        <ul>
+            <li value="1">music_75x75.jpg</li>
+            <li value="2">music_170x170.jpg</li>
+            <li value="3">music_300x300.jpg</li>
+        </ul>
+        <h2>Artist and Contributor Images</h2>
+        <p>Artist and Contributor images, such as publicity photos, come in a wide range of sizes and both portrait and landscape orientations. </p>
+        <h2 class="Heading2">Image Resizing Guidelines</h2>
+        <p>Gracenote images are designed to fit within squares as defined by the available image dimensions. This allows developers to present images in a fixed area within application or device user interfaces. Gracenote recommends applications center images horizontally and vertically within the predefined square dimensions, and that the square be transparent such that the background shows through. This results in a consistent presentation despite variation in the image dimensions. To ensure optimum image quality for end-users, Gracenote recommends that applications use Gracenote images in their provided pixel dimensions without stretching or resizing.</p>
+        <p>Gracenote resizes images based on the following guidelines:</p>
+        <ul start="1" class="ol_1">
+            <li value="1"><b>Fit-to-square</b>: images will be proportionally resized to ensure their largest dimension (if not square) will fit within the limits of the next lowest available image size.</li>
+            <li value="2"><b>Proportional resizing</b>: images will always be proportionally resized, never stretched.</li>
+            <li value="3"><b>Always downscale</b>: smaller images will always be generated using larger images to ensure the highest possible image quality</li>
+        </ul>
+        <p>Following these guidelines, all resized images will remain as rectangles retaining the same proportions as the original source images. Resized images will fit into squares defined by the available dimensions, but are not themselves necessarily square images.</p>
+        <p>
+            <img src="../Resources/Images/03000001_395x238.png" style="width: 395;height: 238;" class="img_1">
+            </img>
+        </p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

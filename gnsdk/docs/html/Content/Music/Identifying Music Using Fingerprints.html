@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Identifying Music">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Identifying Music Using Fingerprints</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Identifying Music.html">Identifying Music</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Identifying Music Using Fingerprints</span>
+        </div>
+        <h1>Identifying Music Using Fingerprints</h1>
+        <p>You can use MusicID or MusicID-File to identify music using an audio fingerprint. An Audio fingerprint is data that uniquely identifies an audio track.&#160; The Gracenote Media Service uses audio fingerprints to match the audio from a client application to the Gracenote Music Database.&#160; </p>
+        <p>There are  two basic types of fingerprints: </p>
+        <ul>
+            <li value="1">MusicID-File </li>
+            <li value="2">MusicID-Stream</li>
+        </ul>
+        <p>MusicID-File recognizes audio files such as those generated when ripping a CD. It uses the first portion of the audio file for recognition. </p>
+        <p>MusicID-Stream can recognize a snippet if audio that can be taken from anywhere within the track making it suitable for identifying streamed audio (such as an internet stream) or ambient audio (such as that recorded from a microphone).</p>
+        <p class="tip">Your application can retain fingerprints for a collection of audio files so they can be used later in queries. For example, your application can fingerprint an entire collection of files in a background thread and reuse them later.</p>
+        <h2>PCM Audio Format Recommendations</h2>
+        <p>The following PCM Audio Formats are supported by <span class="GNVariablesProductName">GNSDK</span> fingerprinting:</p>
+        <p>Sample Sizes:</p>
+        <ul>
+            <li value="1">16-bit</li>
+        </ul>
+        <p>Channels:</p>
+        <ul>
+            <li value="1">2 or 1 (stereo or mono)</li>
+        </ul>
+        <p>Sample Rates:</p>
+        <ul>
+            <li value="1">48000 Hz</li>
+            <li value="2">44100 Hz</li>
+            <li value="3">32000 Hz</li>
+            <li value="4">24000 Hz</li>
+            <li value="5">22050 Hz</li>
+            <li value="6">16000 Hz</li>
+            <li value="7">11025 Hz</li>
+        </ul>
+        <p>Applications should use the highest quality audio possible to ensure the best results. Lower quality audio will result in less accurate fingerprint matches. Gracenote recommends at least 16-bit, stereo, 22050 Hz.</p>
+        <p class="warning">Do not resample or downsample audio to target these frequencies. Send the best quality audio that you have available.</p>
+        <h5>Example: Identifying Music from an Audio Stream</h5>
+        <p>Sample Application: <a href="../samples/musicid_stream/main.c">musicid_stream/main.c</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

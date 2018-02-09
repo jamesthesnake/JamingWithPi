@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Logging Examples</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Logging</span>
+        </div>
+        <h1>Logging</h1>
+        <p>To enable Gracenote SDK logging in your application, use the gnsdk_manager_logging_enable() function. For example:</p><pre xml:space="preserve">
+//**
+//** Enable logging
+//**
+gnsdk_manager_logging_enable(
+      "sample.log",           // File path
+      GNSDK_LOG_PKG_GNSDK,    // Include entries for higher level GNSDKs as well as your app 
+      GNSDK_LOG_LEVEL_ALL,    // Include all level entries
+      GNSDK_LOG_OPTION_ALL,   // All logging options
+      0,                      // Max size of log: 0 means a new log file will be created each run
+      GNSDK_FALSE             // GNSDK_TRUE = old logs will be renamed and saved
+);
+</pre>
+        <p>The <span class="GNVariablesProductName">GNSDK</span> logging system can manage multiple logs simultaneously. Each call to the enable API can enable a new log, if the provided log file name is unique. Additionally, each log can have its own filters and options.</p>
+        <p>The SDK allows an application to register one or more of its own package IDs into the GNSDK logging system with the gnsdk_manager_logging_register_package() call. The application can then enable, disable or filter its own logging messages based on the registered package IDs. For example:</p><pre>
+//**
+//** Register our package ID with the logging system - this will make our logging
+//** entries show up with the package description of "Sample App"
+//**
+gnsdk_manager_logging_register_package(MYAPP_PACKAGE_ID, "Sample App");		
+</pre>
+        <p>To write to a log file, use gnsdk_manager_logging_write() or gnsdk_manager_logging_vwrite().</p>
+        <p>The logging system determines the applicability of a log message for each enabled log, and writes a log message to multiple enabled logs, if appropriate. In cases where filters have overlapping functionality, the system writes the log message(s) to all applicable enabled logs.</p>
+        <p>The most typical use case for <span class="GNVariablesProductName">GNSDK</span> logging is to configure a single log file to capture all logged messages and errors. You can control the detail level of the run time logs to include specific information (such as logging only errors or full debug information).</p>
+        <p>However, you can also direct <span class="GNVariablesProductName">GNSDK</span> to allow a logging callback, where you can determine how best to capture and disseminate specific logged messages. For example, your callback function could write to its own log files or pass the messages to an external logging framework, such as the Unix Syslog or the Windows Event Log.</p>
+        <p>After an SDK API call fails, your application can access additional error information from the SDK with the gnsdk_manager_error_info() API:</p><pre>
+//**
+//** Make call to get system error information for logging
+//**
+const gnsdk_error_info_t* err_info = GNSDK_NULL;
+err_info = gnsdk_manager_error_info();
+</pre>
+        <p>This structure contains both an 'error_code' field and a 'source_error_code' field. The 'error_code' is what the call returns,
+while 'source_error_code' is internal to the SDK and may help Gracenote diagnose any difficulties your application may be experiencing.
+In most cases though, these fields will be the same.</p>
+        <h5>Example: Logging</h5>
+        <p>Code Snippet: <a href="../samples/code_snippets/logging.c">logging.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager.</li>
+            <li value="2">Register package ID with logging system so entries show up with the package description of "Sample App".</li>
+            <li value="3">Enable logging - indicate what level, packages to log.</li>
+            <li value="4">Initialize MusicID.</li>
+            <li value="5">Get User handle.</li>
+            <li value="6">Use SDK to make MusicID query.</li>
+            <li value="7">During step 6,  deliberately create gnsdk_musicid_query_set_gdo() error.</li>
+            <li value="8">Check for errors at each step and write error to log, if any.</li>
+            <li value="9">Release resources and shutdown SDK.</li>
+        </ol>
+        <p>After program completes, check "sample.log" for logged messages. Among various informational messages, you should see an entry for the deliberately created error:</p><pre>
+Thu Nov 01 14:16:00 2012 ERROR  Sample App  0x00001F28  main.c[151]  API:gnsdk_musicid_query_set_gdo,
+    SDK error code: 0x90810001, Description: Invalid argument, Internal error code: 0x90810001
+</pre>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

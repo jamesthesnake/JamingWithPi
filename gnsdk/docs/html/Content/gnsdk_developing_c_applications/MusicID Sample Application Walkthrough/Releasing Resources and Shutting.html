@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Using the Sample Applications|MusicID Sample Application Walkthrough">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Releasing Resources and Shutting Down</title>
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Using the Sample Applications.html">Using the Sample Applications</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Releasing Resources and Shutting Down</span>
+        </div>
+        <h1 class="Heading1">Releasing Resources and Shutting Down</h1>
+        <p>Before the program exits, it calls _shutdown_gnsdk(), which releases the user handle and shuts down the MusicID library, local storage and the <span class="GNVariablesProductName">GNSDK</span>:</p><pre xml:space="preserve">
+gnsdk_manager_user_release(user_handle, &amp;serialized_user_string);
+		<br />// The sample app code (not shown) saves the serialized user handle for later use. Note that the
+// release call serializes the user handle to the serialized_user_string parameter.
+		<br />gnsdk_manager_string_free(serialized_user_string);<br />#if USE_LOCAL<br />&#160;&#160;&#160; gnsdk_lookup_local_shutdown();<br />#endif<br />gnsdk_storage_sqlite_shutdown();<br />gnsdk_musicid_shutdown();<br />gnsdk_manager_shutdown();</pre>
+        <p class="info">Your application needs to pair each call to an&#160; "_initialize" function with a matching&#160; call to a&#160; "_shutdown()" function.</p>
+        <p>When you initialize other <span class="GNVariablesProductName">GNSDK</span> libraries, be sure to shut them down before shutting down the GNSDK Manager. This ensures the application is in control of when individual libraries are shutdown. Otherwise, the other libraries will be forcibly shutdown as well. Generally, this is not an issue, but it may not be what your application is expecting.</p>
+        <p>Prior to calling _shutdown_gnsdk(), the locale handle is released:</p><pre xml:space="preserve">//**<br />//** Clean up and shutdown <br />//**<br />gnsdk_manager_locale_release(locale_handle);<br />_shutdown_gnsdk(user_handle);</pre>
+        <p>It is a best practice to release resources when they are no longer needed, for example:</p><pre xml:space="preserve">//** Release GDO (in _navigate_name_official_gdo() )<br />gnsdk_manager_gdo_release(name_official<br />gdo);&#160; <br />//** Release Query Handle (in _perform_sample_album_tui_lookup() )<br />gnsdk_musicid_query_release(query_handle);&#160;&#160;&#160;&#160; </pre>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

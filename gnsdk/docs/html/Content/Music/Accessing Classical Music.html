@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Accessing Metadata">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Accessing Classical Music Metadata</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Accessing Metadata.html">Accessing Metadata</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Accessing Classical Music Metadata</span>
+        </div>
+        <h1>Accessing Classical Music Metadata</h1>
+        <p>This topic discusses the Gracenote Classical Music Initiative (CMI) Three-Line-Solution (TLS), and <span class="GNVariablesProductName">GNSDK</span>'s support for accessing classical music metadata from Gracenote Service. Gracenote TLS provides the four basic classical music metadata components—composer, album name, artist name, and track name—in a standard three-field media display for albums, artists, and tracks, as follows:</p>
+        <ul>
+            <li value="1">Composer: The composer(s) that are featured on an album are listed by their last name in the album title (where applicable). In the examples noted below, the composer is Beethoven.</li>
+            <li value="2">Album Name: In most cases, a classical album’s title is comprised of the composer(s) and work(s) that are featured on the product, which yields a single entity in the album name display. However, for albums that have formal titles (unlike composers and works), the title is listed as it is on the product.</li>
+            <li value="3">General title example: Beethoven: Violin Concerto</li>
+            <li value="4">Formal title example: The Best Of Baroque Music</li>
+            <li value="5">Artist Name: A consistent format is used for listing a recording artist(s)—by soloist(s), conductor, and ensemble(s)—which yields a single entity in the artist name display. For example: Hilary Hahn; David Zinman: Baltimore Symphony Orchestra</li>
+            <li value="6">Track Name: A consistent format is used for listing a track title—composer, work title, and (where applicable) movement title—which yields a single entity in the track name display. For example: Beethoven: Violin Concerto In D, Op. 61 – 1. Allegro Ma Non Troppo</li>
+        </ul>
+        <h2>Accessing Additional Classical Music Metadata</h2>
+        <p>To access additional classical music metadata (when available), set a query handle with the applicable query option set to True to access the metadata and automatically render it to the XML output.</p>
+        <p>The following table lists the applicable query functions and options for the <span class="GNVariablesProductName">GNSDK</span> music modules.</p>
+        <table>
+            <tr>
+                <th>
+                    <p>Product</p>
+                </th>
+                <th>
+                    <p>Query Function</p>
+                </th>
+                <th>
+                    <p>Query Option</p>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <p>MusicID</p>
+                </td>
+                <td>
+                    <p>gnsdk_musicid_query_option_set</p>
+                    <p>gnsdk_musicid_query_option_get </p>
+                </td>
+                <td>
+                    <p>GNSDK_MUSICID_OPTION_ENABLE_CLASSICAL_DATA </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>MusicID-File</p>
+                </td>
+                <td>
+                    <p>gnsdk_musicidfile_query_option_get</p>
+                </td>
+                <td>
+                    <p>GNSDK_MUSICIDFILE_OPTION_ENABLE_CLASSICAL_DATA</p>
+                </td>
+            </tr>
+        </table>
+        <h2>Additional Results in the XML Output</h2>
+        <p>The additional classical music metadata may enhance or replace existing metadata in the XML output of a classical music query result.</p>
+        <p>GNSDK_GDO_VALUE_CLASSICAL_DATA contains a boolean value to indicate whether classical music metadata exists for the query record.</p>
+        <p>For the following fields, existing metadata may be updated with classical music metadata, at the specified level(s):</p>
+        <ul>
+            <li value="1">GNSDK_GDO_VALUE_ARTIST_DISPLAY: At the Album level, lists the Composer name; at the Track level, lists the Artist Name.</li>
+            <li value="2">GNSDK_GDO_VALUE_ARTIST_TYPE: At the Composer credit level.</li>
+            <li value="3">GNSDK_GDO_VALUE_COMPOSITION_FORM: At the Track level.</li>
+            <li value="4">GNSDK_GDO_VALUE_ERA: At the Album and Track credit level, and Composer credit level.</li>
+            <li value="5">GNSDK_GDO_VALUE_INSTRUMENTATION: At the Track level.</li>
+            <li value="6">GNSDK_GDO_VALUE_GENRE: At the Track level.</li>
+            <li value="7">GNSDK_GDO_VALUE_ORIGIN: At the Album, Track, and Composer credit level.</li>
+            <li value="8">GNSDK_GDO_VALUE_TITLE_DISPLAY: At the Album level, lists the Album Name; at the Track level, lists the Track Name.</li>
+            <li value="9">GNSDK_GDO_VALUE_TITLE_TLS: At the Track level; and the metadata may be different that the metadata that displays in the GNSDK_GDO_VALUE_TITLE_DISPLAY&#160; field.</li>
+        </ul>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

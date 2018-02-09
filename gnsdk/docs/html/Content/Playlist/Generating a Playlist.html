@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Playlist Features|Working with Playlists">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Generating a Playlist</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Playlist Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Working with Playlists.html">Working with Playlists</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Generating a Playlist</span>
+        </div>
+        <h1>Generating a Playlist</h1>
+        <p>Generating a Playlist involves the following general steps.</p>
+        <ol>
+            <li value="1">Create a collection summary.</li>
+            <li value="2">Populate the collection summary with unique identifiers and GDOs.</li>
+            <li value="3">(Optional) Store the collection summary.</li>
+            <li value="4">(Optional) Load the stored collection summary into memory in preparation for Playlist results generation.</li>
+            <li value="5">Generate a playlist, using the More Like This function with a seed.</li>
+            <li value="6">Access and display playlist results.</li>
+        </ol>
+        <p>To generate a custom playlist, use the Playlist Definition Language. <a href="Playlist PDL Specification.html" class="MCXref xref">See "Playlist PDL Specification"</a> for more information.</p>
+        <h2>Creating a Collection Summary</h2>
+        <p>To create a collection summary, call the following function:</p><pre xml:space="preserve">gnsdk_playlist_collection_create("sample_collection", &amp;playlist_collection);</pre>
+        <p>This creates a new, empty collection summary. The function returns a pointer to a collection handle, which can be used in subsequent calls.</p>
+        <p class="note"><span class="note">Note:</span> Each new collection summary that is created must have a unique name. Although it is possible to create more than one collection summary with the same name, if these collection summaries are then saved to local storage, one collection will override the other. To avoid this, ensure that collection summary names are unique.</p>
+        <h2>Populating a Collection Summary</h2>
+        <p>The main task in building a Playlist collection summary is to provide all possible data to Playlist for each specific media item. The API to provide data for a collection summary is gnsdk_playlist_collection_add_gdo(). This API takes a media identifier (any unique string determined by the application) and a GDO to acquire data from. The GDO should come from a recognition event from the other <span class="GNVariablesProductName">GNSDK</span> modules (such as MusicID or MusicID-File).</p>
+        <h3>Enabling Playlist Attributes</h3>
+        <p>When creating a MusicID or MusicID-File query to populate a playlist, you must set the following query options to ensure that the appropriate Playlist attributes are returned (depending on the type of query):</p>
+        <ul>
+            <li value="1">
+                <p>GNSDK_MUSICID_OPTION_ENABLE_SONIC_DATA or GNSDK_MUSICIDFILE_OPTION_ENABLE_SONIC_DATA</p>
+            </li>
+            <li value="2">GNSDK_MUSICID_OPTION_ENABLE_PLAYLIST or GNSDK_MUSICIDFILE_OPTION_ENABLE_PLAYLIST</li>
+        </ul>
+        <h3>Adding Data to a Collection Summary</h3>
+        <p>After retrieving GDOs with a query, use the gnsdk_playlist_collection_add_gdo() function to add the GDOs (and unique identifiers) to the collection summary. For example, you might call the function with an album or track GDO (or both), depending on your use case:</p><pre xml:space="preserve">error = gnsdk_playlist_collection_add_gdo(h_playlist_collection, unique_ident, album_gdo);</pre><pre xml:space="preserve">error = gnsdk_playlist_collection_add_gdo(h_playlist_collection, unique_ident, track_gdo);</pre>
+        <p class="note"><span class="note">Note:</span> You can add multiple GDOs for the same identifier by calling the gnsdk_playlist_collection_add_gdo() API multiple times with the same identifier value. The data gathered from all the provided GDOs is stored for the given identifier.</p>
+        <p class="tip">When adding an album GDO to Playlist that resulted from a CD TOC lookup, Gracenote recommends adding all tracks from the album to Playlist individually. To do this, call gnsdk_playlist_collection_add_gdo() twice for each track on the album. The first call should pass the album GDO for the identifier (to allow Playlist to gather album data), and the second call should pass the respective track GDO from the album using the same identifier used in the first call. This will ensure Playlist adds full album and track data to the collection summary for each track on the album.</p>
+        <h3>How Playlist Gathers Data</h3>
+        <p>When given an album GDO, Playlist gathers any necessary album data and then traverses to the matched track and gathers the necessary data from that track. This data is stored for the given identifier. If no matched track is part of the album GDO, no track data is gathered. Playlist also gathers data from both the album and track contributors as detailed below.</p>
+        <p>When given a track GDO, Playlist gathers any necessary data from the track, but it is not able to gather any album-related data (such as album title). Playlist also gathers data from the track contributors as detailed below.</p>
+        <p>When given a contributor GDO (or traversing into one from an album or track), Playlist gathers the necessary data from the contributor. If the contributor is a collaboration, data from both child contributors is gathered as well.</p>
+        <p>For all other GDOs, Playlist attempts to gather the necessary data, but no other specific traversals are done automatically.</p>
+        <h3>Adding List Elements to Collection&#160;Summaries</h3>
+        <p>You can add genre and other list data (origin, era, and tempo) to playlists, by matching by string and adding the result to a collection summary. To search for list elements by string, use the gnsdk_manager_list_get_element_by_string() function. This API returns a gnsdk_list_element_handle_t, which can be passed to the gnsdk_playlist_collection_add_list_element() function to add the value to a collection summary.</p>
+        <h2>Working with Local Storage</h2>
+        <p>You can store and manage collection summaries in local storage. To store a collection summary, use the following function:</p><pre xml:space="preserve">gnsdk_playlist_storage_store_collection(playlist_collection);</pre>
+        <p>To retrieve a collection summary from local storage, use the gnsdk_playlist_storage_count_collections() and gnsdk_playlist_storage_enum_collections() functions to retrieve all collections.</p>
+        <p>Before Playlist can use a collection summary that has been retrieved from storage, it must be loaded into memory:</p><pre xml:space="preserve">error = gnsdk_playlist_storage_load_collection(collection_name,&amp;playlist_collection);</pre>
+        <h2>Generating a Playlist Using More Like This</h2>
+        <p>You can streamline your Playlist implementation by using the gnsdk_playlist_generate_morelikethis() function, which use the "More Like This" algorithm to generate optimal playlist results and eliminates the need to create and validate Playlist Definition Language statements.</p>
+        <p>You can set the following options when generating a More Like This Playlist, by using the 
+gnsdk_playlist_morelikethis_option_set() function:</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_TRACKS</td>
+                    <td>The maximum number of results returned.</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_PER_ARTIST</td>
+                    <td>The maximum number of results per artist returned.</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_PER_ALBUM</td>
+                    <td>The maximum number of results per album returned; the value for this key must evaluate to a number greater than 0.</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_PLAYLIST_MORELIKETHIS_OPTION_RANDOM</td>
+                    <td>The randomization seed value used in calculating a More Like This playlist. The value for this key must evaluate to a number greater than 0 (the recommended range is 1 - 100, but you can use any number). This number will be the seed for the randomization. You can re-create a playlist
+  by choosing the same number for the randomization seed; choosing different numbers will create different playlists.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The following example demonstrates setting the More Like This options:</p><pre xml:space="preserve">/* Change the possible result set to contain a maximum of 30 tracks */
+gnsdk_playlist_morelikethis_option_set(
+    h_playlist_collection,
+    GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_TRACKS,
+    "30"
+    );
+
+/* Change the possible result set to contain a maximum of 10 tracks per artist */
+gnsdk_playlist_morelikethis_option_set( 
+    h_playlist_collection,
+    GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_PER_ARTIST,
+    "0"
+    );
+
+/* Change the possible result set to contain a maximum of 5 tracks per album */
+gnsdk_playlist_morelikethis_option_set( 
+    h_playlist_collection,
+    GNSDK_PLAYLIST_MORELIKETHIS_OPTION_MAX_PER_ALBUM,
+    "5"
+    );
+
+/* Change the random result to be 1, so that there is no randomization */
+gnsdk_playlist_morelikethis_option_set( 
+    h_playlist_collection,
+    GNSDK_PLAYLIST_MORELIKETHIS_OPTION_RANDOM,
+    "1"
+    );</pre>
+        <p>To generate a More Like This playlist, call the gnsdk_playlist_generate_morelikethis() function with a user handle, a playlist collection summary, and a seed GDO. A seed GDO&#160;can be any recognized media GDO, for example, the GDO of the track that is currently playing.</p><pre xml:space="preserve">error = gnsdk_playlist_generate_morelikethis(
+    user_handle, 
+    h_playlist_collection, 
+    h_gdo_seed, 
+    &amp;h_playlist_results
+    );</pre>
+        <h2>Accessing Playlist Results</h2>
+        <p>Once you have generated a playlist, you can iterate through the results using the gnsdk_playlist_results_count() and gnsdk_playlist_results_enum() functions. The results consist of a set of unique identifiers, which match the identifiers given to Playlist during the population of the collection summary. The application must match these identifiers to the physical media that they reference. </p>
+        <h2>Joining Collection Summaries</h2>
+        <p>The functions that generate playlists take a single collection summary handle as input. If you wish to create a playlist based on multiple collection summaries, you must join the collections, and pass the handle of the joined collection to the generation function. For example, if your application has created a playlist based on one device (collection 1), and another device is plugged into the system (collection 2), you might want to create playlists based on both of these devices. This can be accomplished using the gnsdk_playlist_collection_join() function:</p><pre xml:space="preserve">gnsdk_playlist_collection_join(collection_handle1, collection_handle2);</pre>
+        <p>Calling this function joins collection 2 into collection 1. The collection 1 handle now represents the joined collection, and collection 1 now contains a reference to collection 2. You can pass the collection 1 handle to the playlist generation functions, and the joined collection will be used to generate the playlist.</p>
+        <p class="tip">If you are working with multiple collection summaries, Gracenote recommends creating an empty parent collection summary, and then joining all additional collection summaries into the parent. This way, all collection summaries will be children of the parent, rather than one collection being the child (or parent) of another. </p>
+        <p>Joins are created in memory only, and cannot be saved in local storage. If you try to save a joined collection in local storage, only the parent collection will be stored. Collections that have been joined into the parent will not be stored.</p>
+        <p>To remove a collection from a join, call the gnsdk_playlist_collection_join_remove() function.</p>
+        <h2>Synchronizing Collection Summaries</h2>
+        <p>Collection summaries must be refreshed whenever items in the user's media collection are modified. For example, if you've created a collection summary based on the media on a particular device, and the media on that device changes, your application must synchronize the collection summary.</p>
+        <p>Synchronization of a collection summary to physical media involves two steps:</p>
+        <ol>
+            <li value="1">Adding all existing (current and new) unique identifiers, using the gnsdk_playlist_collection_sync_ident_add() function, which Playlist collates.</li>
+            <li value="2">Calling gnsdk_playlist_collection_sync_process() to process the current and new identifiers and using the callback function to add or remove identifiers to or from the collection summary.</li>
+        </ol>
+        <h3>Iterating the Physical Media</h3>
+        <p>The first step in synchronizing is to iterate through the physical media, calling the gnsdk_playlist_collection_sync_ident_add() function for each media item. For each media item, pass the unique identifier associated with the item to the function. The unique identifiers used must match the identifiers that were used to create the collection summary initially.</p>
+        <h3>Processing the Collection</h3>
+        <p>After preparing a collection summary for synchronization using gnsdk_playlist_collection_sync_ident_add(), call gnsdk_playlist_collection_sync_process() to synchronize the collection summary's data. During processing, the callback function gnsdk_playlist_update_callback_fn() will be called for each difference between the physical media and the collection summary. So the callback function will be called once for each new media item, and once for each media item that has been deleted from the collection. The callback function should add new and delete old identifiers from the collection summary.</p>
+        <h5>Example: Implementing a Playlist</h5>
+        <p>This example demonstrates using the Playlist APIs to create More Like This and custom playlists.</p>
+        <p>Sample Application: <a href="../samples/playlist/main.c" target="_blank">playlist/main.c</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

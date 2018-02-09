@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Identifying Music">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Identifying Music Using a Text based Search</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Identifying Music.html">Identifying Music</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Identifying Music Using Text</span>
+        </div>
+        <h1>Identifying Music Using Text</h1>
+        <p>You can identify music by using a lookup based on text strings. The text strings can be extracted from an audio track’s file path name and from text data embedded within the file, such as mp3 tags. You can provide the following types of input strings:</p>
+        <ul>
+            <li class="li_1" value="1">Album title</li>
+            <li class="li_1" value="2">Track title</li>
+            <li class="li_1" value="3">Album artist</li>
+            <li class="li_1" value="4">Track artist</li>
+            <li class="li_1" value="5">Track composer</li>
+        </ul>
+        <p>Text-based lookup attempts to match these attributes with known albums, artists, and composers. The text lookup first tries to get an album match. If that is not possible, it next tries to get an artist match. If that does not succeed, a composer match is tried. Adding as many input strings as possible to the lookup improves the results.</p>
+        <p>Text-based lookup returns “best-fit” objects, which means that depending on what your input text matched, you might get back album matches or contributor matches.</p>
+        <h2>Creating and Executing a Query for a Text-based Lookup</h2>
+        <p>The first step in performing a text-based lookup is to create a music query, which returns a query handle that you will use in subsequent calls:</p><pre>gnsdk_musicid_query_create( user_handle, GNSDK_NULL, GNSDK_NULL, &amp;query_handle );</pre>
+        <p>The next step in creating the query is to set the input text fields, based on the information you have available. The possible input fields are:</p>
+        <ul>
+            <li class="li_1" value="1">GNSDK_MUSICID_FIELD_ALBUM (album title)</li>
+            <li class="li_1" value="2">GNSDK_MUSICID_FIELD_TITLE (track title)</li>
+            <li class="li_1" value="3">GNSDK_MUSICID_FIELD_ALBUM_ARTIST</li>
+            <li class="li_1" value="4">GNSDK_MUSICID_FIELD_ARTIST (track artist, if different from the album artist)</li>
+            <li class="li_1" value="5">GNSDK_MUSICID_FIELD_COMPOSER (track composer; only supported for classical music) </li>
+        </ul>
+        <p>Call the gnsdk_musicid_query_set_text() function to set each input field. For example, the following call sets the album title "Dark Side of the Moon" to be used as an input field:</p><pre>gnsdk_musicid_query_set_text(&#160;query_handle, GNSDK_MUSICID_FIELD_ALBUM, "Dark&#160;Side of the Moon" );</pre>
+        <p>Finally, to execute the query, call:</p><pre xml:space="preserve">gnsdk_musicid_query_find_matches( query_handle, &amp;response_gdo );</pre>
+        <h2>Processing Text-based Lookup Results</h2>
+        <p>After executing the text-based query, you need to determine which “best-fit” objects were returned. To do this, iterate through the objects, and get the match GDO and then the GDO type, using the following functions:</p><pre xml:space="preserve">gnsdk_manager_gdo_child_get( response_gdo, GNSDK_GDO_CHILD_MATCH, ord, &amp;match_gdo );</pre><pre xml:space="preserve">gnsdk_manager_gdo_get_type( match_gdo, &amp;gdo_type );</pre>
+        <p>The GDO type will be one of the following types:</p>
+        <ul>
+            <li class="li_1" value="1">GNSDK_GDO_TYPE_ALBUM</li>
+            <li class="li_1" value="2">GNSDK_GDO_TYPE_CONTRIBUTOR</li>
+        </ul>
+        <p>Compare the GDO type to these types, as shown in the following example:</p><pre xml:space="preserve">
+if (0 == strcmp(gdo_type, GNSDK_GDO_TYPE_ALBUM))
+{
+	printf( "Album match\n" );
+	// Display album information.
+}
+else if (0 == strcmp(gdo_type, GNSDK_GDO_TYPE_CONTRIBUTOR))
+{
+	printf( "Contributor match\n" );
+	// Display contributor information.
+}</pre>
+        <p class="note"><span class="note">Note:</span> If an album GDO is returned and you need to make a follow-up query, use gnsdk_musicid_query_find_albums(). If the result is a contributor&#160;GDO, no follow-up query is needed. </p>
+        <p> For more information about navigating through the GDO type hierarchy, see <a href="../gnsdk_developing_c_applications/Gracenote Data Objects GDOs.html" class="ParaTextOnly MCXref xref xrefParaTextOnly">Gracenote Data Objects (GDOs)</a>“.</p>
+        <h5>Example: Text Lookup for a Track</h5>
+        <p>This examples performs a sample text query with album, track and artist inputs.</p>
+        <p>Sample Application: <a href="../samples/musicid_lookup_matches_text/main.c" target="_blank">musicid_lookup_matches_text/main.c</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>GNSDK C API Reference: GDO Context Mappings</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  <td id="projectlogo"><img alt="Logo" src="html_titlebkg.jpg"/></td>
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">GNSDK C API Reference
+   
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+    <body>
+        <h1>GNSDK C API Error Codes</h1>
+        <p>The following table lists error codes sorted by hexadecimal value and then by variant hexadecimal value within a group of error name variants.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p><![CDATA[ ]]></p>
+        <p>&#160;</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col style="width: 87px;" />
+            <col style="width: 149px;" />
+            <col style="width: 158px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td>Error Name</td>
+                    <td>Hexadecimal Value</td>
+                    <td>Description	</td>
+                    <td>Error Name Variant	</td>
+                    <td>	 Variant Hexidecimal Value	</td>
+                    <td>Variant Decimal Value</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NoError</td><td>0x00000000</td><td>"No error"</td><td>SDKMGRERR_NoError</td><td>0x00000000</td><td>0</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidArg</td><td>0x00000001</td><td>"Invalid argument"</td><td>SDKMGRERR_InvalidArg</td><td>0x90800001</td><td>2424307713</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_InvalidArg</td><td>0x90810001</td><td>2424373249</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidArg</td><td>0x90820001</td><td>2424438785</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InvalidArg</td><td>0x90840001</td><td>2424569857</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidArg</td><td>0x90850001</td><td>2424635393</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InvalidArg</td><td>0x90860001</td><td>2424700929</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InvalidArg</td><td>0x90890001</td><td>2424897537</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidArg</td><td>0x90990001</td><td>2425946113</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_InvalidArg</td><td>0x90a00001</td><td>2426404865</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_InvalidArg</td><td>0x90a10001</td><td>2426470401</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidArg</td><td>0x90a20001</td><td>2426535937</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_InvalidArg</td><td>0x90a30001</td><td>2426601473</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_InvalidArg</td><td>0x90a40001</td><td>2426667009</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidArg</td><td>0x90a50001</td><td>2426732545</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidArg</td><td>0x90a60001</td><td>2426798081</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidArg</td><td>0x90a70001</td><td>2426863617</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InvalidArg</td><td>0x90a80001</td><td>2426929153</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_InvalidArg</td><td>0x90a90001</td><td>2426994689</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_InvalidArg</td><td>0x90b00001</td><td>2427453441</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NoMemory</td><td>0x00000002</td><td>"Out of memory"</td><td>SDKMGRERR_NoMemory</td><td>0x90800002</td><td>2424307714</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_NoMemory</td><td>0x90810002</td><td>2424373250</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_NoMemory</td><td>0x90820002</td><td>2424438786</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_NoMemory</td><td>0x90840002</td><td>2424569858</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_NoMemory</td><td>0x90850002</td><td>2424635394</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_NoMemory</td><td>0x90860002</td><td>2424700930</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_NoMemory</td><td>0x90890002</td><td>2424897538</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_NoMemory</td><td>0x90990002</td><td>2425946114</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_NoMemory</td><td>0x90a00002</td><td>2426404866</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_NoMemory</td><td>0x90a10002</td><td>2426470402</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_NoMemory</td><td>0x90a20002</td><td>2426535938</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_NoMemory</td><td>0x90a30002</td><td>2426601474</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_NoMemory</td><td>0x90a40002</td><td>2426667010</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_NoMemory</td><td>0x90a50002</td><td>2426732546</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_NoMemory</td><td>0x90a60002</td><td>2426798082</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_NoMemory</td><td>0x90a70002</td><td>2426863618</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_NoMemory</td><td>0x90a80002</td><td>2426929154</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_NoMemory</td><td>0x90a90002</td><td>2426994690</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_NoMemory</td><td>0x90b00002</td><td>2427453442</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NotFound</td><td>0x00000003</td><td>"Item not found"</td><td>SDKMGRERR_NotFound</td><td>0x90800003</td><td>2424307715</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SDKMGRWARN_NotFound</td><td>0x10800003</td><td>276824067</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_NotFound</td><td>0x90810003</td><td>2424373251</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDWARN_NotFound</td><td>0x10810003</td><td>276889603</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_NotFound</td><td>0x90820003</td><td>2424438787</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_NotFound</td><td>0x10820003</td><td>276955139</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKWARN_NotFound</td><td>0x10840003</td><td>277086211</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_NotFound</td><td>0x90840003</td><td>2424569859</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_NotFound</td><td>0x90850003</td><td>2424635395</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDWARN_NotFound</td><td>0x10850003</td><td>277151747</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_NotFound</td><td>0x90860003</td><td>2424700931</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITWARN_NotFound</td><td>0x10860003</td><td>277217283</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_NotFound</td><td>0x90890003</td><td>2424897539</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLWARN_NotFound</td><td>0x10890003</td><td>277413891</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_NotFound</td><td>0x90990003</td><td>2425946115</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERWARN_NotFound</td><td>0x10990003</td><td>278462467</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_NotFound</td><td>0x90a00003</td><td>2426404867</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEWARN_NotFound</td><td>0x10a00003</td><td>278921219</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_NotFound</td><td>0x90a10003</td><td>2426470403</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPWARN_NotFound</td><td>0x10a10003</td><td>278986755</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_NotFound</td><td>0x90a20003</td><td>2426535939</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMWARN_NotFound</td><td>0x10a20003</td><td>279052291</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_NotFound</td><td>0x90a30003</td><td>2426601475</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBWARN_NotFound</td><td>0x10a30003</td><td>279117827</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_NotFound</td><td>0x90a40003</td><td>2426667011</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRWARN_NotFound</td><td>0x10a40003</td><td>279183363</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_NotFound</td><td>0x90a50003</td><td>2426732547</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLWARN_NotFound</td><td>0x10a50003</td><td>279248899</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_NotFound</td><td>0x90a60003</td><td>2426798083</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBWARN_NotFound</td><td>0x10a60003</td><td>279314435</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_NotFound</td><td>0x90a70003</td><td>2426863619</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGWARN_NotFound</td><td>0x10a70003</td><td>279379971</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_NotFound</td><td>0x90a80003</td><td>2426929155</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_NotFound</td><td>0x90a90003</td><td>2426994691</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGWARN_NotFound</td><td>0x10a90003</td><td>279511043</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_NotFound</td><td>0x90b00003</td><td>2427453443</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPWARN_NotFound</td><td>0x10b00003</td><td>279969795</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_IOError</td><td>0x00000004</td><td>"I/O error"</td><td>SQLITEERR_IOError</td><td>0x90a00004</td><td>2426404868</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_IOError</td><td>0x90a90004</td><td>2426994692</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ReadOnly</td><td>0x00000005</td><td>"Resource is read-only"</td><td>SQLITEERR_ReadOnly</td><td>0x90a00005</td><td>2426404869</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_ReadOnly</td><td>0x90a90005</td><td>2426994693</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Busy</td><td>0x00000006</td><td>"Resource is busy"</td><td>MIDERR_Busy</td><td>0x90810006</td><td>2424373254</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_StillProcessing</td><td>0x90820006</td><td>2424438790</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_Busy</td><td>0x90840006</td><td>2424569862</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_Busy</td><td>0x90850006</td><td>2424635398</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_Busy</td><td>0x90860006</td><td>2424700934</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_Busy</td><td>0x90990006</td><td>2425946118</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_Busy</td><td>0x90a00006</td><td>2426404870</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_Busy</td><td>0x90a10006</td><td>2426470406</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_Busy</td><td>0x90a20006</td><td>2426535942</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_Busy</td><td>0x90a30006</td><td>2426601478</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_Busy</td><td>0x90a40006</td><td>2426667014</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_Busy</td><td>0x90a60006</td><td>2426798086</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_Busy</td><td>0x90a70006</td><td>2426863622</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_Busy</td><td>0x90a80006</td><td>2426929158</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_Busy</td><td>0x90a90006</td><td>2426994694</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NotInited</td><td>0x00000007</td><td>"System not initialized"</td><td>SDKMGRERR_NotInited</td><td>0x90800007</td><td>2424307719</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_NotInited</td><td>0x90810007</td><td>2424373255</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_NotInited</td><td>0x90820007</td><td>2424438791</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_NotInited</td><td>0x90840007</td><td>2424569863</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_NotInited</td><td>0x90850007</td><td>2424635399</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_NotInited</td><td>0x90860007</td><td>2424700935</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_NotInited</td><td>0x90890007</td><td>2424897543</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_NotInited</td><td>0x90990007</td><td>2425946119</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_NotInited</td><td>0x90a00007</td><td>2426404871</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_NotInited</td><td>0x90a10007</td><td>2426470407</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_NotInited</td><td>0x90a20007</td><td>2426535943</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_NotInited</td><td>0x90a30007</td><td>2426601479</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_NotInited</td><td>0x90a40007</td><td>2426667015</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_NotInited</td><td>0x90a50007</td><td>2426732551</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_NotInited</td><td>0x90a60007</td><td>2426798087</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_NotInited</td><td>0x90a70007</td><td>2426863623</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_NotInited</td><td>0x90a80007</td><td>2426929159</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_NotInited</td><td>0x90a90007</td><td>2426994695</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_NotInited</td><td>0x90b00007</td><td>2427453447</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_BufferTooSmall</td><td>0x00000008</td><td>"Input buffer is too small for available data"</td><td>PLERR_BufferTooSmall</td><td>0x90890008</td><td>2424897544</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_BufferTooSmall</td><td>0x90a80008</td><td>2426929160</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidFormat</td><td>0x00000009</td><td>"Invalid format in file or data structure"</td><td>SDKMGRERR_InvalidFormat</td><td>0x90800009</td><td>2424307721</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidFormat</td><td>0x90820009</td><td>2424438793</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_StatementError</td><td>0x90a00009</td><td>2426404873</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_StatementError</td><td>0x90a30009</td><td>2426601481</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidFormat</td><td>0x90a50009</td><td>2426732553</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_StatementError</td><td>0x90a90009</td><td>2426994697</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InitFailed</td><td>0x0000000A</td><td>"Initialization failed"</td><td>SDKMGRERR_InitFailed</td><td>0x9080000A</td><td>2424307722</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_InitFailed</td><td>0x9081000A</td><td>2424373258</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InitFailed</td><td>0x9082000A</td><td>2424438794</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InitFailed</td><td>0x9084000A</td><td>2424569866</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InitFailed</td><td>0x9085000A</td><td>2424635402</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InitFailed</td><td>0x9086000A</td><td>2424700938</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InitFailed</td><td>0x9089000A</td><td>2424897546</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InitFailed</td><td>0x9099000A</td><td>2425946122</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_InitFailed</td><td>0x90a0000A</td><td>2426404874</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_InitFailed</td><td>0x90a1000A</td><td>2426470410</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InitFailed</td><td>0x90a2000A</td><td>2426535946</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_InitFailed</td><td>0x90a3000A</td><td>2426601482</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_InitFailed</td><td>0x90a4000A</td><td>2426667018</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InitFailed</td><td>0x90a5000A</td><td>2426732554</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InitFailed</td><td>0x90a6000A</td><td>2426798090</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InitFailed</td><td>0x90a7000A</td><td>2426863626</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InitFailed</td><td>0x90a8000A</td><td>2426929162</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_InitFailed</td><td>0x90a9000A</td><td>2426994698</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_InitFailed</td><td>0x90b0000A</td><td>2427453450</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Unsupported</td><td>0x0000000B</td><td>"Unsupported functionality"</td><td>SDKMGRERR_Unsupported</td><td>0x9080000B</td><td>2424307723</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SDKMGRWARN_Unsupported</td><td>0x1080000B</td><td>276824075</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_Unsupported</td><td>0x9081000B</td><td>2424373259</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_Unsupported</td><td>0x9082000B</td><td>2424438795</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_Unsupported</td><td>0x1082000B</td><td>276955147</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_Unsupported</td><td>0x9084000B</td><td>2424569867</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_Unsupported</td><td>0x9085000B</td><td>2424635403</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_Unsupported</td><td>0x9086000B</td><td>2424700939</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_Unsupported</td><td>0x9089000B</td><td>2424897547</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_Unsupported</td><td>0x9099000B</td><td>2425946123</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_Unsupported</td><td>0x90a0000B</td><td>2426404875</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_Unsupported</td><td>0x90a1000B</td><td>2426470411</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_Unsupported</td><td>0x90a2000B</td><td>2426535947</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_Unsupported</td><td>0x90a3000B</td><td>2426601483</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_Unsupported</td><td>0x90a4000B</td><td>2426667019</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_Unsupported</td><td>0x90a5000B</td><td>2426732555</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_Unsupported</td><td>0x90a6000B</td><td>2426798091</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_Unsupported</td><td>0x90a7000B</td><td>2426863627</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_Unsupported</td><td>0x90a8000B</td><td>2426929163</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_Unsupported</td><td>0x90a9000B</td><td>2426994699</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_Unsupported</td><td>0x90b0000B</td><td>2427453451</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidData</td><td>0x0000000C</td><td>"Invalid Data"</td><td>MIDERR_InvalidData</td><td>0x9081000C</td><td>2424373260</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidData</td><td>0x9085000C</td><td>2424635404</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InvalidData</td><td>0x9089000C</td><td>2424897548</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidData</td><td>0x9099000C</td><td>2425946124</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidData</td><td>0x90a2000C</td><td>2426535948</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidData</td><td>0x90a6000C</td><td>2426798092</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidData</td><td>0x90a7000C</td><td>2426863628</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InvalidData</td><td>0x90a8000C</td><td>2426929164</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_InvalidData</td><td>0x90b0000C</td><td>2427453452</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidCall</td><td>0x0000000D</td><td>"Invalid call to function (can't call me from here)"</td><td>SDKMGRERR_InvalidCall</td><td>0x9080000D</td><td>2424307725</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidCall</td><td>0x9082000D</td><td>2424438797</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InvalidCall</td><td>0x9089000D</td><td>2424897549</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InvalidCall</td><td>0x90a8000D</td><td>2426929165</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_HashingError</td><td>0x0000000E</td><td>"Hash key could not be generated (check inputs)"</td><td>LCLERR_HashingError</td><td>0x90a5000E</td><td>2426732558</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Unexpected</td><td>0x0000003C</td><td>"Unexpected call to function (no reason to call me)"</td><td>MIDFERR_NotProcessing</td><td>0x9082003C</td><td>2424438844</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_NotProcessing</td><td>0x1082003C</td><td>276955196</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_Unexpected</td><td>0x9089003C</td><td>2424897596</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_NotProcessed</td><td>0x90a2003C</td><td>2426535996</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_NotProcessed</td><td>0x90a6003C</td><td>2426798140</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_Unexpected</td><td>0x90a8003C</td><td>2426929212</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_IckyError</td><td>0x0000003D</td><td>"Bad error that can't be fathomed"</td><td>SDKMGRERR_IckyError</td><td>0x9080003D</td><td>2424307773</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_IckyError</td><td>0x9084003D</td><td>2424569917</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_IckyError</td><td>0x9085003D</td><td>2424635453</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_IckyError</td><td>0x9086003D</td><td>2424700989</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_IckyError</td><td>0x90a1003D</td><td>2426470461</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_IckyError</td><td>0x90a7003D</td><td>2426863677</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Unknown</td><td>0x0000003E</td><td>"Unknown error"</td><td>SQLITEERR_Unknown</td><td>0x90a0003E</td><td>2426404926</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_Unknown</td><td>0x90a1003E</td><td>2426470462</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_Unknown</td><td>0x90a3003E</td><td>2426601534</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_Unknown</td><td>0x90a9003E</td><td>2426994750</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_Unknown</td><td>0x90b0003E</td><td>2427453502</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LibraryNotLoaded</td><td>0x0000003F</td><td>"Library not loaded"</td><td>MIDERR_LibraryNotLoaded</td><td>0x9081003F</td><td>2424373311</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_LibraryNotLoaded</td><td>0x9082003F</td><td>2424438847</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_LibraryNotLoaded</td><td>0x9086003F</td><td>2424700991</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_LibraryNotLoaded</td><td>0x9089003F</td><td>2424897599</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_LibraryNotLoaded</td><td>0x9099003F</td><td>2425946175</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_LibraryNotLoaded</td><td>0x90a2003F</td><td>2426535999</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_LibraryNotLoaded</td><td>0x90a4003F</td><td>2426667071</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_LibraryNotLoaded</td><td>0x90a6003F</td><td>2426798143</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_LibraryNotLoaded</td><td>0x90a8003F</td><td>2426929215</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_FileNotFound</td><td>0x00000041</td><td>"File not found"</td><td>MIDFERR_FileNotFound</td><td>0x90820041</td><td>2424438849</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_FileNotFound</td><td>0x90a50041</td><td>2426732609</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_FileExists</td><td>0x00000042</td><td>"File already exists"</td><td>MIDFERR_IdentExists</td><td>0x90820042</td><td>2424438850</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_FileInvalidFolder</td><td>0x00000047</td><td>"Invalid folder"</td><td>GDBERR_InvalidStorageLocation</td><td>0x90a30047</td><td>2426601543</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_InvalidStorageLocation</td><td>0x90a90047</td><td>2426994759</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_FileTooLarge</td><td>0x00000048</td><td>"File too large"</td><td>SQLITEERR_StorageFull</td><td>0x90a00048</td><td>2426404936</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEWARN_StorageFull</td><td>0x10a00048</td><td>278921288</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_StorageFull</td><td>0x90a30048</td><td>2426601544</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBWARN_StorageFull</td><td>0x10a30048</td><td>279117896</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_StorageFull</td><td>0x90a90048</td><td>2426994760</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGWARN_StorageFull</td><td>0x10a90048</td><td>279511112</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Timeout</td><td>0x00000084</td><td>"Timeout period expired waiting for operation"</td><td>MIDFERR_Timeout</td><td>0x90820084</td><td>2424438916</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_Timeout</td><td>0x10820084</td><td>276955268</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_Timeout</td><td>0x90860084</td><td>2424701060</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_Timeout</td><td>0x90a40084</td><td>2426667140</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_UnsupportedAlg</td><td>0x000000C0</td><td>"Unsupported cryptographic algorithm"</td><td>MIDFERR_UnsupportedAlg</td><td>0x908200C0</td><td>2424438976</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_UnsupportedAlg</td><td>0x90b000C0</td><td>2427453632</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_BadXMLFormat</td><td>0x000000C1</td><td>"Bad XML format"</td><td>MIDERR_BadXMLFormat</td><td>0x908100C1</td><td>2424373441</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_BadXMLFormat</td><td>0x908500C1</td><td>2424635585</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_BadXMLFormat</td><td>0x90a700C1</td><td>2426863809</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_UnknownVersion</td><td>0x000000C2</td><td>"Unknown version"</td><td>VIDERR_InvalidTOCVerion</td><td>0x908500C2</td><td>2424635586</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidTOCVerion</td><td>0x90a700C2</td><td>2426863810</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_InvalidVersion</td><td>0x90b000C2</td><td>2427453634</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidTOC</td><td>0x000000C4</td><td>"Invalid TOC"</td><td>MIDERR_InvalidTOC</td><td>0x908100C4</td><td>2424373444</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidTOC</td><td>0x908500C4</td><td>2424635588</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InvalidTOC</td><td>0x908600C4</td><td>2424701124</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidTOC</td><td>0x90a500C4</td><td>2426732740</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidTOC</td><td>0x90a700C4</td><td>2426863812</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ServerError</td><td>0x00000162</td><td>"Server Error"</td><td>SDKMGRERR_ServerError</td><td>0x90800162</td><td>2424308066</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_ServerError</td><td>0x90850162</td><td>2424635746</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_ServerError</td><td>0x90860162</td><td>2424701282</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_ServerError</td><td>0x90a70162</td><td>2426863970</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidClientID</td><td>0x00000165</td><td>"Invalid Gracenote Client ID"</td><td>SDKMGRERR_InvalidClientID</td><td>0x90800165</td><td>2424308069</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_InvalidClientID</td><td>0x90810165</td><td>2424373605</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidClientID</td><td>0x90820165</td><td>2424439141</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InvalidClientID</td><td>0x90840165</td><td>2424570213</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidClientID</td><td>0x90850165</td><td>2424635749</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InvalidClientID</td><td>0x90860165</td><td>2424701285</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidClientID</td><td>0x90990165</td><td>2425946469</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidClientID</td><td>0x90a20165</td><td>2426536293</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_InvalidClientID</td><td>0x90a40165</td><td>2426667365</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidClientID</td><td>0x90a50165</td><td>2426732901</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidClientID</td><td>0x90a60165</td><td>2426798437</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidClientID</td><td>0x90a70165</td><td>2426863973</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidUserID</td><td>0x00000166</td><td>"Invalid Gracenote User ID"</td><td>SDKMGRERR_InvalidUserID</td><td>0x90800166</td><td>2424308070</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_InvalidUserID</td><td>0x90810166</td><td>2424373606</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidUserID</td><td>0x90820166</td><td>2424439142</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InvalidUserID</td><td>0x90840166</td><td>2424570214</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidUserID</td><td>0x90850166</td><td>2424635750</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InvalidUserID</td><td>0x90860166</td><td>2424701286</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidUserID</td><td>0x90990166</td><td>2425946470</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidUserID</td><td>0x90a20166</td><td>2426536294</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_InvalidUserID</td><td>0x90a40166</td><td>2426667366</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidUserID</td><td>0x90a50166</td><td>2426732902</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InvalidUserID</td><td>0x90a50166</td><td>2426732902</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidUserID</td><td>0x90a60166</td><td>2426798438</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidUserID</td><td>0x90a70166</td><td>2426863974</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_QuotaExceeded</td><td>0x00000167</td><td>"Gracenote quota for client/user has been exceeded"</td><td>SDKMGRERR_QuotaExceeded</td><td>0x90800167</td><td>2424308071</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_QuotaExceeded</td><td>0x90810167</td><td>2424373607</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_QuotaExceeded</td><td>0x90820167</td><td>2424439143</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_QuotaExceeded</td><td>0x90840167</td><td>2424570215</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_QuotaExceeded</td><td>0x90850167</td><td>2424635751</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_QuotaExceeded</td><td>0x90860167</td><td>2424701287</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_QuotaExceeded</td><td>0x90890167</td><td>2424897895</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_QuotaExceeded</td><td>0x90990167</td><td>2425946471</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_QuotaExceeded</td><td>0x90a20167</td><td>2426536295</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_QuotaExceeded</td><td>0x90a40167</td><td>2426667367</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_QuotaExceeded</td><td>0x90a50167</td><td>2426732903</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_QuotaExceeded</td><td>0x90a60167</td><td>2426798439</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_QuotaExceeded</td><td>0x90a70167</td><td>2426863975</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_QuotaExceeded</td><td>0x90a80167</td><td>2426929511</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_Aborted</td><td>0x000001A0</td><td>"Operation aborted"</td><td>SDKMGRERR_Aborted</td><td>0x908001A0</td><td>2424308128</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_Aborted</td><td>0x908101A0</td><td>2424373664</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_Aborted</td><td>0x908201A0</td><td>2424439200</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_Aborted</td><td>0x108201A0</td><td>276955552</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_Aborted</td><td>0x908601A0</td><td>2424701344</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_Aborted</td><td>0x90a201A0</td><td>2426536352</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NotReady</td><td>0x000001A1</td><td>"Not ready"</td><td>MIDFERR_NotReady</td><td>0x908201A1</td><td>2424439201</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NothingToDo</td><td>0x000001A2</td><td>"Nothing to do"</td><td>MIDFERR_NothingToDo</td><td>0x908201A2</td><td>2424439202</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidInputObject</td><td>0x000001A3</td><td>"Invalid input object"</td><td>MIDERR_InvalidInputObject</td><td>0x908101A3</td><td>2424373667</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InvalidInputObject</td><td>0x908401A3</td><td>2424570275</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidInputObject</td><td>0x908501A3</td><td>2424635811</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InvalidInputObject</td><td>0x908601A3</td><td>2424701347</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidInputObject</td><td>0x909901A3</td><td>2425946531</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidInputObject</td><td>0x90a201A3</td><td>2426536355</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidInputObject</td><td>0x90a601A3</td><td>2426798499</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidInputObject</td><td>0x90a701A3</td><td>2426864035</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InsufficientInputData</td><td>0x000001A4</td><td>"Insufficient input data"</td><td>MIDERR_InsufficientInputData</td><td>0x908101A4</td><td>2424373668</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_InsufficientInputData</td><td>0x908401A4</td><td>2424570276</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InsufficientInputData</td><td>0x908501A4</td><td>2424635812</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_InsufficientInputData</td><td>0x908601A4</td><td>2424701348</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_Insufficient</td><td>0x908601A4</td><td>2424701348</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InsufficientInputData</td><td>0x908901A4</td><td>2424897956</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InsufficientInputData</td><td>0x909901A4</td><td>2425946532</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPWARN_InsufficientInputData</td><td>0x10a101A4</td><td>278987172</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InsufficientInputData</td><td>0x90a201A4</td><td>2426536356</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_InsufficientInput</td><td>0x90a501A4</td><td>2426732964</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InsufficientInputData</td><td>0x90a601A4</td><td>2426798500</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InsufficientInputData</td><td>0x90a701A4</td><td>2426864036</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InsufficientInputData</td><td>0x90a801A4</td><td>2426929572</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_InsufficientInputData</td><td>0x90b001A4</td><td>2427453860</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_UnknownResponseCode</td><td>0x00000206</td><td>"Unknown response code"</td><td>MIDERR_UnknownResponseCode</td><td>0x90810206</td><td>2424373766</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_UnknownResponseCode</td><td>0x90850206</td><td>2424635910</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_UnknownResponseCode</td><td>0x90990206</td><td>2425946630</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_UnknownResponseCode</td><td>0x90a70206</td><td>2426864134</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ClientError</td><td>0x00000207</td><td>"Client error"</td><td>VIDERR_ClientError</td><td>0x90850207</td><td>2424635911</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_ClientError</td><td>0x90860207</td><td>2424701447</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_ClientError</td><td>0x90a70207</td><td>2426864135</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_IncorrectUsage</td><td>0x00000209</td><td>"Incorrect usage"</td><td>SDKMGRERR_IncorrectUsage</td><td>0x90800209</td><td>2424308233</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_IncorrectUsage</td><td>0x90840209</td><td>2424570377</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_IncorrectUsage</td><td>0x90860209</td><td>2424701449</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_IncorrectUsage</td><td>0x90a00209</td><td>2426405385</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_IncorrectUsage</td><td>0x90a40209</td><td>2426667529</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_IncorrectUsage</td><td>0x90a50209</td><td>2426733065</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_IncorrectUsage</td><td>0x90a50209</td><td>2426733065</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_TooMany</td><td>0x00000280</td><td>"Too many of the specified item"</td><td>SUBMITERR_TooMany</td><td>0x90860280</td><td>2424701568</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_TooMany</td><td>0x90b00280</td><td>2427454080</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ThreadTerminated</td><td>0x00000285</td><td>"A thread termination occurred"</td><td>MIDFERR_ThreadTerminated</td><td>0x90820285</td><td>2424439429</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFWARN_ThreadTerminated</td><td>0x10820285</td><td>276955781</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ListUnavailable</td><td>0x000002D1</td><td>"List unavailable"</td><td>SDKMGRWARN_ListUnavailable</td><td>0x108002D1</td><td>276824785</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SDKMGRERR_ListUnavailable</td><td>0x908002D1</td><td>2424308433</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LocaleNotSet</td><td>0x000002D3</td><td>"Locale has not been set"</td><td>SDKMGRWARN_LocaleNotSet</td><td>0x108002D3</td><td>276824787</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SDKMGRERR_LocaleNotSet</td><td>0x908002D3</td><td>2424308435</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_LocaleNotSet</td><td>0x908102D3</td><td>2424373971</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_LocaleNotSet</td><td>0x908202D3</td><td>2424439507</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_LocaleNotSet</td><td>0x908402D3</td><td>2424570579</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_LocaleNotSet</td><td>0x908502D3</td><td>2424636115</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_LocaleNotSet</td><td>0x908902D3</td><td>2424898259</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_LocaleNotSet</td><td>0x909902D3</td><td>2425946835</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_LocaleNotSet</td><td>0x90a202D3</td><td>2426536659</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLWARN_LocaleNotSet</td><td>0x10a502D3</td><td>279249619</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_LocaleNotSet</td><td>0x90a602D3</td><td>2426798803</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_LocaleNotSet</td><td>0x90a702D3</td><td>2426864339</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_LocaleNotSet</td><td>0x90a802D3</td><td>2426929875</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_ListUpdateNeeded</td><td>0x000002D4</td><td>"List update needed"</td><td>SDKMGRERR_ListUpdateNeeded</td><td>0x908002D4</td><td>2424308436</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_ListUpdateNeeded</td><td>0x90a402D4</td><td>2426667732</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_HandleObjectInvalid</td><td>0x00000320</td><td>"Given handle value does not refer to a valid handle"</td><td>SDKMGRERR_HandleObjectInvalid</td><td>0x90800320</td><td>2424308512</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_HandleObjectInvalid</td><td>0x90810320</td><td>2424374048</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_HandleObjectInvalid</td><td>0x90820320</td><td>2424439584</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_HandleObjectInvalid</td><td>0x90840320</td><td>2424570656</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_HandleObjectInvalid</td><td>0x90850320</td><td>2424636192</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_HandleObjectInvalid</td><td>0x90860320</td><td>2424701728</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_HandleObjectInvalid</td><td>0x90890320</td><td>2424898336</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_HandleObjectInvalid</td><td>0x90990320</td><td>2425946912</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_HandleObjectInvalid</td><td>0x90a00320</td><td>2426405664</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_HandleObjectInvalid</td><td>0x90a10320</td><td>2426471200</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_HandleObjectInvalid</td><td>0x90a20320</td><td>2426536736</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_HandleObjectInvalid</td><td>0x90a30320</td><td>2426602272</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_HandleObjectInvalid</td><td>0x90a40320</td><td>2426667808</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_HandleObjectInvalid</td><td>0x90a50320</td><td>2426733344</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_HandleObjectInvalid</td><td>0x90a60320</td><td>2426798880</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_HandleObjectInvalid</td><td>0x90a70320</td><td>2426864416</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_HandleObjectInvalid</td><td>0x90a80320</td><td>2426929952</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_HandleObjectInvalid</td><td>0x90a90320</td><td>2426995488</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLFPERR_HandleObjectInvalid</td><td>0x90b00320</td><td>2427454240</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_HandleObjectWrongType</td><td>0x00000321</td><td>"Given handle value does not refer the expected handle type"</td><td>SDKMGRERR_HandleObjectWrongType</td><td>0x90800321</td><td>2424308513</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_HandleObjectWrongType</td><td>0x90810321</td><td>2424374049</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_HandleObjectWrongType</td><td>0x90820321</td><td>2424439585</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_HandleObjectWrongType</td><td>0x90840321</td><td>2424570657</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_HandleObjectWrongType</td><td>0x90850321</td><td>2424636193</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_HandleObjectWrongType</td><td>0x90860321</td><td>2424701729</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_HandleObjectWrongType</td><td>0x90890321</td><td>2424898337</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_HandleObjectWrongType</td><td>0x90990321</td><td>2425946913</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_HandleObjectWrongType</td><td>0x90a00321</td><td>2426405665</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>DSPERR_HandleObjectWrongType</td><td>0x90a10321</td><td>2426471201</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_HandleObjectWrongType</td><td>0x90a20321</td><td>2426536737</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_HandleObjectWrongType</td><td>0x90a40321</td><td>2426667809</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_HandleObjectWrongType</td><td>0x90a50321</td><td>2426733345</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_HandleObjectWrongType</td><td>0x90a60321</td><td>2426798881</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_HandleObjectWrongType</td><td>0x90a70321</td><td>2426864417</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_HandleObjectWrongType</td><td>0x90a80321</td><td>2426929953</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_HandleObjectMismatch</td><td>0x00000322</td><td>"Cannot perform operation with given handle"</td><td>SDKMGRERR_HandleObjectMismatch</td><td>0x90800322</td><td>2424308514</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_MissingField</td><td>0x00000340</td><td>"A required field is missing"</td><td>SUBMITERR_MissingField</td><td>0x90860340</td><td>2424701760</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidContents</td><td>0x00000341</td><td>"A field contains invalid contents"</td><td>SUBMITERR_InvalidContents</td><td>0x90860341</td><td>2424701761</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_NotEditable</td><td>0x00000342</td><td>"The specified input is not editable"</td><td>SUBMITWARN_NotEditable</td><td>0x10860342</td><td>277218114</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_NotEditable</td><td>0x90860342</td><td>2424701762</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_IndexOutOfRange</td><td>0x00000361</td><td>"Index is out of range"</td><td>MIDERR_OutOfRange</td><td>0x90810361</td><td>2424374113</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_OutOfRange</td><td>0x90850361</td><td>2424636257</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_OutOfRange</td><td>0x90860361</td><td>2424701793</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_OutOfRange</td><td>0x90890361</td><td>2424898401</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_OutOfRange</td><td>0x90990361</td><td>2425946977</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_OutOfRange</td><td>0x90a40361</td><td>2426667873</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_OutOfRange</td><td>0x90a70361</td><td>2426864481</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_OutOfRange</td><td>0x90a80361</td><td>2426930017</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_DuplicateValue</td><td>0x00000368</td><td>"Duplicate value not allowed"</td><td>SDKMGRERR_DuplicateValue</td><td>0x90800368</td><td>2424308584</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidUTF8</td><td>0x000003A0</td><td>"Invalid UTF8 string"</td><td>MIDERR_InvalidUTF8</td><td>0x908103A0</td><td>2424374176</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_InvalidUTF8</td><td>0x908203A0</td><td>2424439712</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_InvalidUTF8</td><td>0x908503A0</td><td>2424636320</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InvalidUTF8</td><td>0x908903A0</td><td>2424898464</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_InvalidUTF8</td><td>0x909903A0</td><td>2425947040</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_InvalidUTF8</td><td>0x90a203A0</td><td>2426536864</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_InvalidUTF8</td><td>0x90a603A0</td><td>2426799008</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_InvalidUTF8</td><td>0x90a703A0</td><td>2426864544</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InvalidUTF8</td><td>0x90a803A0</td><td>2426930080</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_CommunicationsError</td><td>0x00000400</td><td>"An error occured in the communications subsystem."</td><td>SDKMGRERR_CommunicationsError</td><td>0x90800400</td><td>2424308736</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_CommunicationsError</td><td>0x90810400</td><td>2424374272</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_CommunicationsError</td><td>0x90820400</td><td>2424439808</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_CommunicationsError</td><td>0x90840400</td><td>2424570880</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_CommunicationsError</td><td>0x90850400</td><td>2424636416</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_CommunicationsError</td><td>0x90860400</td><td>2424701952</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_CommunicationsError</td><td>0x90890400</td><td>2424898560</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_CommunicationsError</td><td>0x90990400</td><td>2425947136</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_CommunicationsError</td><td>0x90a20400</td><td>2426536960</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_CommunicationsError</td><td>0x90a60400</td><td>2426799104</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_CommunicationsError</td><td>0x90a70400</td><td>2426864640</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_CommunicationsError</td><td>0x90a80400</td><td>2426930176</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_QueryError</td><td>0x00000401</td><td>"An error occured in the query subsystem."</td><td>SDKMGRERR_QueryError</td><td>0x90800401</td><td>2424308737</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_QueryError</td><td>0x90810401</td><td>2424374273</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_QueryError</td><td>0x90820401</td><td>2424439809</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_QueryError</td><td>0x90840401</td><td>2424570881</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_QueryError</td><td>0x90850401</td><td>2424636417</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_QueryError</td><td>0x90860401</td><td>2424701953</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_QueryError</td><td>0x90890401</td><td>2424898561</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_QueryError</td><td>0x90990401</td><td>2425947137</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_QueryError</td><td>0x90a20401</td><td>2426536961</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_QueryError</td><td>0x90a50401</td><td>2426733569</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_QueryError</td><td>0x90a60401</td><td>2426799105</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_QueryError</td><td>0x90a70401</td><td>2426864641</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_QueryError</td><td>0x90a80401</td><td>2426930177</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_CDSError</td><td>0x00000402</td><td>"An error occured in the content subsystem."</td><td>SDKMGRERR_CDSError</td><td>0x90800402</td><td>2424308738</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_CDSError</td><td>0x90810402</td><td>2424374274</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_CDSError</td><td>0x90820402</td><td>2424439810</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_CDSError</td><td>0x90840402</td><td>2424570882</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_CDSError</td><td>0x90850402</td><td>2424636418</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_CDSError</td><td>0x90990402</td><td>2425947138</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_CDSError</td><td>0x90a50402</td><td>2426733570</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_CDSError</td><td>0x90a70402</td><td>2426864642</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_DataEncodeError</td><td>0x00000403</td><td>"An error occured in the DataEncode subsystem."</td><td>SDKMGRERR_DataEncodeError</td><td>0x90800403</td><td>2424308739</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_DataEncodeError</td><td>0x90810403</td><td>2424374275</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_DataEncodeError</td><td>0x90820403</td><td>2424439811</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_DataEncodeError</td><td>0x90840403</td><td>2424570883</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_DataEncodeError</td><td>0x90850403</td><td>2424636419</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_DataEncodeError</td><td>0x90860403</td><td>2424701955</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_DataEncodeError</td><td>0x90890403</td><td>2424898563</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_DataEncodeError</td><td>0x90990403</td><td>2425947139</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_DataEncodeError</td><td>0x90a20403</td><td>2426536963</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_DataEncodeError</td><td>0x90a50403</td><td>2426733571</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_DataEncodeError</td><td>0x90a60403</td><td>2426799107</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_DataEncodeError</td><td>0x90a70403</td><td>2426864643</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_DataEncodeError</td><td>0x90a80403</td><td>2426930179</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_CompressionError</td><td>0x00000404</td><td>"An error occured in the compression subsystem."</td><td>SDKMGRERR_CompressionError</td><td>0x90800404</td><td>2424308740</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_CompressionError</td><td>0x90810404</td><td>2424374276</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_CompressionError</td><td>0x90820404</td><td>2424439812</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_CompressionError</td><td>0x90840404</td><td>2424570884</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_CompressionError</td><td>0x90850404</td><td>2424636420</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_CompressionError</td><td>0x90860404</td><td>2424701956</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_CompressionError</td><td>0x90890404</td><td>2424898564</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_CompressionError</td><td>0x90990404</td><td>2425947140</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_CompressionError</td><td>0x90a20404</td><td>2426536964</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_CompressionError</td><td>0x90a50404</td><td>2426733572</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_CompressionError</td><td>0x90a60404</td><td>2426799108</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_CompressionError</td><td>0x90a70404</td><td>2426864644</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_CompressionError</td><td>0x90a80404</td><td>2426930180</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_EncryptionError</td><td>0x00000405</td><td>"An error occured in the encryption subsystem."</td><td>SDKMGRERR_EncryptionError</td><td>0x90800405</td><td>2424308741</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_EncryptionError</td><td>0x90810405</td><td>2424374277</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_EncryptionError</td><td>0x90820405</td><td>2424439813</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_EncryptionError</td><td>0x90840405</td><td>2424570885</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_EncryptionError</td><td>0x90850405</td><td>2424636421</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_EncryptionError</td><td>0x90860405</td><td>2424701957</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_EncryptionError</td><td>0x90890405</td><td>2424898565</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_EncryptionError</td><td>0x90990405</td><td>2425947141</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_EncryptionError</td><td>0x90a20405</td><td>2426536965</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLERR_EncryptionError</td><td>0x90a50405</td><td>2426733573</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_EncryptionError</td><td>0x90a60405</td><td>2426799109</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_EncryptionError</td><td>0x90a70405</td><td>2426864645</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_EncryptionError</td><td>0x90a80405</td><td>2426930181</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LicenseInvalid</td><td>0x00000420</td><td>"An invalid license was specified."</td><td>SDKMGRERR_LicenseInvalid</td><td>0x90800420</td><td>2424308768</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LicenseDisallowed</td><td>0x00000421</td><td>"The functionality is not allowed by the license."</td><td>SDKMGRERR_LicenseDisallowed</td><td>0x90800421</td><td>2424308769</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_LicenseDisallowed</td><td>0x90810421</td><td>2424374305</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_LicenseDisallowed</td><td>0x90820421</td><td>2424439841</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_LicenseDisallowed</td><td>0x90840421</td><td>2424570913</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_LicenseDisallowed</td><td>0x90850421</td><td>2424636449</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_LicenseDisallowed</td><td>0x90860421</td><td>2424701985</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_LicenseDisallowed</td><td>0x90890421</td><td>2424898593</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_LicenseDisallowed</td><td>0x90990421</td><td>2425947169</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_LicenseDisallowed</td><td>0x90a20421</td><td>2426536993</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_LicenseDisallowed</td><td>0x90a40421</td><td>2426668065</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_LicenseDisallowed</td><td>0x90a60421</td><td>2426799137</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_LicenseDisallowed</td><td>0x90a70421</td><td>2426864673</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_LicenseDisallowed</td><td>0x90a80421</td><td>2426930209</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LicenseExpired</td><td>0x00000422</td><td>"The license has expired for this functionality"</td><td>SDKMGRERR_LicenseExpired</td><td>0x90800422</td><td>2424308770</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_LicenseExpired</td><td>0x90810422</td><td>2424374306</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_LicenseExpired</td><td>0x90820422</td><td>2424439842</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_LicenseExpired</td><td>0x90840422</td><td>2424570914</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_LicenseExpired</td><td>0x90850422</td><td>2424636450</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_LicenseExpired</td><td>0x90860422</td><td>2424701986</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_LicenseExpired</td><td>0x90890422</td><td>2424898594</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_LicenseExpired</td><td>0x90990422</td><td>2425947170</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_LicenseExpired</td><td>0x90a20422</td><td>2426536994</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_LicenseExpired</td><td>0x90a40422</td><td>2426668066</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_LicenseExpired</td><td>0x90a60422</td><td>2426799138</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_LicenseExpired</td><td>0x90a70422</td><td>2426864674</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_LicenseExpired</td><td>0x90a80422</td><td>2426930210</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LicenseTrialExpired</td><td>0x00000423</td><td>"The trial period has expired for this functionality"</td><td>SDKMGRERR_LicenseTrialExpired</td><td>0x90800423</td><td>2424308771</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDERR_LicenseTrialExpired</td><td>0x90810423</td><td>2424374307</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDFERR_LicenseTrialExpired</td><td>0x90820423</td><td>2424439843</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LINKERR_LicenseTrialExpired</td><td>0x90840423</td><td>2424570915</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>VIDERR_LicenseTrialExpired</td><td>0x90850423</td><td>2424636451</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SUBMITERR_LicenseTrialExpired</td><td>0x90860423</td><td>2424701987</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_LicenseTrialExpired</td><td>0x90890423</td><td>2424898595</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>HELPERERR_LicenseTrialExpired</td><td>0x90990423</td><td>2425947171</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MIDMERR_LicenseTrialExpired</td><td>0x90a20423</td><td>2426536995</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>ACRERR_LicenseTrialExpired</td><td>0x90a40423</td><td>2426668067</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EDBERR_LicenseTrialExpired</td><td>0x90a60423</td><td>2426799139</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>EPGERR_LicenseTrialExpired</td><td>0x90a70423</td><td>2426864675</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_LicenseTrialExpired</td><td>0x90a80423</td><td>2426930211</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_TemporalDiscontinuity</td><td>0x00000440</td><td>"A temporal discontinuity error occured."</td><td>ACRWARN_TemporalDiscontinuity</td><td>0x10a40440</td><td>279184448</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_SilentAudio</td><td>0x00000441</td><td>"The provided audio was silent."</td><td>SUBMITERR_SilentAudio</td><td>0x90860441</td><td>2424702017</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidSchema</td><td>0x00000500</td><td>"An invalid storage schema has been specified"</td><td>SDKMGRERR_InvalidSchema</td><td>0x90800500</td><td>2424308992</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>PLERR_InvalidSchema</td><td>0x90890500</td><td>2424898816</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_InvalidSchema</td><td>0x90a00500</td><td>2426406144</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_InvalidSchema</td><td>0x90a30500</td><td>2426602752</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_InvalidSchema</td><td>0x90a80500</td><td>2426930432</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_InvalidSchema</td><td>0x90a90500</td><td>2426995968</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_SchemaMismatch</td><td>0x00000501</td><td>"The provided schema does not match the storage"</td><td>SDKMGRERR_SchemaMismatch</td><td>0x90800501</td><td>2424308993</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEERR_SchemaMismatch</td><td>0x90a00501</td><td>2426406145</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_SchemaMismatch</td><td>0x90a30501</td><td>2426602753</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_SchemaMismatch</td><td>0x90a90501</td><td>2426995969</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_EndOfRecords</td><td>0x00000502</td><td>"End of found records reached"</td><td>SQLITEERR_EndOfRecords</td><td>0x90a00502</td><td>2426406146</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEWARN_EndOfRecords</td><td>0x10a00502</td><td>278922498</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_EndOfRecords</td><td>0x90a30502</td><td>2426602754</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBWARN_EndOfRecords</td><td>0x10a30502</td><td>279119106</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_EndOfRecords</td><td>0x90a90502</td><td>2426995970</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGWARN_EndOfRecords</td><td>0x10a90502</td><td>279512322</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_DuplicateRecord</td><td>0x00000503</td><td>"The unique record already exists in storage"</td><td>SQLITEERR_DuplicateRecord</td><td>0x90a00503</td><td>2426406147</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>SQLITEWARN_DuplicateRecord</td><td>0x10a00503</td><td>278922499</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBERR_DuplicateRecord</td><td>0x90a30503</td><td>2426602755</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>GDBWARN_DuplicateRecord</td><td>0x10a30503</td><td>279119107</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGERR_DuplicateRecord</td><td>0x90a90503</td><td>2426995971</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>QNXSTGWARN_DuplicateRecord</td><td>0x10a90503</td><td>279512323</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidRecord</td><td>0x00000504</td><td>"Invalid record"</td><td>GDBERR_InvalidRecord</td><td>0x90a30504</td><td>2426602756</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidStorage</td><td>0x00000505</td><td>"Invalid storage"</td><td>GDBERR_InvalidStorage</td><td>0x90a30505</td><td>2426602757</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_InvalidIterator</td><td>0x00000506</td><td>"Invalid iterator"</td><td>GDBERR_InvalidIterator</td><td>0x90a30506</td><td>2426602758</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_AlreadyAdded</td><td>0x00000527</td><td>"Record already added"</td><td>LCLFPERR_AlreadyAdded</td><td>0x90b00527</td><td>2427454759</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_IncompatibleDBs</td><td>0x00000534</td><td>"Incompatible database files"</td><td>MIDFERR_IncompatibleDBs</td><td>0x90820534</td><td>2424440116</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_CorruptDB</td><td>0x0000053F</td><td>"CorruptDB: A database disk image is malformed"</td><td>SQLITEERR_CorruptDB</td><td>0x90a0053F</td><td>2426406207</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_SeedRequired</td><td>0x00000600</td><td>"Seed required"</td><td>PLERR_SeedRequired</td><td>0x90890600</td><td>2424899072</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_StatementError</td><td>0x00000601</td><td>"Statement Error"</td><td>PLERR_StatementError</td><td>0x90890601</td><td>2424899073</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>MGERR_StatementError</td><td>0x90a80601</td><td>2426930689</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_LocalDatabaseNotFound</td><td>0x00000700</td><td>"Local data store not found"</td><td>SQLITEERR_InvalidStorageLocation</td><td>0x90a00700</td><td>2426406656</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>LCLWARN_LocalDatabaseNotFound</td><td>0x10a50700</td><td>279250688</td></tr>
+                <tr><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td><td>&#160;</td></tr>
+                <tr><td>GNSDKERR_MissingListingData</td><td>0x00000720</td><td>"Missing Listing Data"</td><td>ACRERR_MissingListingData</td><td>0x90a40720</td><td>2426668832</td></tr>
+	    </tbody>
+        </table>
+    </body>
+</html>

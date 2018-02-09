@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Header Files</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Header Files and Libraries</span>
+        </div>
+        <h1><a name="_Toc334991735"></a>Header Files and Libraries</h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> consists of a set of shared modules. The GNSDK Manager module is required for all applications. All other modules are optional. Your application's feature requirements determine which of the optional modules should be used.</p>
+        <p>As shown in the following table, each <span class="GNVariablesProductName">GNSDK</span> module has one or more corresponding header files. Other header files are also provided for public types and error codes.</p>
+        <p class="note"><span class="note">Note:</span> The libraries can be linked in any order for all modules, except for the GNSDK Manager library. The GNSDK Manager library must be last in the linking order.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <p>Module</p>
+                    </th>
+                    <th>
+                        <p>Header Files</p>
+                    </th>
+                    <th>
+                        <p>Libraries</p>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    <p>General</p>
+                </td>
+                <td>
+                    <p>Required. </p>
+                    <p>gnsdk.h. This header file also includes these required header files:</p>
+                    <ul>
+                        <li value="1">gnsdk_defines.h: GNSDK types</li>
+                        <li value="2">gnsdk_platform.h: GNSDK platform specific types (one header for each supported platform)</li>
+                        <li value="3">gnsdk_errors.h: GNSDK error macros</li>
+                        <li value="4">gnsdk_error_codes.h: GNSDK error definitions</li>
+                        <li value="5">gnsdk_version.h: GNSDK current version definition (this header is optional)</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>GNSDK Manager</p>
+                </td>
+                <td>
+                    <p>Required. These header files provide core functionality necessary to all Gracenote modules.</p>
+                    <ul>
+                        <li value="1">gnsdk_manager.h</li>
+                        <li value="2">gnsdk_manager_gdo.h</li>
+                        <li value="3">gnsdk_manager_lists.h</li>
+                        <li value="4">gnsdk_manager_list_values.h</li>
+                        <li value="5">gnsdk_manager_locales.h</li>
+                        <li value="6">gnsdk_manager_logging</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_manager.so</li>
+                        <li value="2">libgnsdk_manager.dylib</li>
+                        <li value="3">gnsdk_manager.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>MusicID</p>
+                </td>
+                <td>
+                    <p>Optional. This header file provides CD TOC, text, and fingerprint identification for music.</p>
+                    <ul>
+                        <li value="1">gnsdk_musicid.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_musicid.so</li>
+                        <li value="2">libgnsdk_musicid.dylib</li>
+                        <li value="3">gnsdk_musicid.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>MusicID-File</p>
+                </td>
+                <td>
+                    <p>Optional. Provides music file-based identification using LibraryID, AlbumID, and TrackID processing functionality.</p>
+                    <ul>
+                        <li value="1">gnsdk_musicid_file.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_musicid_file.so</li>
+                        <li value="2">libgnsdk_musicid_file.dylib</li>
+                        <li value="3">gnsdk_musicid_file.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>DSP</p>
+                </td>
+                <td>
+                    <p>Optional. Provides digital signal processing functionality required for fingerprint generation.</p>
+                    <ul>
+                        <li value="1">gnsdk_dsp.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_dsp.so</li>
+                        <li value="2">libgnsdk_dsp.dylib</li>
+                        <li value="3">gnsdk_dsp.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Link</p>
+                </td>
+                <td>
+                    <p>Optional. Provides enriched metadata (non-core content and third party metadata.).</p>
+                    <ul>
+                        <li value="1">gnsdk_link.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_link.so</li>
+                        <li value="2">libgnsdk_link.dylib</li>
+                        <li value="3">gnsdk_link.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>MoodGrid</p>
+                </td>
+                <td>
+                    <p>Optional. A feature of Playlist to visually group content on a grid based on mood metadata.</p>
+                    <ul>
+                        <li value="1">gnsdk_moodgrid.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_moodgrid.so</li>
+                        <li value="2">libgnsdk_moodgrid.dylib</li>
+                        <li value="3">gnsdk_moodgrid.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Playlist</p>
+                </td>
+                <td>
+                    <p>Optional. Provides functionality to generate and manage playlists and playlist collections.</p>
+                    <ul>
+                        <li value="1"> gnsdk_playlist.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_playlist.so</li>
+                        <li value="2">libgnsdk_playlist.dylib</li>
+                        <li value="3">gnsdk_playlist.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Local</p>
+                    <p>Database</p>
+                </td>
+                <td>
+                    <p>Optional. Used for embedded system applications that require a local database that contains pre-defined Gracenote metadata.</p>
+                    <ul>
+                        <li value="1">gnsdk_lookup_local.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_lookup_local.so</li>
+                        <li value="2">libgnsdk_lookup_local.dylib</li>
+                        <li value="3">gnsdk_lookup_local.dll</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>SQLite</p>
+                </td>
+                <td>
+                    <p>Optional. Provides local caching implementation based on SQLite, and provides the default storage implementation to support local databases.</p>
+                    <ul>
+                        <li value="1">gnsdk_sqlite.h</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li value="1">libgnsdk_sqlite.so</li>
+                        <li value="2">libgnsdk_sqlite.dylib</li>
+                        <li value="3">gnsdk_sqlite.dll</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

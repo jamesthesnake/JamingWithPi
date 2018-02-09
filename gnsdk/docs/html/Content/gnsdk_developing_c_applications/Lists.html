@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Advanced Topics">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Lists</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Advanced Topics.html">Advanced Topics</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Using Lists</span>
+        </div>
+        <h1><a name="_Toc334991803"></a>Using Lists</h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> uses list structures to store strings and other information that do not directly appear in results returned from the Gracenote Service. Lists generally contain information such as localized strings and region-specific information. Each list is contained in a corresponding <i>List Type</i>.</p>
+        <p>Lists are either <i>flat</i> or <i>hierarchical</i>. Flat lists contain only one level of metadata, such as  languages. Hierarchical lists are tree-like structures with parents and children. </p>
+        <p>Typically, hierarchical lists contain general display strings at the upper levels (Level 1) and more granular strings at the lower levels (Level 2 and Level 3, respectively). For example, a parent Level 1 music genre of Rock contains a grandchild Level 3 genre of Rock Opera. The application can determine what level of list granularity is needed by using the list functions (gnsdk_sdkmgr_list_*) in the GNSDK Manager. For more information, <a href="Core and Enriched Metadata.html" class="MCXref xref">See "Core and Enriched Metadata"</a>.</p>
+        <p>Lists can be specific to a <i>Region</i>, as well as a <i>Language</i>. For example, the music genre known as J-pop (Japanese pop) in America is called pop in Japan.</p>
+        <p>In general, Lists provide:</p>
+        <ul>
+            <li value="1">Mappings from Gracenote IDs to Gracenote Descriptors, in various languages</li>
+            <li value="2">Delivery of content that powers features such as MoreLikeThis, Playlist, and MoodGrid</li>
+        </ul>
+        <p class="note">MoreLikeThis, Playlist, and MoodGrid also use <i>Correlates</i>. These lists specify the correlations among different genres, moods, and so on. For example, Punk correlates higher to Rock than it does to Country. Using the MoreLikeThis feature when playing a Punk track will likely return more Rock suggestions than Country. </p>
+        <h2><a name="_Toc334991806"></a>List and Locale Interdependence</h2>
+        <p>GNSDK for Auto provides <em>Locales</em> as a way to group lists specific to a region and language. Using locales is relatively straightforward for most applications to implement. However, it is not as flexible as directly accessing lists - most of the processing is done in the background and is not configurable. For more information, <a href="Locales.html" class="MCXref xref">See "Locales"</a>.</p>
+        <p>Conversely, the List functionality is robust, flexible, and useful in complex applications. However, it requires more implementation design and maintenance. It also does not support non-list-based metadata and the GDO value keys (GNSDK_GDO_VALUE_*).</p>
+        <p>For most applications, using locales is more than sufficient. In cases where the application requires non-locale functionality (for example, list display), implementing both methods may be necessary. The following&#160; sections discuss each method's advantages and disadvantages.</p>
+        <p>The GNSDK locale functionality includes:</p>
+        <ul>
+            <li value="1">Loading a locale into the application using gnsdk_manager_gdo_load_locale(). GNSDK loads a locale behind the scenes, and loads only those lists that are not already in memory. When  database (such as  SQLite) cache is enabled, the GNSDK automatically caches the list. When caching is not enabled, GNSDK downloads the locale for each request.</li>
+            <li style="margin-top:10px;" value="2">You can set a loaded locale as the application’s default locale, and this can eliminate the need to call gnsdk_manager_set_locale() for a GDO . Instead, you call the default locale.</li>
+            <li style="margin-top:10px;" value="3">Setting a locale for a GDO using gnsdk_manager_gdo_set_locale(). Doing this ensures that all language-specific metadata is returned with the language (and region and descriptor, if applicable) defined for the locale.</li>
+        </ul>
+        <p>When using locales, be aware that:</p>
+        <ul>
+            <li value="1">You can serialize locales and lists and save them within your application for later re-use. To store non-serialized locales and lists, you must implement a database cache. If you do not want to use a cache, you can instead download required locales and lists during your application’s initialization.</li>
+            <li style="margin-top:10px;" value="2">A list’s contents cannot be displayed (for example, to present a list of available genres to a user). </li>
+            <li style="margin-top:10px;" value="3">Performing advanced list functionality, such as displaying list items in a dropdown box for a user’s selection, or accessing list elements for filtering lookups (for example, restricting lookups to a particular mood or tempo), is not possible.</li>
+        </ul>
+        <p>The <span class="GNVariablesProductName">GNSDK</span> list functionality includes:
+</p>
+        <ul>
+            <li value="1">Directly accessing individual lists using the gnsdk_manager_list_* APIs.</li>
+            <li value="2">Accessing locale-specific list metadata.</li>
+        </ul>
+        <p>When using lists, be aware that:</p>
+        <ul>
+            <li value="1">There are numerous list handles.</li>
+            <li value="2">List handles must be released after use.</li>
+            <li value="3">Locale-specific non-list metadata is not supported.</li>
+            <li value="4">List metadata GDO keys are not supported.</li>
+            <li value="5">When using gnsdk_manager_list_retrieve() to get a list, you must provide a user handle. </li>
+        </ul>
+        <h2>Accessing Mood and Tempo Metadata Using Lists</h2>
+        <p>Applications that have GNSDK list functionality implemented must use GNSDK_LIST_TYPE_MOODS and GNSDK_LIST_TYPE_TEMPOS with the GNSDK Manager list functions (gnsdk_manager_list_*) to access mood and tempo values.</p>
+        <h5><a name="_Toc334991805"></a>Example: Accessing a Music Genre List</h5>
+        <p>This example demonstrates accessing a list and displaying the list's elements.</p>
+        <p>Code Snippet: <a href="../samples/code_snippets/list.c">list.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager and get User handle.</li>
+            <li value="2">Get music genre list with gnsdk_manager_list_retrieve().</li>
+            <li value="3">Make SDK list calls (gnsdk_manager_list_*) to get list type, language, region, descriptor and # of levels and display.</li>
+            <li value="4">Make SDK list calls for each level element and display list ID and name.</li>
+            <li value="5">Release the list.</li>
+            <li value="6">Release resources and shutdown SDK.</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Playlist Features|Working with MoodGrid">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Implementing MoodGrid</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Playlist Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Working with MoodGrid.html">Working with MoodGrid</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Implementing MoodGrid</span>
+        </div>
+        <h1>Implementing MoodGrid</h1>
+        <p>Implementing MoodGrid in an application involves the following steps:</p>
+        <ol>
+            <li value="1">Initializing the MoodGrid module.</li>
+            <li value="2">Enumerating the data sources using MoodGrid Providers.</li>
+            <li value="3">Creating and populating a MoodGrid Presentation.</li>
+            <li value="4">Filtering the results, if needed.</li>
+        </ol>
+        <h2>Initializing the MoodGrid Module</h2>
+        <p>Before using the MoodGrid APIs, follow the usual steps to initialize <span class="GNVariablesProductName">GNSDK</span>. The following <span class="GNVariablesProductName">GNSDK</span> modules must be initialized:</p>
+        <ul>
+            <li value="1">GNSDK Manager</li>
+            <li value="2">SQLite (for local caching)</li>
+            <li value="3">MusicID</li>
+            <li value="4">Playlist</li>
+            <li value="5">MoodGrid</li>
+        </ul>
+        <p>For more information on initializing the <span class="GNVariablesProductName">GNSDK</span> modules, see “Initializing an Application.”</p>
+        <p>To initialize MoodGrid, use the gnsdk_moodgrid_initialize() function.</p><pre>error = gnsdk_moodgrid_initialize(sdkmgr_handle);</pre>
+        <p class="note" data-mc-conditions="Default.gnsdko">If you are using MusicID to recognize music, you must enable Playlist and DSP data in your query. You must be entitled to use Playlist—if you are not, you won’t get an error, but MoodGrid will return no results. </p>
+        <h2>Enumerating Data Sources using MoodGrid Providers</h2>
+        <p>GNSDK automatically registers all local and online data sources available to MoodGrid. For example, if you create a playlist collection using the Playlist API, <span class="GNVariablesProductName">GNSDK</span> automatically registers that playlist as a data source available to MoodGrid. These data sources are referred to as Providers. MoodGrid is designed to work with multiple providers. You can iterate through the list of available Providers using the gnsdk_moodgrid_provider_count() and gnsdk_moodgrid_provider_enum() functions. For example, the following call returns a handle to the first Provider on the list (at index 0):</p><pre>gnsdk_moodgrid_provider_enum(0, &amp;provider);</pre>
+        <p>You can use the handle to the Provider to retrieve the following information, by calling the gnsdk_moodgrid_provider_get_data() function:</p>
+        <ul class="ul_2">
+            <li class="li_1" value="1">Name (GNSDK_MOODGRID_PROVIDER_NAME key)</li>
+            <li class="li_1" value="2">Type (GNSDK_MOODGRID_PROVIDER_TYPE key)</li>
+            <li class="li_1" value="3">Network Use (GNSDK_MOODGRID_PROVIDER_NETWORK_USE key)</li>
+        </ul>
+        <h2>Creating and Populating a MoodGrid Presentation</h2>
+        <p>Once you have a handle to a Provider, you can create and populate a MoodGrid Presentation with Mood data. A Presentation is a data structure that represents the MoodGrid, containing the mood name and playlist information associated with each cell of the grid.</p>
+        <p>To create a MoodGrid Presentation, use the gnsdk_moodgrid_presentation_create() function, passing in the user handle, the type of the MoodGrid, and the provider handle. The type can be one of the enumerated values in gnsdk_moodgrid_presentation_type_t: either a 5x5 or 10x10 grid. The function returns a handle to the Presentation:</p><pre>gnsdk_moodgrid_presentation_create(user, type, NULL, NULL, &amp;presentation);</pre>
+        <p>Each cell of the Presentation is populated with a mood name an associated playlist. You can iterate through the Presentation to retrieve this information from each cell. The following pseudo-code demonstrates this procedure:</p><pre>gnsdk_moodgrid_presentation_type_dimension(type, &amp;max_x, &amp;max_y);
+ for (every grid cell [x,y] from [1,1] to [max_x, max_y])
+ {
+&#160;&#160;&#160;&#160; gnsdk_moodgrid_presentation_get_mood_name(presentation, x, y, &amp;name);
+&#160;&#160;&#160;&#160; gnsdk_moodgrid_presentation_find_recommendations(presentation, provider, x, y, &amp;results);
+&#160;&#160;&#160;&#160; gnsdk_moodgrid_results_count(results, &amp;count);
+&#160;&#160;&#160;&#160; for ( every item&#160; i in&#160; results )
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; gnsdk_moodgrid_results_enum(results, i, &amp;ident);
+ }</pre>
+        <p>Calling the gnsdk_moodgrid_presentation_type_dimension() function obtains the dimensions of the grid, which allows you to iterate through each cell. For each cell you can get the mood name by calling the gnsdk_moodgrid_presentation_get_mood_name() function with the coordinates of the cell. The locale of the mood name is based on the playlist group locale, and if that is not defined, it is based the music group locale. You can also get the list of recommended tracks (playlist) for that particular mood by calling the gnsdk_moodgrid_presentation_find_recommendations() function with the same coordinates. Finally, you can get the identifier for each track in the playlist, by iterating through the results and calling the gnsdk_moodgrid_results_enum() function.</p>
+        <h2>Filtering MoodGrid Results</h2>
+        <p>If you wish, you can filter the MoodGrid results. MoodGrid provides filtering by genre, origin, and era. If you apply a filter, the results that are returned are pre-filtered, reducing the amount of data transmitted. For example, the following call sets a filter to limit results to tracks that fall within the Rock genre.</p><pre>gnsdk_moodgrid_presentation_filter_set(presentation, "FILTER", GNSDK_MOODGRID_FILTER_LIST_TYPE_GENRE, GNSDK_LIST_MUSIC_GENRE_ROCK, GNSDK_MOODGRID_FILTER_CONDITION_INCLUDE);</pre>
+        <h2>Shutting Down MoodGrid</h2>
+        <p>When you are finished using MoodGrid, you can use the gnsdk_moodgrid_shutdown() function to shut it down. The <span class="GNVariablesProductName">GNSDK</span> modules necessary for running MoodGrid should be shut down in the following order:</p>
+        <ol>
+            <li value="1">MoodGrid</li>
+            <li value="2">Playlist</li>
+            <li value="3">MusicID</li>
+            <li value="4">SQLite</li>
+            <li value="5">GNSDK Manager</li>
+        </ol>
+        <h5>Example: Working with&#160;MoodGrid</h5>
+        <p>This example provides a complete MoodGrid sample application.</p>
+        <p>Sample Application: <a href="../samples/moodgrid/main.c" target="_blank">moodgrid/main.c.</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Identifying Music">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Advanced Music Identification and Organization</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Identifying Music.html">Identifying Music</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Advanced Music Identification and Organization</span>
+        </div>
+        <h1>Advanced Music Identification and Organization</h1>
+        <p>The MusicID-File module provides APIs that enable advanced music identification and organization. These APIs are grouped into three general categories: TrackID, AlbumID, and LibraryID.</p>
+        <h2>TrackID</h2>
+        <p>TrackID processing provides the simplest processing of media files. With this method, MusicID-File processes each media file independently, without regard for any other provided media files. This method is best used for small sets of media identification, where getting an answer is more important then getting the best answer. It is also appropriate to use for accessing all possible results for a single media file. The gnsdk_musicidfile_query_do_trackid() API provides TrackID processing.</p>
+        <h5>Example: Implementing TrackID</h5>
+        <p>Sample Application: <a href="../samples/musicid_file_trackid/main.c" target="_blank">musicid_file_trackid/main.c</a></p>
+        <h2>AlbumID</h2>
+        <p>AlbumID processing provides an advanced method of media file identification. The media file’s folder location and its similarity to other media files are used to achieve more accurate identification. This method is best used for groups of media files where the grouping of the results matters as much as accessing accurate, individual results. The gnsdk_musicidfile_query_do_albumid() API provides AlbumID processing.</p>
+        <h5>Example: Implementing AlbumID</h5>
+        <p>Sample Application: <a href="../samples/musicid_file_albumid/main.c" target="_blank">musicid_file_albumid/main.c</a></p>
+        <h2>LibraryID</h2>
+        <p>LibraryID processing adds another level of processing above AlbumID for very large collections of media files. LibraryID extends AlbumID functionality by performing additional scanning and processing of all the files in an entire collection. This enables LibraryID to find groupings that are not captured by AlbumID processing. This method is highly recommended for use when there are a large number (hundreds to thousands) of files to identify, though it is also equally effective when processing only a few files. This method takes most of the guesswork out of MusicID-File and lets the module do all the work for the application. The gnsdk_musicidfile_query_do_libraryid() API provides LibraryID processing.</p>
+        <p>Response GDOs from LibraryID queries are only available via Status and Result callbacks. This is because all LibraryID GDOs are freed after the process finishes.</p>
+        <h5>Example: Implementing LibraryID</h5>
+        <p>Sample Application: <a href="../samples/musicid_file_libraryid/main.c" target="_blank">musicid_file_libraryid/main.c</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

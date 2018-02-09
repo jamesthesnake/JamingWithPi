@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Using the Sample Applications|MusicID Sample Application Walkthrough">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Initialization</title>
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Using the Sample Applications.html">Using the Sample Applications</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Initialization</span>
+        </div>
+        <h1 class="Heading1">Initialization</h1>
+        <p>After main() does some initial error checking on the Client ID, Client Tag and License File parameters, it calls _init_gnsdk() which makes a number of initialization calls.</p>
+        <h2 class="Heading2">Initialize the GNSDK Manager</h2>
+        <p>Your application must initialize the GNSDK Manager prior to calling any other <span class="GNVariablesProductName">GNSDK</span> library. The GNSDK Manager is the central controller for your application's interaction with the Gracenote Service. The initialization call returns a GNSDK Manager handle for use in subsequent SDK calls, including any other initialization calls. This is a required call.</p><pre>
+//**
+//**&#160; Initialize the GNSDK Manager 
+//**
+gnsdk_manager_handle_t sdkmgr_handle= GNSDK_NULL;
+gnsdk_manager_initialize(&amp;sdkmgr_handle, license_path, GNSDK_MANAGER_LICENSEDATA_FILENAME);
+</pre>
+        <p class="info">The GNSDK_MANAGER_LICENSEDATA_FILENAME define is passed for the parameter that is supposed to indicate the license string length but, instead, indicates that the license data should be read from a file.</p>
+        <h2 class="Heading2">Initialize the MusicID Library Manager</h2>
+        <p>After getting an SDK Manager handle, the application then initializes its interaction with the Gracenote MusicID library. Every <span class="GNVariablesProductName">GNSDK</span> library must be initialized before an application can successfully call any of its APIs.</p><pre>			
+//Initialize the MusicID Library
+
+gnsdk_musicid_initialize(sdkmgr_handle);
+
+</pre>
+        <h2 class="Heading2">Initialize Storage and Local Lookup</h2>
+        <p>The following two calls initialize the application's interaction with local storage. Both take the GNSDK Manager handle as a parameter. The SDK uses storage to cache queries (which improves online performance) and to power local lookups. Currently, SQLite is the only database provided for local storage and requires initialization. This must be done before the local lookup initialization call.</p><pre>
+// Initialize the Storage SQLite Library
+gnsdk_storage_sqlite_initialize(sdkmgr_handle); 
+
+// Initialize the storage folder (/sample_db) for Local Lookup
+gnsdk_storage_sqlite_option_set(GNSDK_STORAGE_SQLITE_OPTION_STORAGE_FOLDER, "../sample_db");
+
+// Initialize the Lookup Local Library
+gnsdk_lookup_local_initialize(sdkmgr_handle); 
+        </pre>
+        <h2 class="Heading2">Initialize the User Handle</h2>
+        <p>Every application user is required to register with the Gracenote Service. To perform queries, an application must first register a new user and get its handle. A user represents an individual installation of a specific Client ID. This ensures that each application instance is receiving all required metadata entitlements. Users are represented in <span class="GNVariablesProductName">GNSDK</span> by their handles. These handles contain the Client ID string. The _init_gdsdk() function calls _get_user_handle() to either create a new user handle or restore a user handle from serialized storage.</p>
+        <p class="info">After your application creates a new user, it should save its handle to serialized storage, where it can be retrieved every time your application needs it to use again. If an application registers a new user on every use instead of storing a serialized user, then the user quota maintained for the Client ID is quickly exhausted. Once the quota is reached, attempting to create new users will fail. To maintain an accurate usage profile of your application, and to ensure that the services you are entitled to are not being used unintentionally, it is important that your application registers a new user only when needed, and then stores that user for future use.</p>
+        <p>To register as a new user, your application can call gnsdk_manager_user_create_new()</p>
+        <p>For user serialization, your application can use the following two calls:</p>
+        <ul>
+            <li value="1">gnsdk_manager_user_create()—Takes a serialized user string and creates a user handle.</li>
+            <li value="2">gnsdk_manager_user_serialize()—Saves user handle to serialized storage so it can be re-used in the future without having to register as a new user. Generally, this should be done when the application exits as the user handle can change during the course of the app. The user handle release call - gnsdk_manager_user_release()- will also serialize the user handle. </li>
+        </ul>
+        <h2 class="Heading2">Initialize Localization</h2>
+        <p>Finally, this sample application makes the following localization calls. Note that these calls can be done at anytime, but must be done <i>after </i>user registration, since they require a user handle parameter.</p>
+        <ul>
+            <li value="1">gnsdk_manager_locale_load()—Sets locale and creates a locale handle for subsequent calls. GNSDK locales are identifiers to a specific set of lists in the Gracenote Service. By using a locale, an application instructs the Gracenote Service to return only the data contained in a specific list. A locale is defined by a language and (optionally) a list region, a list descriptor, and a group. this sample application sets language to English (GNSDK_LANG_ENGLISH) and the region to default (GNSDK_REGION_DEFAULT).</li>
+            <li value="2">gnsdk_manager_locale_set_group_default()—Sets a locale's global group default; all GDOs will use this locale unless specifically overwritten by gnsdk_manager_gdo_set_locale(). If the default is not set, no locale-specific results would be available. The locale group was set in the local handle with the previous call when the GNSDK_LOCALE_GROUP_MUSIC was passed.</li>
+        </ul>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

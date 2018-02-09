@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Getting Started|Basic Application Design">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Locales</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Getting Started.html">Getting Started</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Basic Application Design.html">Basic Application Design</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Locales</span>
+        </div>
+        <h1>Locales</h1>
+        <p><span class="GNVariablesProductName">GNSDK</span> provides <em>locales</em> as a convenient way to group locale-dependent metadata specific to a region (such as  Europe) and language that should be returned from the Gracenote service. A locale is defined by a group (such as  Music), a language, a region and a  descriptor (indicating level of metadata detail), which are identifiers to a specific set of <em>lists</em> in the Gracenote Service. </p>
+        <p>Using locales is relatively straightforward for most applications to implement. However, it is not as flexible or complicated as accessing lists directly - most locale processing is handled in the background and is not configurable. For most applications though, using locales is more than sufficient. Your application should only access lists directly if it has a specific reason or use case for doing so. For information about lists, <a href="Lists.html" class="MCXref xref">See "Using Lists"</a>.</p>
+        <h2>Loading a Locale</h2>
+        <p>To load a locale, use the gnsdk_manager_locale_load() function. As can be seen in the sample below, Locale properties are:</p>
+        <ul>
+            <li value="1"><b>Group</b> Group type of locale such as Music or Playlist that can be easily tied to the application's use case</li>
+            <li value="2"><b>Region</b> Region the application is operating in, such as US, China, Japan, Europe, and so on, possibly specified by the user configuration</li>
+            <li value="3"><b>Language</b> Language the application uses, possibly specified by the user configuration</li>
+            <li value="4"><b>Descriptor</b> Additional description of the locale, such as Simplified or Detailed for the list hierarchy group to use, usually determined by the application's use case</li>
+        </ul>
+        <p>For example:</p>
+        <ul>
+            <li value="1">A locale defined for the USA of English/ US/Detailed returns detailed content from a list written in English for a North American audience.</li>
+            <li value="2">A locale defined for Spain of Spanish/Global/Simplified returns list metadata of a less-detailed nature, written in Spanish for a global Spanish-speaking audience (European, Central American, and South American).</li>
+        </ul>
+        <p>To configure the locale:</p>
+        <ul>
+            <li value="1">Set the group key to the respective GNSDK_LOCALE_GROUP_*.</li>
+            <li value="2">Set the language key (GNSDK_LANG_*) to the required language.</li>
+            <li value="3">Set the region and descriptor keys to the respective GNSDK_*_DEFAULT key.</li>
+        </ul>
+        <p>For example:</p><pre>
+gnsdk_manager_locale_load(
+    GNSDK_LOCALE_GROUP_MUSIC,       // Group - Music (others include EPG, Playlist and Video)
+    GNSDK_LANG_ENGLISH,             // Language - English
+    GNSDK_REGION_DEFAULT,           // Default is US (others include China, Japan, Europe, and so on)
+    GNSDK_DESCRIPTOR_DETAILED,      // Default music descriptor is 'detailed' (versus 'simplified')
+    user_handle,                    // User handle
+    GNSDK_NULL,                     // No status callback
+    GNSDK_NULL,                     // No status userdata
+    @locale_handle                  // Locale handle to be set
+ );		</pre>
+        <h2>Locale Groups</h2>
+        <p>Setting the locale for a group causes the given locale to apply to a particular media group, such as Music or Playlist. For example, setting a locale for the Music group applies the locale to all music-related objects. When a locale is loaded, all lists necessary for the locale group are loaded into memory.</p>
+        <p>The locale group property can be set to one of the following values:</p>
+        <ul>
+            <li value="1">GNSDK_LOCALE_GROUP_MUSIC: Sets the locale for all music-related objects</li>
+            <li value="2">GNSDK_LOCALE_GROUP_PLAYLIST: Sets the locale for playlist generation</li>
+        </ul>
+        <p>Once a locale has been loaded, you must call one of the following functions to set the locale before retrieving locale-dependent values from a GDO:</p>
+        <ul>
+            <li value="1">gnsdk_manager_locale_set_group_default(): This function sets a default locale. When a locale is set to be the default, it becomes the default locale for its inherent group. So, you can set a default for each locale group, such as Music, Playlist, etc. The default locale is automatically applied to each new GDO (that is relevant for that locale group). Setting a locale manually for a GDO (using gnsdk_manager_gdo_set_locale) overrides the default locale.</li>
+            <li value="2">gnsdk_manager_gdo_set_locale(): This function sets the locale of the locale-dependent data for a specific GDO handle.</li>
+        </ul>
+        <h2>Locale-Dependent Values and List Types</h2>
+        <p>The table below summarizes locale-dependent value keys and their corresponding list types. The list type values actually returned depend on the type of GDO you are working with. You can load lists using gnsdk_manager_gdo_set_locale().</p>
+        <p>List types are categorizations of related list metadata. For example, GNSDK_LIST_TYPE_MOODS contains a hierarchical list of moods for audio metadata, such as Blue (Level 1) and Earthy/Gritty/Soulful Level 2).</p>
+        <h3>Locale-Dependent Genre Levels</h3>
+        <p>The Gracenote Genre System provides a locale-dependent view of the genre hierarchy based on the user's geographic location or cultural preference. This allows you to deliver localized solutions for consumers in different parts of the world. Localized solutions allow representation and navigation of music in a manner that is expected in that region. </p>
+        <p>For example, consumers in the U.S. would expect to find Japanese or French Pop music in a World genre category, while North American Pop would be expected to be labeled as Pop. In Japan, consumers would expect to find Japanese Pop under Pop and French and North American Pop under Western Pop. In a solution shipped globally, all Pop music would be categorized as Pop, regardless of the origin of the music.</p>
+        <h3>Music Locale-Dependent Values and List Types</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Locale/List-Dependent Values</th>
+                    <th>Locale/List Types</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ARTISTTYPE_LEVEL1</td>
+                    <td rowspan="2">GNSDK_LIST_TYPE_ARTISTTYPES</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ARTISTTYPE_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_COMPOSITION_FORM</td>
+                    <td>GNSDK_LIST_TYPE_COMPOSITION_FORM</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ENTITY_TYPE</td>
+                    <td>GNSDK_LIST_TYPE_CONTRIBUTORENTITYTYPES</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ERA_LEVEL1</td>
+                    <td rowspan="3">GNSDK_LIST_TYPE_ERAS</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ERA_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ERA_LEVEL3</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_GENRE_LEVEL1</td>
+                    <td rowspan="3">GNSDK_LIST_TYPE_GENRES</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_GENRE_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_GENRE_LEVEL3</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_INSTRUMENTATION*</td>
+                    <td>GNSDK_LIST_TYPE_INSTRUMENTATION</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_MOOD_LEVEL1</td>
+                    <td rowspan="2">GNSDK_LIST_TYPE_MOODS</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_MOOD_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ORIGIN_LEVEL1</td>
+                    <td rowspan="4">GNSDK_LIST_TYPE_ORIGINS</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ORIGIN_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ORIGIN_LEVEL3</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ORIGIN_LEVEL4</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_PACKAGE_LANGUAGE_DISPLAY</td>
+                    <td>GNSDK_LIST_TYPE_LANGUAGES</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ROLE</td>
+                    <td rowspan="2">GNSDK_LIST_TYPE_CONTRIBUTORS</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ROLE_CATEGORY</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ROLE</td>
+                    <td rowspan="2">GNSDK_LIST_TYPE_ROLES</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_ROLE_CATEGORY</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_TEMPO_LEVEL1</td>
+                    <td rowspan="3">GNSDK_LIST_TYPE_TEMPOS</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_TEMPO_LEVEL2</td>
+                </tr>
+                <tr>
+                    <td>GNSDK_GDO_VALUE_TEMPO_LEVEL3</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>*GNSDK_GDO_VALUE_INSTRUMENTATION will be removed in future releases.</p>
+        <h3>Multi-Threaded Access</h3>
+        <p>Since locales and lists can be accessed concurrently, your application has the option to perform such actions as generating a Playlist or obtaining result display strings using multiple threads.</p>
+        <p>Typically, an application loads all required locales at start up, or when the user changes preferred region or language. To speed up loading multiple locales, your application can load each locale in its own thread.</p>
+        <h2>Updating Locales and Lists</h2>
+        <p><span class="GNVariablesProductName">GNSDK</span> includes support for storing locales and their associated lists locally. Doing this improves access times and performance. Your application needs to include a database module (such as SQLite) to implement local storage. <a href="Caching Examples.html" class="MCXref xref">See "GNSDK Storage and Caching"</a> for more information.</p>
+        <p>Periodically, your application should update any locale lists you are storing locally. Currently, Gracenote lists are updated no more than twice a year. However, Gracenote recommends that applications run an update with the gnsdk_manager_locale_update() function <i>every 14 days</i>.</p>
+        <p>If the SDK infers your locale lists are out of date, it will return a GNSDKERR_ListUpdateNeeded error code. This error is only returned if your application attempts to access metadata via a response GDO that cannot be resolved.</p>
+        <p class="note">Updates require the user option GNSDK_USER_OPTION_LOOKUP_MODE to be set to GNSDK_LOOKUP_MODE_ONLINE (default) or GNSDK_LOOKUP_MODE_ONLINE_ONLY. This allows the SDK to retreive lists from the Gracenote service. You may need to toggle this option value for the update process.</p>
+        <h2>Best Practices</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Practice</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Applications should use locales.</td>
+                    <td>Locales are simpler and more convenient than accessing lists directly. An application should only use lists if
+					there are specific circumstances or use cases that require it.</td>
+                </tr>
+                <tr>
+                    <td>Applications can deploy with pre-populated list stores and reduce startup time.</td>
+                    <td>On startup, a typical application loads locale(s). If the requested locale is not cached, the required lists are downloaded from the Gracenote service and written to local storage. This procedure can take time.
+					<p>Customers should consider creating their own list stores that are deployed with the application to decrease the initial startup time and perform a locale update in a background thread once the application is up and running.</p></td>
+                </tr>
+                <tr style="page-break-inside: avoid">
+                    <td>Use multiple threads when loading or updating multiple locales.</td>
+                    <td>Loading locales in multiple threads allows lists to be fetched concurrently, reducing overall load time.</td>
+                </tr>
+                <tr>
+                    <td>Update locales in a background thread.</td>
+                    <td>Locales can be updated while the application performs normal processing. The SDK automatically switches to using new lists as they are updated.
+					<p class="note"> If the application is using the GNSDK Manager Lists interface directly and the application holds a list handle, that list is not released from memory and the SDK will continue to use it.</p></td>
+                </tr>
+                <tr>
+                    <td>Set a <em>persistence</em> flag when updating. If interrupted, repeat update.</td>
+                    <td>If the online update procedure is interrupted (such as  network connection/power loss) then it must be repeated to prevent mismatches between locale required lists.
+
+					<p>Your application should set a persistence flag before starting an update procedure. If the flag is still set upon startup, the application should initiate an update. You should clear the flag after the update has completed.</p></td>
+                </tr>
+                <tr>
+                    <td>Call gnsdk_manager_storage_compact() after updating lists or locales.</td>
+                    <td>As records are added and deleted from locale storage, some storage solutions, such as SQLite, can leave empty space in the storage files, artificially bloating them. You can call gnsdk_manager_storage_compact() to remove these.
+
+					<p class="note">The update procedure is not guaranteed to remove an old version of a list from storage immediately because there could still be list element references which must be honored until they are released. Therefore, your application should call gnsdk_manager_storage_compact() during startup or shutdown after an update has finished.</p></td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Example: Accessing a Locale-Dependent Value</h5>
+        <p>The basic steps to access locale-specific values from query results are:</p>
+        <ol>
+            <li value="1">Load the desired locale(s) to ensure all necessary lists are in memory.</li>
+            <li value="2">(Optional) Set a default locale.</li>
+            <li value="3">(Optional) Set a locale on a GDO.</li>
+            <li value="4">Access the locale-specific values.</li>
+        </ol>
+        <p>The example below demonstrates loading a locale to access an album genre, which is a locale-specific value. It shows the results of querying for a locale-specific value with the correct and incorrect locale. If locale is not loaded when trying to get a locale dependent value (for example, an album genre), <span class="GNVariablesProductName">GNSDK</span> returns an error (locale not loaded).</p>
+        <p>Code Snippet: <a href="../samples/code_snippets/locale_mgmt_1.c">locale_mgmt_1.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager, MusicID library, and register a User.</li>
+            <li value="2">Perform Music ID query to an the album response GDO, and the child album GDO.</li>
+            <li value="3">Grab a locale-specific value (genre) without first loading a locale (generates error).</li>
+            <li value="4">Load an English locale and set the GDO locale.</li>
+            <li value="5">Load the same locale-specific value and display it (no error this time).</li>
+            <li value="6">Shutdown GNSDK Manager, MusicID, and release User handle.</li>
+        </ol>
+        <h5>Example: Overriding the Default Locale</h5>
+        <p>This example demonstrates overriding a default locale to access an album primary genre in a secondary locale. </p>
+        <p>Code Snippet: <a href="../samples/code_snippets/locale_mgmt_2.c">local_mgmt_2.c</a></p>
+        <p>Application Steps:</p>
+        <ol>
+            <li value="1">Initialize GNSDK Manager, MusicID Library, and register a User.</li>
+            <li value="2">Load two music locales - Music/English/Detailed and Music/Chinese/Simplified.</li>
+            <li value="3">Perform a Music ID query.</li>
+            <li value="4">Get album primary genre (a locale dependent value) from work GDO and display in English.</li>
+            <li value="5">Set child album GDO locale to Chinese and get/display same value.</li>
+            <li value="6">Shutdown GNSDK Manager, MusicID Library and release User handle.</li>
+        </ol>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

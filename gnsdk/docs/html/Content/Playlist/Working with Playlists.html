@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Playlist Features">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Working with Playlists</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Playlist Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Working with Playlists</span>
+        </div>
+        <h1>Working with Playlists</h1>
+        <p>Playlist provides advanced playlist generation enabling a variety of intuitive music navigation methods. Using Playlist, applications can create sets of related media from larger collections – enabling valuable features such as More Like This™ and custom playlists – that help users easily find the music they want. Playlist functionality can be applied to both local and online user collections. Playlist is designed for both performance and flexibility – utilizing lightweight data and extensible features.<br /></p>
+        <p>Playlist builds on the advanced recognition technologies and rich metadata provided by Gracenote through <span class="GNVariablesProductName">GNSDK</span> to generate highly relevant playlists.</p>
+        <p>The following is a high-level summary of the APIs that fulfill the services for Playlist.</p>
+        <ul>
+            <li value="1">Create, populate, and manage collection summaries</li>
+            <li value="2">Store collection summaries within a local storage solution.</li>
+            <li value="3">Generate More Like This playlists</li>
+            <li value="4">Generate, validate, and execute custom literal or seed-based playlists</li>
+            <li value="5">Manage playlist results</li>
+        </ul>
+        <h2>Collection Summaries</h2>
+        <p>Collection summaries store attribute data to support all media in a candidate set and are the basis for playlist generation. Collection summaries are designed for minimal memory utilization and rapid consumption, making them easily applicable to local and server/cloud-based application environments.<br /></p>
+        <p>Playlists are generated using the attributes stored in the active collection summary. Collection summaries must, therefore, be refreshed whenever media in the candidate set or attribute implementations are modified. Playlist supports multiple collection summaries, enabling both single and multi-user applications.</p>
+        <h2>More Like This</h2>
+        <p>More Like This is a powerful and popular navigation feature made possible by Gracenote and <span class="GNVariablesProductName">GNSDK</span> Playlist. Using More Like This, applications can automatically create a playlist of music that is similar to given seed music. More Like This is commonly applied to an application's currently playing track to provide users with a quick and intuitive means of navigating through their music collection.<br /></p>
+        <p>Gracenote recommends using More Like This  to quickly implement a powerful music navigation solution. Functionality is provided via a dedicated API to further simplify integration. If you need to create custom playlists, you can use the Playlist Definition Language. <a href="Playlist PDL Specification.html" class="MCXref xref">See "Playlist PDL Specification"</a> for more information.</p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="Playlist Requirements.html">Playlist Requirements and Recommendations</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="Key Components.html">Key Components</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="Generating a Playlist.html">Generating a Playlist</a>
+            </p>
+        </div>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

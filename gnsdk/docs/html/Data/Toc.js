@@ -1,0 +1,86 @@
+MadCap.Utilities.Xhr._FilePathToXmlStringMap.Add(
+	'Toc',
+	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
+	'<CatapultToc Version=\"1\" DescendantCount=\"60\">' +
+	'    <TocEntry Title=\"Developer\'s Guide\" ComputedFirstTopic=\"false\" DescendantCount=\"58\">' +
+	'        <TocEntry Title=\"Getting Started\" Link=\"/Content/gnsdk_developing_c_applications/Getting Started.html\" BreakType=\"chapter\" PageLayout=\"/Content/Resources/PageLayouts/ChapterLetterPL.flpgl\" StartSection=\"false\" PageNumberReset=\"continue\" ComputedResetPageLayout=\"true\" ComputedFirstTopic=\"true\" DescendantCount=\"25\">' +
+	'            <TocEntry Title=\"About Gracenote\" Link=\"/Content/gnsdk_developing_c_applications/About Gracenote.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Resources for GNSDK\" Link=\"/Content/gnsdk_developing_c_applications/Resources for gnsdko.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Key Concepts\" Link=\"/Content/gnsdk_developing_c_applications/Key Concepts.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"4\">' +
+	'                <TocEntry Title=\"What is Gracenote SDK\" Link=\"/Content/gnsdk_developing_c_applications/What is Gracenote SDK.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"System Requirements\" Link=\"/Content/gnsdk_developing_c_applications/System Requirements for gnsdko.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Gracenote Media Elements\" Link=\"/Content/gnsdk_developing_c_applications/Gracenote Media Elements.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Core and Enriched Metadata\" Link=\"/Content/gnsdk_developing_c_applications/Core and Enriched Metadata.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'            <TocEntry Title=\"Basic Application Design\" Link=\"/Content/gnsdk_developing_c_applications/Basic Application Design.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"9\">' +
+	'                <TocEntry Title=\"GNSDK Modules\" Link=\"/Content/gnsdk_developing_c_applications/GNSDK Modules.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Header Files and Libraries\" Link=\"/Content/gnsdk_developing_c_applications/Header Files.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Authorizing a GNSDK Application\" Link=\"/Content/gnsdk_developing_c_applications/Authorizing a GNSDK Application.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Gracenote Data Objects GDOs\" Link=\"/Content/gnsdk_developing_c_applications/Gracenote Data Objects GDOs.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Caching\" Link=\"/Content/gnsdk_developing_c_applications/Caching Examples.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Logging\" Link=\"/Content/gnsdk_developing_c_applications/Logging Examples.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Callback\" Link=\"/Content/gnsdk_developing_c_applications/Callback Examples.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Locales\" Link=\"/Content/gnsdk_developing_c_applications/Locales.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Best Practices for Image Dimensions\" Link=\"/Content/gnsdk_developing_c_applications/Best Practices for Image Dimensions.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'            <TocEntry Title=\"Using the Sample Applications\" Link=\"/Content/gnsdk_developing_c_applications/Using the Sample Applications.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"7\">' +
+	'                <TocEntry Title=\"Building a Sample Application\" Link=\"/Content/gnsdk_developing_c_applications/Building a Sample Application.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"MusicID Sample Application Walkthrough\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"6\">' +
+	'                    <TocEntry Title=\"GNSDK MusicID Sample Application\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/GNSDK MusicID Sample Application.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                    <TocEntry Title=\"Prerequisites\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/Prerequisites.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                    <TocEntry Title=\"Initialization\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/Initialization.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                    <TocEntry Title=\"MusicID Queries\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/MusicID Queries.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                    <TocEntry Title=\"Releasing Resources and Shutting Down\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/Releasing Resources and Shutting.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                    <TocEntry Title=\"Logging\" Link=\"/Content/gnsdk_developing_c_applications/MusicID Sample Application Walkthrough/Logging.html\" depth=\"1\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                </TocEntry>' +
+	'            </TocEntry>' +
+	'        </TocEntry>' +
+	'        <TocEntry Title=\"Implementing Music Features\" StartSection=\"false\" PageNumberReset=\"continue\" BreakType=\"chapter\" PageLayout=\"/Content/Resources/PageLayouts/ChapterLetterPL.flpgl\" ComputedResetPageLayout=\"true\" ComputedFirstTopic=\"false\" DescendantCount=\"18\">' +
+	'            <TocEntry Title=\"Working with Music Modules\" Link=\"/Content/Music/Working with Music Modules.html\" ComputedFirstTopic=\"false\" DescendantCount=\"6\">' +
+	'                <TocEntry Title=\"Core and Enriched Music Metadata\" Link=\"/Content/Music/Core and Enriched Music Metadata.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"About Music ID\" Link=\"/Content/Music/Music ID Intro.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"About MusicID File\" Link=\"/Content/Music/MusicID File Intro.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"About Link\" Link=\"/Content/Music/Link Intro.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"About Playlist and MoodGrid\" Link=\"/Content/Music/Playlist and MoodGrid.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Mood and Tempo Sonic Attributes\" Link=\"/Content/Music/Mood and Tempo Sonic Attributes.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'            <TocEntry Title=\"Identifying Music\" Link=\"/Content/Music/Identifying Music.html\" ComputedFirstTopic=\"false\" DescendantCount=\"4\">' +
+	'                <TocEntry Title=\"Identifying Music Using a CD TOC\" Link=\"/Content/Music/Identifying Music Using a.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Identifying Music Using Text\" Link=\"/Content/Music/Identifying Music Using a1.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Identifying Music Using Fingerprints\" Link=\"/Content/Music/Identifying Music Using Fingerprints.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Advanced Music Identification and Organization\" Link=\"/Content/Music/Advanced Music Identification.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'            <TocEntry Title=\"Accessing Metadata\" Link=\"/Content/Music/Accessing Metadata.html\" ComputedFirstTopic=\"false\" DescendantCount=\"5\">' +
+	'                <TocEntry Title=\"Using Music GDOs\" Link=\"/Content/Music/Using Music GDOs.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Accessing Mood and Tempo Metadata\" Link=\"/Content/Music/Accessing Mood and Tempo Metadata.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Accessing Enriched Music Metadata with the Link Module\" Link=\"/Content/Music/Accessing Enriched Music Metadata.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Accessing Classical Music Metadata\" Link=\"/Content/Music/Accessing Classical Music.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Accessing Album Cover Art\" Link=\"/Content/Music/Accessing Album Cover Art.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'        </TocEntry>' +
+	'        <TocEntry Title=\"Implementing Playlist Features\" StartSection=\"false\" PageNumberReset=\"continue\" BreakType=\"chapter\" PageLayout=\"/Content/Resources/PageLayouts/ChapterLetterPL.flpgl\" ComputedResetPageLayout=\"true\" ComputedFirstTopic=\"false\" DescendantCount=\"6\">' +
+	'            <TocEntry Title=\"Working with Playlists\" Link=\"/Content/Playlist/Working with Playlists.html\" ComputedFirstTopic=\"false\" DescendantCount=\"3\">' +
+	'                <TocEntry Title=\"Playlist Requirements and Recommendations\" Link=\"/Content/Playlist/Playlist Requirements.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Key Components\" Link=\"/Content/Playlist/Key Components.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'                <TocEntry Title=\"Generating a Playlist\" Link=\"/Content/Playlist/Generating a Playlist.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'            <TocEntry Title=\"Working with MoodGrid\" Link=\"/Content/Playlist/Working with MoodGrid.html\" ComputedFirstTopic=\"false\" DescendantCount=\"1\">' +
+	'                <TocEntry Title=\"Implementing MoodGrid\" Link=\"/Content/Playlist/Implementing MoodGrid.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            </TocEntry>' +
+	'        </TocEntry>' +
+	'        <TocEntry Title=\"Advanced Topics\" Link=\"/Content/gnsdk_developing_c_applications/Advanced Topics.html\" StartSection=\"false\" PageNumberReset=\"continue\" BreakType=\"chapter\" PageLayout=\"/Content/Resources/PageLayouts/ChapterLetterPL.flpgl\" ComputedResetPageLayout=\"true\" ComputedFirstTopic=\"false\" DescendantCount=\"6\">' +
+	'            <TocEntry Title=\"Working with Non GDO Identifiers\" Link=\"/Content/gnsdk_developing_c_applications/Working with Non GDO Identifiers.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Improving Matches Using Both CD TOC and Fingerprints\" Link=\"/Content/gnsdk_developing_c_applications/Improving Matches Using Both.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Rendering a GDO as XML\" Link=\"/Content/gnsdk_developing_c_applications/Rendering a GDO as XML.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Using Lists\" Link=\"/Content/gnsdk_developing_c_applications/Lists.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Best Practices for Audio Stream Recognition\" Link=\"/Content/gnsdk_developing_c_applications/Best Practices for Audio Stream Recognition.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'            <TocEntry Title=\"Playlist PDL Specification\" Link=\"/Content/Playlist/Playlist PDL Specification.html\" depth=\"0\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'        </TocEntry>' +
+	'        <TocEntry Title=\"Glossary\" Link=\"/Content/gnsdk_glossary/Glossary.html\" StartSection=\"false\" PageNumberReset=\"continue\" BreakType=\"chapter\" PageLayout=\"/Content/Resources/PageLayouts/ChapterLetterPL.flpgl\" ComputedResetPageLayout=\"true\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'    </TocEntry>' +
+	'    <TocEntry Title=\"C API Reference\" ComputedFirstTopic=\"false\" DescendantCount=\"2\">' +
+	'        <TocEntry Title=\"GNSDK C API Reference\" Link=\"/Content/gnsdko_doxygen_html/index.html\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'        <TocEntry Title=\"GNSDK Data Model\" Link=\"/Content/data_model/Data_Model_gnsdko.html\" ComputedFirstTopic=\"false\" DescendantCount=\"0\" />' +
+	'    </TocEntry>' +
+	'</CatapultToc>'
+);

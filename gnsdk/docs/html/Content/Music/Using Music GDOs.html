@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Accessing Metadata">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using Music GDOs</title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Accessing Metadata.html">Accessing Metadata</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Using Music GDOs</span>
+        </div>
+        <h1>Using Music GDOs</h1>
+        <p>Top-level music GDOs generally represent Albums and Tracks. Album and Track queries can return GDOs containing one or more child GDOs. For example, because a track may exist on multiple albums, the top-level GDO returned from a Track query may contain multiple albums results. Your application should select the child GDO representing a specific album. For more information on managing multiple results, <a href="../gnsdk_developing_c_applications/Gracenote Data Objects GDOs.html" class="MCXref xref">See "Gracenote Data Objects (GDOs)"</a>.</p>
+        <p class="info">A music query can return either a full or partial set of metadata. Generally, most queries return partial results containing just enough information to identify the matches. Using this information, the user can further refine the query, and access full results. For more information, see </p>
+        <p>The following code assumes that an initial query has already been performed and has returned a result in the variable result_gdo. A GDO’s child objects are enumerated with an ordinal index, starting from 1 (not 0) for the first child object. The code accesss the GDO representing the first album from the query result in variable album_gdo.</p><pre>gnsdk_gdo_handle_t&#160; album_gdo = GNSDK_NULL;
+&#160; gnsdk_manager_gdo_child_get(
+ &#160;&#160; result_gdo,
+ &#160;&#160; GNSDK_GDO_CHILD_ALBUM,
+ &#160;&#160; 1,
+ &#160;&#160; &amp;album_gdo
+&#160; );
+ With the album accessed, the application can now access the GDO for an individual track:
+ gnsdk_gdo_handle_t&#160; track_gdo = GNSDK_NULL;
+&#160; gnsdk_manager_gdo_child_get(
+ &#160;&#160; album_gdo,
+ &#160;&#160; GNSDK_GDO_CHILD_TRACK,
+ &#160;&#160; 1,
+ &#160;&#160; &amp;track_ gdo
+&#160; );</pre>
+        <p>The ordinal of a track's GDO within the album GDO has no relationship to its track number within the album itself, as not all tracks may be represented within an album. The following code demonstrates access of the actual track number.</p><pre xml:space="preserve">gnsdk_cstr_t&#160; value = GNSDK_NULL;
+&#160; gnsdk_manager_gdo_value_get(
+ &#160;&#160; track_matched_gdo,
+ &#160;&#160; GNSDK_GDO_VALUE_TRACK_NUMBER,
+ &#160;&#160; 1,
+ &#160;&#160; &amp;value
+&#160; );</pre>
+        <p>Code Snippet: <a href="../samples/code_snippets/musicid_album_gdo.c">musicid_album_gdo.c</a></p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>

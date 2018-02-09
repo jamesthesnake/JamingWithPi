@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Implementing Music Features|Working with Music Modules">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About MusicID File </title>
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Developer's Guide</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Implementing Music Features</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Working with Music Modules.html">Working with Music Modules</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">About MusicID File</span>
+        </div>
+        <h1>About MusicID File </h1>
+        <p>MusicID-File provides advanced file-based identification features not included in the MusicID module. MusicID-File can perform recognition using individual files or leverage collections of files to provide advanced recognition. When an application provides decoded audio and text data for each file to the library, MusicID-File identifies each file and groups the files into albums.</p>
+        <p>The following is a high-level summary of the APIs that fulfill the services for MusicID-File.</p>
+        <ul>
+            <li value="1">Waveform fingerprinting for files</li>
+            <li value="2">Media file data population</li>
+            <li value="3">Advanced processing methods</li>
+            <li value="4">Result Management</li>
+        </ul>
+        <p>MusicID-File can be used with a local database, but it only performs text-matching locally. Fingerprints are not matched locally.</p>
+        <p class="note"><span class="note">Note:</span> MusicID-File queries never return partial results. They always return full results.</p>
+        <h2>Waveform and Metadata Recognition</h2>
+        <p>
+            <br />The MusicID-File module utilizes both audio data and existing metadata from individual media files to produce the most accurate identification possible.<br />Decoded audio data is provided to MusicID-File, which processes it to retrieve a unique audio fingerprint. The application can also provide any metadata available for the media file, such as file Tag, filename, and perhaps any application metadata. MusicID-File can use a combination of fingerprint and text lookups to determine a best-fit match for the given data.</p>
+        <p>
+            <br />The MusicID module also provides basic file-based media recognition using only audio fingerprints. The MusicID-File module is preferred for file-based media recognition, however, as its advanced recognition process provides significantly more accurate results.</p>
+        <h2>Processing Methods</h2>
+        <p>MusicID-File provides three processing methods enabling advanced file-based media recognition. Each method utilizes the same population and result management APIs, so which method to use is determined by the application's requirement at the time of processing. MusicID-File returns a GDO for each result – providing as many as needed.<br /></p>
+        <h3>TrackID</h3>
+        <p>TrackID provides the simplest processing of media files. With this method, MusicID-File will process each media file independently without regard for other media files that are provided.<br />This method is best used for small sets of media files. It is also appropriate for retrieving all possible results for a single media file. Consequently, TrackID is useful when getting an answer is more important than getting the best answer.</p>
+        <h3>AlbumID</h3>
+        <p>AlbumID provides an advanced method of media file recognition. Context of the media files, such as their file-system (folder) location and similarity to other media files, can all be leveraged to achieve more accurate media recognition.<br />This method is best used for groups of media files – where the grouping of the results matters as much as the accuracy of individual results.</p>
+        <h3>LibraryID</h3>
+        <p>LibraryID adds another level of processing beyond AlbumID and is useful for very large collections of media files. Applying the same techniques used in AlbumID, LibraryID further scans and processes files in an entire collection – allowing it to identify groupings otherwise missed by AlbumID.</p>
+        <p>This method is highly recommended for use when it is necessary to identify large a large number of files (hundreds to thousands), but is also effective when used with only a few files. This method takes most of the guesswork out of MusicID-File and lets the SDK do all the work for the application.</p>
+        <p class="onlineFooter">© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+    </body>
+</html>
